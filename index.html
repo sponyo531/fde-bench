@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="FDE-Bench evaluates AI agents on 49 real customer projects, from clarifying unstated requirements to delivering working solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FDE-Bench — From a request to real delivery">
+  <meta property="og:description" content="49 real customer cases. 266 clarification targets. A benchmark for end-to-end delivery.">
+  <meta property="og:image" content="https://sponyo531.github.io/fde-bench/assets/social-preview.png">
+  <meta property="og:url" content="https://sponyo531.github.io/fde-bench/">
+  <link rel="canonical" href="https://sponyo531.github.io/fde-bench/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>FDE-Bench · From a request to real delivery</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preload" href="assets/fonts/source-serif-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="FDE-Bench home"><img src="assets/logo.png" width="29" height="29" alt=""><span>FDE<span class="brand-dash">—</span>Bench</span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">☰</span></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        <a href="#results">Results</a><a href="#benchmark">The benchmark</a><a href="#cases">Cases</a><a href="#paper">Paper &amp; team</a>
+        <a class="nav-paper" href="assets/FDE-Bench.pdf" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> FM Agent Team · Baidu AI Cloud</p>
+        <h1 id="hero-title">From a request.<br>To <em>real delivery.</em></h1>
+        <p class="hero-description">Real work starts with an incomplete brief. <strong>FDE-Bench</strong> tests whether AI agents can uncover what customers need—and deliver a solution that meets their standard.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#results">Explore the results <span aria-hidden="true">↗</span></a><a class="text-link" href="assets/FDE-Bench.pdf" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a></div>
+        <p class="hero-footnote">Real customer projects. Customer-accepted references.</p>
+      </div>
+      <div class="hero-figure" aria-label="Highest mean agent quality is 0.5510 compared with the customer-accepted FDE reference of 1.0.">
+        <div class="figure-top"><span class="eyebrow">The delivery gap</span><span class="figure-index">FIG. 01</span></div>
+        <div class="score-display"><span class="score-number">0.5510</span><span class="score-reference">/ 1.0<br><span>FDE reference</span></span></div>
+        <p class="score-caption">Highest mean agent delivery quality</p>
+        <div class="comparison-chart" aria-hidden="true">
+          <div class="chart-ticks"><span>0</span><span>0.25</span><span>0.50</span><span>0.75</span><span>1.00</span></div>
+          <div class="chart-row"><div class="chart-row-label"><span>Best evaluated agent</span><span>0.5510</span></div><div class="chart-track"><div class="chart-fill agent-fill"></div><span class="gap-line"></span></div></div>
+          <div class="chart-row"><div class="chart-row-label"><span>Customer-accepted FDE solution</span><span>1.0000</span></div><div class="chart-track"><div class="chart-fill reference-fill"></div></div></div>
+        </div>
+        <div class="figure-bottom"><span>Codex + GPT-6-Astra</span><span>49 cases · 3 runs each</span></div>
+      </div>
+    </section>
+
+    <div class="container"><dl class="stats-strip">
+      <div><dt>Real customer cases</dt><dd>49<span class="stat-detail">29 optimization · 20 ML</span></dd></div>
+      <div><dt>Clarification targets</dt><dd>266<span class="stat-detail">From customer–FDE discussions</span></dd></div>
+      <div><dt>Agent configurations</dt><dd>18<span class="stat-detail">7 model families · 6 scaffolds</span></dd></div>
+      <div><dt>Highest delivery success</dt><dd>6.12<span class="percent">%</span><span class="stat-detail">Runs reaching the FDE reference</span></dd></div>
+    </dl></div>
+
+    <section id="results" class="section container" aria-labelledby="results-title">
+      <div class="section-heading"><div class="section-index"><span>01 / Results</span><span class="section-index-line"></span></div><div><p class="eyebrow">Measured against a real delivery standard</p><h2 id="results-title">Working code is just the start.</h2><p class="section-intro">Even the strongest systems fall short of customer-accepted solutions. Explore delivery quality and clarification performance across all 18 configurations.</p></div></div>
+      <div class="results-toolbar">
+        <div id="results-mode" class="segmented" role="group" aria-label="Metric group"><button type="button" data-mode="delivery" aria-pressed="true">Delivery</button><button type="button" data-mode="clarification" aria-pressed="false">Clarification</button></div>
+        <div class="table-filters"><label class="search-label"><span class="sr-only">Search models</span><span aria-hidden="true">⌕</span><input id="model-search" type="search" placeholder="Find a model…" autocomplete="off"></label><label><span class="sr-only">Filter by scaffold</span><select id="scaffold-filter"><option value="all">All scaffolds</option><option value="native">Native scaffolds</option><option value="opencode">OpenCode</option><option value="openhands">OpenHands</option></select></label></div>
+      </div>
+      <p class="table-scroll-hint">Swipe to compare all metrics <span aria-hidden="true">→</span></p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Experiment results, scroll horizontally on small screens">
+        <table class="results-table"><caption class="sr-only">FDE-Bench main results: 49 cases, three runs per case, Interact-Req condition. Click a metric to sort.</caption><thead><tr id="results-head"><th>Rank</th><th>Agent / model</th><th>Quality</th><th>DSR</th><th>pass@3</th><th>pass^3</th></tr></thead><tbody id="results-body"></tbody></table>
+      </div>
+      <noscript><p>The interactive results need JavaScript. All 18 configurations are available in <a href="assets/FDE-Bench.pdf#page=7">Table 1 of the paper</a>.</p></noscript>
+      <div class="table-bottom"><p id="results-count" class="muted" aria-live="polite"></p><button id="results-more" class="text-button" type="button">Show all configurations <span aria-hidden="true">↓</span></button></div>
+      <div class="metric-notes"><p><strong>Quality</strong> is averaged within each case, then across all 49 cases. The FDE reference is <strong>1.0</strong>.</p><p><strong>DSR</strong> measures runs reaching that reference. <strong>pass@3 / pass^3</strong> measure cases with at least one / all three valid runs—not reference-level delivery.</p></div>
+      <p class="source-note">Main evaluation · Interact-Req · 147 planned runs per configuration · <a href="assets/FDE-Bench.pdf#page=7" target="_blank" rel="noopener">Paper, Table 1 ↗</a><br>The highest Quality and highest DSR belong to different configurations. Rankings show reported point estimates.</p>
+    </section>
+
+    <section id="benchmark" class="benchmark-section" aria-labelledby="benchmark-title"><div class="container section">
+      <div class="section-heading"><div class="section-index"><span>02 / The benchmark</span><span class="section-index-line"></span></div><div><p class="eyebrow">Beyond a fully specified prompt</p><h2 id="benchmark-title">A request is not a specification.</h2><p class="section-intro">Frontline practitioners know their business. They do not always write down every rule. A forward-deployed engineer (FDE) must uncover those rules, then make a solution work.</p></div></div>
+      <div class="warehouse-example">
+        <div class="warehouse-story">
+          <p class="eyebrow">Inside a warehouse project</p>
+          <div id="warehouse-tabs" class="story-tabs" role="tablist" aria-label="Warehouse delivery example"><button id="warehouse-tab-0" type="button" role="tab" data-step="0" aria-selected="true" aria-controls="warehouse-panel" tabindex="0">01 <span>The request</span></button><button id="warehouse-tab-1" type="button" role="tab" data-step="1" aria-selected="false" aria-controls="warehouse-panel" tabindex="-1">02 <span>The missing rule</span></button><button id="warehouse-tab-2" type="button" role="tab" data-step="2" aria-selected="false" aria-controls="warehouse-panel" tabindex="-1">03 <span>The delivery</span></button></div>
+          <div id="warehouse-panel" role="tabpanel" aria-labelledby="warehouse-tab-0" tabindex="0"><h3 id="warehouse-heading">“One product type” sounds clear.</h3><p id="warehouse-copy">Keep each stack to one product type where possible, while avoiding unnecessary stock moves. But what exactly counts as a mixed stack?</p><p id="warehouse-note" class="example-insight">The initial request leaves a business rule unstated.</p></div>
+          <p class="source-note">Illustrative example adapted from Figure 1—not a recorded agent run.</p>
+        </div>
+        <div id="warehouse-visual" data-step="0" class="warehouse-visual" aria-hidden="true">
+          <div class="warehouse-visual-heading"><span class="eyebrow">Same product. Different batches.</span><span class="tiny-label">WAREHOUSE / 39</span></div>
+          <div class="stacks-before"><div class="stack"><div class="crate batch-a">SKU A <span>Batch 01</span></div><div class="crate batch-b">SKU A <span>Batch 02</span></div><div class="crate batch-a">SKU A <span>Batch 01</span></div><span class="stack-label">Stack 01</span></div><div class="stack"><div class="crate batch-b">SKU A <span>Batch 02</span></div><div class="crate batch-a">SKU A <span>Batch 01</span></div><div class="crate batch-b">SKU A <span>Batch 02</span></div><span class="stack-label">Stack 02</span></div></div>
+          <div class="stacks-after"><div class="stack"><div class="crate batch-a">SKU A <span>Batch 01</span></div><div class="crate batch-a">SKU A <span>Batch 01</span></div><div class="crate batch-a">SKU A <span>Batch 01</span></div><span class="stack-label">Stack 01</span></div><div class="stack"><div class="crate batch-b">SKU A <span>Batch 02</span></div><div class="crate batch-b">SKU A <span>Batch 02</span></div><div class="crate batch-b">SKU A <span>Batch 02</span></div><span class="stack-label">Stack 02</span></div></div>
+          <div class="warehouse-state"><span class="state-request">One SKU. Is that enough?</span><span class="state-rule">Different batches also count as mixed.</span><span class="state-delivery">Clarify the rule. Then optimize the moves.</span></div>
+        </div>
+      </div>
+      <div class="principles"><article><span class="principle-number">01</span><h3>Grounded in real work</h3><p>49 customer projects, each involving more than one month of FDE work before customer acceptance.</p></article><article><span class="principle-number">02</span><h3>Requirements to uncover</h3><p>266 clarification targets distilled from actual customer–engineer discussions, hidden from evaluated agents.</p></article><article><span class="principle-number">03</span><h3>Delivery to demonstrate</h3><p>Case-specific evaluators check hard constraints and compare artifacts with customer-accepted FDE solutions.</p></article></div>
+    </div></section>
+
+    <section id="cases" class="section container" aria-labelledby="cases-title">
+      <div class="section-heading"><div class="section-index"><span>03 / The cases</span><span class="section-index-line"></span></div><div><p class="eyebrow">Real projects, different kinds of difficulty</p><h2 id="cases-title">49 ways to test real-world delivery.</h2><p class="section-intro">From factory schedules and fleet routes to energy forecasts and material properties. Explore the objectives and acceptance checks described in the paper.</p></div></div>
+      <div class="cases-toolbar"><div id="case-filters" class="case-filters" role="group" aria-label="Case family"><button type="button" data-family="all" aria-pressed="true">All cases <span>49</span></button><button type="button" data-family="CO" aria-pressed="false">Optimization <span>29</span></button><button type="button" data-family="ML" aria-pressed="false">Machine learning <span>20</span></button></div><label class="search-label"><span class="sr-only">Search cases</span><span aria-hidden="true">⌕</span><input id="case-search" type="search" placeholder="Find a case…" autocomplete="off"></label></div>
+      <div id="case-grid" class="case-grid"></div>
+      <noscript><p>Read the complete <a href="assets/FDE-Bench.pdf#page=15">49-case inventory in the paper</a>.</p></noscript>
+      <div class="table-bottom"><p id="cases-count" class="muted" aria-live="polite"></p><button id="cases-more" class="text-button" type="button">Explore more cases <span aria-hidden="true">↓</span></button></div>
+    </section>
+
+    <section id="protocol" class="protocol-section" aria-labelledby="protocol-title"><div class="section container">
+      <div class="section-heading"><div class="section-index"><span>04 / The protocol</span><span class="section-index-line"></span></div><div><p class="eyebrow">From an incomplete brief to a scored artifact</p><h2 id="protocol-title">Clarify. Build. Deliver.</h2><p class="section-intro">A shared evaluation protocol separates requirement acquisition from delivery quality. Agents receive no hidden-evaluator feedback while solving.</p></div></div>
+      <ol class="protocol-steps"><li><span class="step-number">01</span><h3>Start with the request</h3><p>An underspecified customer brief and business data. Complete requirements and reference solutions remain hidden.</p><span class="step-caption">Request + business data</span></li><li><span class="step-number">02</span><h3>Clarify and iterate</h3><p>Ask a simulated customer, implement a solution, inspect local outputs, and improve it within the execution budget.</p><span class="step-caption">12 hours · Up to 30 rounds</span></li><li><span class="step-number">03</span><h3>Submit for evaluation</h3><p>Hidden evaluation scores the final artifact. A separate panel assesses how well the questions covered requirements.</p><span class="step-caption">Delivery + clarification scores</span></li></ol>
+      <details class="figure-disclosure"><summary>See the full evaluation framework <span aria-hidden="true">+</span></summary><figure><a href="assets/evaluation.webp" target="_blank" rel="noopener"><img src="assets/evaluation.webp" width="2112" height="537" loading="lazy" alt="FDE-Bench evaluation: agents interact with a simulated customer and submit artifacts; hidden extraction and case evaluation score delivery separately from requirement coverage."></a><figcaption>Figure 3 from the paper. Select the image to view the full-size framework.</figcaption></figure></details>
+      <div class="finding"><div><span class="eyebrow">A key finding</span><h3>More information helps.<br><em>It does not finish the job.</em></h3></div><div><p>Under the full-information condition, mean Quality across the eight compared systems ranges from <strong>0.449 to 0.795</strong>. Every system remains below the FDE reference of 1.0 on average.</p><a class="text-link" href="assets/FDE-Bench.pdf#page=8" target="_blank" rel="noopener">Explore the information ablations <span aria-hidden="true">↗</span></a></div></div>
+    </div></section>
+
+    <section id="paper" class="section container paper-section" aria-labelledby="paper-title">
+      <div class="section-index"><span>05 / Paper &amp; team</span><span class="section-index-line"></span></div>
+      <div class="paper-heading"><img src="assets/logo.png" width="46" height="46" alt=""><p class="eyebrow">FDE-Bench · 2026</p><h2 id="paper-title">Evaluating End-to-End Delivery<br>from Underspecified<br><em>Real-World Business Requests</em></h2><a class="button button-primary" href="assets/FDE-Bench.pdf" target="_blank" rel="noopener">Read the full paper <span aria-hidden="true">↗</span></a></div>
+      <div class="team"><div id="authors" class="authors"></div><div id="affiliations" class="affiliations"></div><p class="author-notes">* Equal contribution. &nbsp; † Corresponding author.</p></div>
+      <div class="citation"><div class="citation-heading"><span class="eyebrow">Cite this work</span><div><span id="copy-status" class="copy-status" role="status" aria-live="polite"></span><button id="copy-citation" class="text-button" type="button">Copy BibTeX <span aria-hidden="true">⧉</span></button></div></div><pre tabindex="0" aria-label="BibTeX citation"><code id="citation-code">@misc{li2026fdebench,
+  title = {FDE-Bench: Evaluating End-to-End Delivery from
+           Underspecified Real-World Business Requests},
+  author = {Li, Huaiming and Huang, Can and others},
+  year = {2026}
+}</code></pre></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="#"><img src="assets/logo.png" width="24" height="24" alt=""><span>FDE—Bench</span></a><span>FM Agent Team, Baidu AI Cloud</span><a class="text-link" href="#main">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+</body>
+</html>

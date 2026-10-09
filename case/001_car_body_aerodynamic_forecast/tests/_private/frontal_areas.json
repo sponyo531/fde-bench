@@ -1,0 +1,113 @@
+{
+  "Platform_A_-X45mm@05000.vtu": {
+    "Cd": 0.308
+  },
+  "Platform_A_weiyi_-Z15mm_-X15mm@05000.vtu": {
+    "Cd": 0.307
+  },
+  "Platform_A_weiyi_-Z15mm_-X30mm@05000.vtu": {
+    "Cd": 0.311
+  },
+  "Platform_A_weiyi_-Z30mm_X15mm@05000.vtu": {
+    "Cd": 0.312
+  },
+  "Platform_A_C-X-100mm_Remesh@05000.vtu": {
+    "Cd": 0.314
+  },
+  "Platform_A_C_X-125mm_Remesh@05000.vtu": {
+    "Cd": 0.314
+  },
+  "Platform_A_C_X-150mm_Remesh@05000.vtu": {
+    "Cd": 0.315
+  },
+  "Platform_A_Remesh_qianbaocebianL_Y=15@05000.vtu": {
+    "Cd": 0.317
+  },
+  "Platform_A_Remesh_qianbaocebianL_Y=5@05000.vtu": {
+    "Cd": 0.314
+  },
+  "Platform_A_Remesh_jigai-40mm@05000.vtu": {
+    "Cd": 0.312
+  },
+  "Platform_A_Remesh_jigai20mm@05000.vtu": {
+    "Cd": 0.31
+  },
+  "Platform_A_Remesh_jigai25mm@05000.vtu": {
+    "Cd": 0.31
+  },
+  "qianchun_Z5mm@05000.vtu": {
+    "Cd": 0.315
+  },
+  "Platform_C_front_X=696@07000.vtu": {
+    "Cd": 0.241
+  },
+  "Platform_C_front_X=786@07000.vtu": {
+    "Cd": 0.239
+  },
+  "Platform_C_middle_X=2943@07000.vtu": {
+    "Cd": 0.238
+  },
+  "Platform_C_rear_X=1014@07000.vtu": {
+    "Cd": 0.237
+  },
+  "Platform_C_rear_X=864@07000.vtu": {
+    "Cd": 0.248
+  },
+  "Platform_C_rear_X=879@07000.vtu": {
+    "Cd": 0.246
+  },
+  "Platform_C_rear_X=924@07000.vtu": {
+    "Cd": 0.243
+  },
+  "houkuosanqi_Z25mm@05000.vtu": {
+    "Cd": 0.311
+  },
+  "weiyi_Z-15mm_houkuosanqi_Z-10mm@05000.vtu": {
+    "Cd": 0.305
+  },
+  "weiyi_Z-15mm_houkuosanqi_Z-15mm@05000.vtu": {
+    "Cd": 0.308
+  },
+  "weiyi_Z-15mm_houkuosanqi_Z-5mm@05000.vtu": {
+    "Cd": 0.307
+  },
+  "weiyi_Z-15mm_houkuosanqi_Z25mm@05000.vtu": {
+    "Cd": 0.308
+  },
+  "Platform_B_remesh_weiyi_X30mm@05000.vtu": {
+    "Cd": 0.302
+  },
+  "Platform_B_remesh_weiyi_Z-20mm@05000.vtu": {
+    "Cd": 0.304
+  },
+  "Platform_B_remesh_Cdian_Z-15mm@05000.vtu": {
+    "Cd": 0.306
+  },
+  "Platform_B_remesh_Cdian_Z-5mm@05000.vtu": {
+    "Cd": 0.304
+  },
+  "Platform_B_remesh_Cdian_Z10mm@05000.vtu": {
+    "Cd": 0.302
+  },
+  "Platform_B_remesh_jigai_Z20mm@05000.vtu": {
+    "Cd": 0.294
+  },
+  "Platform_B_remesh_jigai_Z25mm@05000.vtu": {
+    "Cd": 0.296
+  },
+  "Platform_B_remesh_qianchun_Z-10mm@05000.vtu": {
+    "Cd": 0.306
+  },
+  "Platform_B_remesh_qianchun_Z15mm@05000.vtu": {
+    "Cd": 0.303
+  },
+  "Platform_B_remesh_qianfengdang_Z-20mm@05000.vtu": {
+    "Cd": 0.293
+  },
+  "Platform_B_remesh_qianfengdang_Z20mm@05000.vtu": {
+    "Cd": 0.293
+  },
+  "Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-10mm@05000.vtu": {
+    "Cd": 0.303
+  }
+}

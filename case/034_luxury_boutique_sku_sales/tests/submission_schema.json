@@ -1,0 +1,58 @@
+{
+  "case": "034_luxury_boutique_sku_sales",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "note": "PLAN_FILE 常量（第 28 行），第 45-48 行按 submission_dir/predictions.csv 读，缺文件即 fatal；第 50 行用 encoding='utf-8-sig' 读，带 BOM 也认。EXTRACTOR_SPEC 第 9 行要求列名恰好是下面四个，多余列丢弃",
+      "columns": [
+        {
+          "name": "date",
+          "aliases": ["日期"],
+          "role": "identifier",
+          "type": "date",
+          "required": true,
+          "note": "第 29 行 KEYS 之一，第 51-54 行缺列即 fatal；第 70 行两边都过 pd.to_datetime 再 strftime('%Y-%m-%d') 后对齐，所以日期写法可容忍但必须解析得出；EXTRACTOR_SPEC 第 12-13 行要求键列保持原值、不要重新格式化"
+        },
+        {
+          "name": "boutique_id",
+          "aliases": ["门店", "store_id"],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "第 29 行 KEYS 之一；第 71 行 astype(str) 后与私有真值 join，取值必须与 data/test_features.csv 原样一致"
+        },
+        {
+          "name": "product_id",
+          "aliases": ["款号", "sku", "sku_id"],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "第 29 行 KEYS 之一；第 72 行 astype(str) 后与私有真值 join"
+        },
+        {
+          "name": "predicted_qty",
+          "aliases": ["sales_qty", "pred", "yhat", "forecast", "y_pred"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "该 (日期, 门店, 款号) 的预测件数，可为小数、不得取整（EXTRACTOR_SPEC 第 11、14 行给出别名清单并禁止取整）；第 56-59 行不可解析为数值即 fatal，第 61-63 行必须有限，第 64-66 行不得为负；第 96 行以 >= 0.5 判为「判定会出货」"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "提交目录根必须存在 predictions.csv，缺文件即 fatal（第 45-48 行）",
+    "四列 date / boutique_id / product_id / predicted_qty 一个都不能少（第 51-54 行）",
+    "predicted_qty 必须能解析为数值，出现非数值或缺失即 fatal（第 56-59 行）",
+    "predicted_qty 不得含 inf / nan（第 61-63 行）",
+    "predicted_qty 不得为负（第 64-66 行）",
+    "(date, boutique_id, product_id) 三键组合不得重复（第 74-76 行）",
+    "私有真值表的每一行都必须能在提交里找到对应预测，左连接后有空值即 fatal（第 78-82 行），即 data/test_features.csv 的 51210 行一条也不能漏",
+    "以上全部通过才置 validity_score = 1.0（第 84 行）"
+  ],
+  "derived_from_lines": [
+    28, 29, 30, 45, 51, 56, 61, 64, 70, 74, 78, 84, 96
+  ]
+}

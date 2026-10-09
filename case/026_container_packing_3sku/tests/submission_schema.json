@@ -1,0 +1,191 @@
+{
+  "case": "026_container_packing_3sku",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "placements",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "role": "structural",
+          "note": "evaluator 第 172 行 sub.get('placements')；第 173 行 not placements or not isinstance(list) 直接 fatal。一件货一条记录，装了多少件写多少条",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "sku_id",
+                "aliases": [
+                  "SKUID",
+                  "sku",
+                  "SKU"
+                ],
+                "role": "identifier",
+                "type": "string",
+                "required": true,
+                "note": "取值只能是 load_data.xlsx『多货推荐1』表 SKUID 列的三个原值 ITEM_A/ITEM_B/ITEM_C；第 182-186 行 sid not in ITEMS 记 'unknown sku_id' 违规"
+              },
+              {
+                "name": "x",
+                "aliases": [
+                  "坐标x",
+                  "pos_x"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "左-前-下角在柜内长度方向的坐标(米)；第 207 行强制 float，缺失/非法记 'missing/invalid geometry fields'（第 210 行）"
+              },
+              {
+                "name": "y",
+                "aliases": [
+                  "坐标y",
+                  "pos_y"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "柜内宽度方向坐标(米)；第 207 行读取，第 217 行校验 y+w<=2.33"
+              },
+              {
+                "name": "z",
+                "aliases": [
+                  "坐标z",
+                  "pos_z"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "柜内高度方向坐标(米)；第 207 行读取，第 219 行校验 z+h<=2.69"
+              },
+              {
+                "name": "l",
+                "aliases": [
+                  "lx",
+                  "放置长",
+                  "长"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "旋转后占用的长度(米)；第 208 行读取，第 222-224 行校验 (l,w) 必须精确等于该 SKU 的 (长,宽) 或对调"
+              },
+              {
+                "name": "w",
+                "aliases": [
+                  "ly",
+                  "放置宽",
+                  "宽"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "旋转后占用的宽度(米)；第 208 行读取，与 l 一同参与第 222-224 行的合法旋转校验"
+              },
+              {
+                "name": "h",
+                "aliases": [
+                  "lz",
+                  "放置高",
+                  "高"
+                ],
+                "role": "passthrough",
+                "type": "float",
+                "required": true,
+                "note": "占用高度(米)，必须精确等于该 SKU 表里的原始高度（第 220-221 行 abs(h-spec['height'])>1e-6 即违规），因此不是自由决策"
+              },
+              {
+                "name": "rotated",
+                "aliases": [
+                  "是否旋转"
+                ],
+                "role": "ignored",
+                "type": "bool",
+                "required": false,
+                "note": "EXTRACTOR_SPEC 第 13 行示例里有此字段，但 evaluator 全程未读取；合法旋转只按 l/w 与原始尺寸比对判定"
+              }
+            ]
+          }
+        },
+        {
+          "name": "sku1_count",
+          "aliases": [],
+          "type": "int",
+          "required": false,
+          "role": "ignored",
+          "note": "EXTRACTOR_SPEC 第 16 行示例字段；evaluator 第 180-184 行自行从 placements 计数，从不读取该键"
+        },
+        {
+          "name": "sku2_count",
+          "aliases": [],
+          "type": "int",
+          "required": false,
+          "role": "ignored",
+          "note": "同上，evaluator 独立复算（第 275-276 行只是把复算结果回写进 metrics）"
+        },
+        {
+          "name": "sku3_count",
+          "aliases": [],
+          "type": "int",
+          "required": false,
+          "role": "ignored",
+          "note": "同上；质量分用的是第 265 行 counts['ITEM_C'] 这个复算值，不是提交里的自报数"
+        },
+        {
+          "name": "total_weight_kg",
+          "aliases": [],
+          "type": "float",
+          "required": false,
+          "role": "ignored",
+          "note": "EXTRACTOR_SPEC 第 17 行示例字段；evaluator 第 195-196 行按单件重量独立累加，不读自报值"
+        },
+        {
+          "name": "space_utilization",
+          "aliases": [],
+          "type": "float",
+          "required": false,
+          "role": "ignored",
+          "note": "EXTRACTOR_SPEC 第 17 行示例字段；evaluator 第 266-269 行独立复算，且利用率不参与打分"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "solution.json 必须存在，否则 fatal（第 166-168 行）",
+    "placements 必须是非空数组，否则 fatal（第 173 行）",
+    "每条记录的 sku_id 必须是表里三个 SKU 之一，出现别的名字记违规（第 183-186 行）",
+    "ITEM_A 的记录条数必须精确等于表里填写的数量 66，多一条少一条都违规（第 189-192 行；ITEM_C 数量单元格为空，required=None，不做件数校验）",
+    "ITEM_B 的记录条数必须精确等于表里填写的数量 8（第 189-192 行）",
+    "按各 SKU 单件重量累加的全柜总重不得超过最大载重 23000 kg（第 195-198 行，容差 1e-6）",
+    "每条记录必须能取到 x/y/z/l/w/h 六个几何字段并转成 float，缺失或非数值即违规（第 206-211 行）",
+    "三个坐标都不得为负（第 212-213 行）",
+    "x+l 不得超过柜内长 12 米（第 214-215 行）",
+    "y+w 不得超过柜内宽 2.33 米（第 216-217 行）",
+    "z+h 不得超过柜内高 2.69 米（第 218-219 行）",
+    "占用高度 h 必须精确等于该 SKU 的原始高度，容差 1e-6，即只能立放（第 220-221 行）",
+    "占用的 (l,w) 必须精确等于该 SKU 的 (长,宽) 或对调后的 (宽,长)，容差 1e-6，即只能绕竖轴转 90 度（第 222-227 行）",
+    "任意两件货的三维包围盒不得相交，重叠量超过 1e-6 即违规（第 229-256 行）",
+    "以上任一条命中即 validity=0、quality=0，不做部分分（第 258-260 行）"
+  ],
+  "derived_from_lines": [
+    166,
+    172,
+    173,
+    182,
+    189,
+    195,
+    206,
+    212,
+    214,
+    216,
+    218,
+    220,
+    222,
+    249,
+    258,
+    265
+  ]
+}

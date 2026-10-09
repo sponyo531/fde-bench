@@ -1,0 +1,50 @@
+{
+  "case": "004_dayahead_power_price_forecast",
+  "files": [
+    {
+      "name": "submission.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "date",
+          "role": "identifier",
+          "type": "date",
+          "format": "parseable by pd.to_datetime, normalised to YYYY-MM-DD internally",
+          "required": true,
+          "aliases": [],
+          "note": "Join key against private truth. Evaluator calls pd.to_datetime then strftime('%Y-%m-%d'). Changing this value re-labels which row is scored, not the forecast itself — hence identifier."
+        },
+        {
+          "name": "time",
+          "role": "identifier",
+          "type": "string",
+          "format": "HH:MM (15-minute slots), stripped of whitespace",
+          "required": true,
+          "aliases": [],
+          "note": "Second half of the composite join key (date, time). Evaluator calls .astype(str).str.strip(). Changing this re-labels the row — hence identifier."
+        },
+        {
+          "name": "clear_da",
+          "role": "decision",
+          "type": "numeric",
+          "required": true,
+          "aliases": [],
+          "note": "Day-ahead clearing price forecast in yuan/MWh. Must be finite and non-null after pd.to_numeric coercion. Evaluator clips to [0, 1500] internally — agent need not pre-clip. This is the answer; any change is a fabricated forecast — hence decision."
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "file submission.csv must exist in submission_dir (line 97-99)",
+    "columns 'date', 'time', 'clear_da' must all be present by exact name — the evaluator performs zero alias resolution (lines 102-106)",
+    "no null or non-finite values in any of the three columns after pd.to_numeric coercion (line 110)",
+    "no duplicate (date, time) pairs (lines 113-115)",
+    "every (date, time) pair in the private truth table must have a matching row — 2880 rows expected covering 2024-09 at 15-minute resolution (lines 121-126)"
+  ],
+  "alias_note": "The EXTRACTOR_SPEC docstring (evaluator.py lines 1-22) lists aliases the *extractor* must resolve before producing submission.csv: date←date/Date/DATE/日期/dt/day; time←time/Time/时点/时段/hour/hh:mm/时刻; clear_da←clear_da/pred/prediction/y_pred/price/clearing_price/出清价/日前价/电价/预测. None of these aliases are handled by the evaluator itself.",
+  "derived_from_lines": [
+    97,
+    115
+  ]
+}

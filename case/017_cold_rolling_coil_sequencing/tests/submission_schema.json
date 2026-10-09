@@ -1,0 +1,39 @@
+{
+  "case": "017_cold_rolling_coil_sequencing",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "sequence",
+          "aliases": [],
+          "type": "array",
+          "items": "string",
+          "required": true,
+          "note": "flat ordered list of all 81 IN_MAT_NO (出口材料号) strings; the ordinal position of each material number encodes the production order — the ordered array AS A WHOLE is the agent's answer",
+          "fields": [
+            {
+              "name": "(array element)",
+              "role": "decision",
+              "type": "string",
+              "required": true,
+              "note": "IN_MAT_NO string, e.g. 'COIL_052' (coerced via str().strip()); both the value AND its position in the array carry the decision — neither may be altered by the extractor"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "sequence must be present and a non-empty list (falsy or non-list → fatal error)",
+    "every item must be a known IN_MAT_NO from the reference CSV (unknown values → schema error)",
+    "sequence must contain exactly 81 items — one per coil in the reference set",
+    "no duplicate material numbers allowed"
+  ],
+  "derived_from_lines": [
+    234,
+    241
+  ]
+}

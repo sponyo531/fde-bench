@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Combinatorial Optimization"
+scene_type = ["装箱切割", "三维装箱"]
+difficulty = "hard"

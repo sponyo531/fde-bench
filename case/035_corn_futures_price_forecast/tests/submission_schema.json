@@ -1,0 +1,62 @@
+{
+  "case": "035_corn_futures_price_forecast",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "note": "PLAN_FILE 第 28 行; 第 58 行拼 submission_dir/predictions.csv; 第 63 行以 utf-8-sig 读",
+      "columns": [
+        {
+          "name": "date",
+          "aliases": [
+            "日期",
+            "trade_date"
+          ],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "第 64-68 行缺列直接 fatal; 第 84 行统一 to_datetime 后格式化成 YYYY-MM-DD; 第 85 行重复日期 fatal; 第 89 行与私有真值左连接, 必须覆盖 89 个交易日"
+        },
+        {
+          "name": "pred_close",
+          "aliases": [
+            "close",
+            "pred",
+            "forecast",
+            "y_pred",
+            "预测收盘"
+          ],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "预测收盘价本身(元/吨, 不是涨跌幅); 第 70-73 行不可解析或缺失 fatal; 第 75-77 行 inf/nan fatal; 第 78-80 行 <=0 fatal; 第 99 行按 |真值-预测|/真值 逐日算相对偏差"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "缺 predictions.csv 直接 fatal(第 59-61 行)",
+    "缺 date 或 pred_close 列, fatal(第 64-68 行)",
+    "pred_close 有非数值/缺失, fatal(第 70-73 行)",
+    "pred_close 有 inf/nan, fatal(第 75-77 行)",
+    "pred_close 有 <=0 的值, fatal(第 78-80 行)",
+    "date 列出现重复, fatal(第 85-87 行)",
+    "私有真值里的 89 个交易日有任一天在提交里查不到, fatal —— 缺一天是整份判零而不是丢一天的分(第 89-93 行)",
+    "以上全过才 validity_score=1.0(第 95 行)"
+  ],
+  "derived_from_lines": [
+    28,
+    58,
+    63,
+    64,
+    70,
+    75,
+    78,
+    84,
+    85,
+    89,
+    95,
+    99
+  ]
+}

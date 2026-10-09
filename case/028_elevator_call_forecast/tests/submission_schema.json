@@ -1,0 +1,52 @@
+{
+  "case": "028_elevator_call_forecast",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "note": "PLAN_FILE 常量（第 37 行），第 61-64 行按 submission_dir/predictions.csv 读，缺文件直接 fatal。EXTRACTOR_SPEC 第 16-19 行说明选手工作区里它可能叫 submission.csv / forecast.csv，或是「每行一个桶、上下行各一列」的宽表，抽取时须融化成长表并统一列名为 predictions.csv 的三列",
+      "columns": [
+        {
+          "name": "timestamp",
+          "aliases": ["时间", "bucket", "datetime"],
+          "role": "identifier",
+          "type": "datetime",
+          "required": true,
+          "note": "10 分钟桶起点，写成 YYYY-MM-DD HH:MM:SS；第 80 行 pd.to_datetime(errors='coerce') 后第 84-86 行只要有一行 NaT 即判 schema 错；第 107-117 行要与 data/forecast_template.csv 的 (timestamp, direction) 集合完全一致"
+        },
+        {
+          "name": "direction",
+          "aliases": ["方向", "召唤方向"],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "取值只能是中文「上行」「下行」（第 40 行 DIRECTIONS，第 87-89 行判非法取值）；EXTRACTOR_SPEC 第 18 行要求把 up/down 或 0/1 映射回中文；第 81 行会 strip 前后空格；第 130 行按它分组算双向误差"
+        },
+        {
+          "name": "count",
+          "aliases": ["pred", "prediction", "呼叫次数", "y"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "该桶该方向的预测呼叫次数，可为小数；第 90-92 行不可解析或为空判错，第 93-95 行必须有限（inf/NaN 判错），第 96-97 行不得为负；第 128 行与私有真值逐行取绝对误差"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "提交目录根必须存在 predictions.csv，缺文件即 fatal（第 61-64 行）",
+    "表头必须同时含 timestamp、direction、count 三列，缺任一列判 schema 错（第 76-79 行）",
+    "timestamp 必须逐行都能解析成时间，出现无法解析的行即判错（第 80-86 行）",
+    "direction 只允许「上行」「下行」两个中文取值（第 87-89 行）",
+    "count 必须能解析为数值且非空（第 90-92 行）",
+    "count 必须是有限值，inf / NaN 判错（第 93-95 行）",
+    "count 不得为负（第 96-97 行）",
+    "(timestamp, direction) 不得重复，重复即判错（第 102-106 行）",
+    "提交的 (timestamp, direction) 集合必须与 data/forecast_template.csv 的 2016 个组合完全一致：既不能缺（第 112-113 行），也不能多出清单外的组合（第 114-115 行）",
+    "以上全部通过才置 validity_score = 1.0，任一条不过则 validity 与 quality 同时为 0（第 98-119 行）"
+  ],
+  "derived_from_lines": [
+    37, 52, 61, 76, 80, 84, 87, 90, 93, 96, 103, 107, 110, 119, 128
+  ]
+}

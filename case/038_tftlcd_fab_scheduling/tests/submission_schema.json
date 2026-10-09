@@ -1,0 +1,189 @@
+{
+  "case": "038_tftlcd_fab_scheduling",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "第 49 行 PLAN_FILE = 'solution.json'；第 229-232 行缺文件即 fatal",
+      "root_keys": [
+        {
+          "name": "schedule",
+          "aliases": [
+            "dispatch",
+            "派工序列"
+          ],
+          "type": "array",
+          "required": true,
+          "role": "structural",
+          "note": "第 235-238 行 sub.get('schedule')，不是 list 或为空即 fatal。每条记录 = 一个 Lot 在一个站点上的一次加工",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "lot_id",
+                "aliases": [
+                  "lot",
+                  "lotid",
+                  "LotId",
+                  "Lot_ID"
+                ],
+                "role": "identifier",
+                "type": "string",
+                "required": true,
+                "note": "第 264-267 行必须出现在 WIP Detail 或 Input Detal 的 Lot 清单里，否则 fatal"
+              },
+              {
+                "name": "oper",
+                "aliases": [
+                  "station",
+                  "工序",
+                  "站点",
+                  "Oper"
+                ],
+                "role": "identifier",
+                "type": "int",
+                "required": true,
+                "note": "第 268-275 行必须是整数且是 Flow & Tact Time 里的站点号；站点序列由第 313-323 行按 Flow 升序校验"
+              },
+              {
+                "name": "eq_id",
+                "aliases": [
+                  "machine",
+                  "eqid",
+                  "设备",
+                  "EQ_ID"
+                ],
+                "role": "decision",
+                "type": "string",
+                "required": true,
+                "note": "第 276-279 行不得为空；第 213-219 行 _norm_eq 去 TA 前缀（EQ_040→EQ_040），但 EQ_013 在 Equipment 表里查不到、必须原样保留"
+              },
+              {
+                "name": "track_in",
+                "aliases": [
+                  "start",
+                  "开始时间",
+                  "Track_In"
+                ],
+                "role": "decision",
+                "type": "datetime",
+                "required": true,
+                "note": "第 280-286 行必须可解析且不早于 2018-05-01 07:30；第 397-401 行同机台相邻 Lot 的间隔按 Track In 起算"
+              },
+              {
+                "name": "track_out",
+                "aliases": [
+                  "end",
+                  "结束时间",
+                  "Track_Out"
+                ],
+                "role": "decision",
+                "type": "datetime",
+                "required": true,
+                "note": "必须晚于 track_in 且不晚于 2018-05-10 00:00；加工时长必须精确等于 FDT×60+TT×(片数−1) 秒。"
+              },
+              {
+                "name": "glass_qty",
+                "aliases": [
+                  "qty",
+                  "片数",
+                  "Glass_Qty"
+                ],
+                "role": "ignored",
+                "type": "int",
+                "required": false,
+                "note": "第 245-251 行评估器自建 Lot 主数据、不采信提交里的片数；写了不算数、写错也不罚"
+              },
+              {
+                "name": "product_id",
+                "aliases": [
+                  "product",
+                  "产品",
+                  "Product_ID"
+                ],
+                "role": "ignored",
+                "type": "int",
+                "required": false,
+                "note": "同上，第 334 行片数与第 371 行产品都取自 WIP/Input，不读提交值"
+              },
+              {
+                "name": "version",
+                "aliases": [
+                  "版本"
+                ],
+                "role": "ignored",
+                "type": "string",
+                "required": false,
+                "note": "第 342-348 行版本由 102 站的 TYPE_06 机台独立重算，提交里的版本不参与"
+              }
+            ]
+          }
+        },
+        {
+          "name": "pm_windows",
+          "aliases": [
+            "pm",
+            "保养窗口"
+          ],
+          "type": "object",
+          "required": true,
+          "role": "structural",
+          "note": "第 414-417 行 sub.get('pm_windows') or {}；不是 dict 记一次违规。EquipmentPM 的 6 台机台（EQ_035/EQ_029/EQ_030/EQ_077/EQ_079/EQ_043）一台都不能漏（第 419-422 行）",
+          "keys": {
+            "name": "pm_eq_id",
+            "role": "identifier",
+            "type": "string",
+            "note": "机台号，与 EquipmentPM 的 PM机台 列逐字一致（第 419 行按 eq 取窗口）"
+          },
+          "values": {
+            "name": "pm_window",
+            "role": "decision",
+            "type": "array[2] of datetime",
+            "note": "[开始时刻, 结束时刻]；第 425-437 行校验可解析、时长精确等于规定值、整窗落在 05-01 07:30 ~ 05-10 00:00 内"
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "缺 solution.json 直接 fatal（第 229-232 行）",
+    "schedule 必须是非空 list（第 235-238 行）",
+    "schedule 每一项必须是对象（第 260-262 行）",
+    "lot_id 必须在 WIP/Input 清单中（第 264-267 行）",
+    "oper 必须是整数且是流程里的有效站点（第 268-275 行）",
+    "eq_id 不能为空（第 276-279 行）",
+    "track_in / track_out 必须可解析，track_in 不早于 05-01 07:30，track_out 晚于 track_in 且不晚于 05-10 00:00",
+    "以上任一条命中即 fatal 返回，不进入后续校验（第 295-297 行）",
+    "加工时长必须精确等于 FDT×60 + TT×(片数−1) 秒（第 332-339 行）",
+    "站点序列必须从 Lot 当前站起按 Flow 升序连续推进，同站不得两条记录，下一站 Track In 不早于上一站 Track Out（第 313-329 行）",
+    "WIP Detail 中每个在制 Lot 都必须至少从当前站开始纳入排程，完全遗漏即违规",
+    "RUN 状态 Lot 当前站的 Track In 必须正好是 05-01 07:30 且机台不变（第 351-364 行）",
+    "机台禁限生产：非 RUN 起始记录必须用允许清单内的机台（第 367-376 行）",
+    "同机台相邻两 Lot 的 Track In 间隔 ≥ 前一 Lot 的 TT×片数 + 切换时间（第 382-401 行）",
+    "三天的新投料每个 Lot 都必须排进首站，且首站 Track In 不早于其投入日 07:30（第 404-411 行）",
+    "6 台待保养机台的窗口一台不能漏、时长精确、落在排程期内、窗口内该机台无任何加工记录（第 419-443 行）",
+    "任一违规即 validity=0，不做部分给分（第 445-448 行）"
+  ],
+  "derived_from_lines": [
+    49,
+    229,
+    235,
+    260,
+    264,
+    268,
+    276,
+    280,
+    287,
+    313,
+    332,
+    351,
+    367,
+    382,
+    404,
+    414,
+    419,
+    439,
+    445
+  ]
+}

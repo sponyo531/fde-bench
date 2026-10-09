@@ -1,0 +1,69 @@
+{
+  "case": "036_soy_peptide_fermentation",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "note": "第 26 行 PLAN_FILE=\"predictions.csv\"；第 47 行只在 submission_dir 根目录下按这个名字找，不做递归 glob、不接受 JSON 变体。第 52 行 pd.read_csv(..., encoding=\"utf-8-sig\")，带 BOM 的 UTF-8 也能读。",
+      "columns": [
+        {
+          "name": "batch_id",
+          "aliases": [
+            "批次号",
+            "batch",
+            "id"
+          ],
+          "role": "identifier",
+          "type": "string/int（第 75 行统一 astype(str) 后比对）",
+          "required": true,
+          "note": "第 27 行 ID_COL；第 53-56 行列名必须逐字为 batch_id，缺列 fatal 并把实际列名打进 error_info。第 69-71 行不允许重复。第 76-79 行 data/test_batches.csv 对应的 62 个批次（= tests/_private/test_truth.csv 的 batch_id 集合）一个都不能少；多交的行在第 83 行 truth.merge(..., how=\"left\") 里被丢弃，不报错也不计分。"
+        },
+        {
+          "name": "成品小肽",
+          "aliases": [
+            "pred",
+            "predicted",
+            "y_pred",
+            "peptide",
+            "预测值",
+            "prediction"
+          ],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 28 行 VAL_COL；第 53-56 行列名必须逐字为「成品小肽」。第 58 行 pd.to_numeric(errors=\"coerce\")，出现 NaN/空即 fatal（第 59-61 行）；第 63-65 行必须 isfinite；第 66-68 行必须严格为正（v<=0 直接 fatal，0 也不行）。数值本身是模型预测，extractor 不得改动、不得重训。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须存在 predictions.csv，否则 error_info.fatal「缺 predictions.csv」、validity=0（第 47-50 行）",
+    "文件必须能被 pd.read_csv 解析；解析异常走第 98-101 行 exception 分支，validity=0",
+    "batch_id 与 成品小肽 两列都必须存在且列名逐字一致，不做别名或模糊匹配（第 53-56 行）",
+    "成品小肽 全列必须能转成数值，出现非数值/缺失即 fatal（第 58-61 行）",
+    "成品小肽 不得含 inf/nan（第 63-65 行）",
+    "成品小肽 必须全部 > 0，出现 0 或负数即 fatal（第 66-68 行）",
+    "batch_id 不得重复，出现重复行整份 fatal，不做取平均或取最后一条的兜底（第 69-71 行）",
+    "私有真值表里的 62 个 batch_id 必须全部覆盖，缺一个即 fatal 并报缺失个数（第 76-79 行）；多交的 batch_id 允许存在，第 83 行按 truth 左连接后被忽略",
+    "以上全过才 validity=1.0（第 81 行）"
+  ],
+  "derived_from_lines": [
+    26,
+    27,
+    28,
+    30,
+    47,
+    52,
+    53,
+    58,
+    63,
+    66,
+    69,
+    76,
+    81,
+    83,
+    87,
+    91
+  ]
+}

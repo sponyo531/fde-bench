@@ -1,0 +1,11 @@
+# Host-side harness and common evaluator dependencies.
+# Case-specific solver environments remain defined in case/*/environment/Dockerfile.
+openai
+anthropic
+claude-agent-sdk
+numpy==1.26.4
+pandas==2.3.2
+scipy==1.15.3
+scikit-learn==1.7.2
+openpyxl==3.1.5
+xlrd==2.0.2

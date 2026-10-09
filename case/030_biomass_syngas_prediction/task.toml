@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["预测建模", "化工过程", "多目标回归"]
+difficulty = "hard"

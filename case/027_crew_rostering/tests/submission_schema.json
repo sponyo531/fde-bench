@@ -1,0 +1,77 @@
+{
+  "case": "027_crew_rostering",
+  "files": [
+    {
+      "name": "solution.csv",
+      "format": "csv",
+      "required": true,
+      "note": "第 42 行 PLAN_FILE = 'solution.csv'；第 166 行 pd.read_csv(dtype=str)。行序无关，评估器按任务自身时间字段重建时序",
+      "columns": [
+        {
+          "name": "crewId",
+          "aliases": [
+            "crewid",
+            "CrewID",
+            "crew_id",
+            "机长"
+          ],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "第 167-170 行必需列；第 180 行 strip 后第 186 行必须存在于 crew 表，否则整份 schema 报错返回。空值行第 171 行被 dropna 丢弃"
+        },
+        {
+          "name": "taskId",
+          "aliases": [
+            "taskid",
+            "task_id",
+            "任务",
+            "航班号"
+          ],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "第 189 行必须命中 flight.id 或 busInfo.id；groundDuty 的 id 写进来即判不存在（第 191 行）"
+        },
+        {
+          "name": "isDDH",
+          "aliases": [
+            "is_ddh",
+            "ddh",
+            "置位",
+            "是否置位",
+            "deadhead"
+          ],
+          "role": "decision",
+          "type": "int",
+          "required": true,
+          "note": "第 181-184 行 int(float(str(...)))；1=置位、0=正常执飞。True/False、是/否 需先映射成 1/0，解析不了即 schema 错误"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "缺 solution.csv 直接 fatal（第 158-161 行）",
+    "三列 crewId/taskId/isDDH 缺任意一列即 schema 错误返回（第 167-170 行）",
+    "isDDH 必须能解析成数值（第 181-184 行）",
+    "crewId 必须存在于 crew 表（第 186 行）",
+    "taskId 必须存在于 flight 或 busInfo（第 189-191 行）",
+    "同一个 (crewId, taskId) 不能出现两遍（第 193-195 行）",
+    "isDDH=0（执飞）的任务必须是航班，不能指向大巴班次（第 200-202 行）",
+    "同一个航班不能被两名机长都标成执飞（第 203-205 行）",
+    "占位任务 groundDuty 不出现在这份 CSV 里（docstring 第 15 行；写进来会命中 taskId 不存在）"
+  ],
+  "derived_from_lines": [
+    42,
+    158,
+    166,
+    167,
+    171,
+    180,
+    186,
+    189,
+    193,
+    200,
+    203
+  ]
+}

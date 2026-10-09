@@ -1,0 +1,62 @@
+{
+  "case": "002_city_delivery_route_planning",
+  "files": [
+    {
+      "name": "routes.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "routes",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "length": 12,
+          "note": "Checked with 'routes' not in submission — no alias chain exists",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "note": "dict form — evaluator calls r.get('customers', [])",
+                "fields": [
+                  {
+                    "name": "customers",
+                    "aliases": [],
+                    "role": "decision",
+                    "type": "array of string",
+                    "required": false,
+                    "default_if_absent": "[]",
+                    "note": "Ordered list of 网点编码 customer IDs assigned to this vehicle; visit order matters for scoring"
+                  }
+                ]
+              },
+              {
+                "type": "array",
+                "note": "bare list form — each element treated as a customer ID string; no dict wrapper needed",
+                "items": {
+                  "role": "decision",
+                  "type": "string",
+                  "note": "网点编码 customer ID; each value is cast via str(c).strip()"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "routes must be present at the top level (fatal if missing)",
+    "routes must be a list — isinstance check, not just truthy (fatal if not a list)",
+    "routes must contain exactly 12 elements — one per vehicle (N_VEHICLES = 12)",
+    "each route element must be a dict or a list — any other type is a fatal error",
+    "every customer ID string must match a 网点编码 value in customers.csv where 总重量 is not NaN",
+    "every non-depot customer must appear in at least one route — no missing customers",
+    "no customer ID may appear in more than one route — no duplicates across all routes",
+    "per-route sum of 总重量 must not exceed 7125.0 (CAPACITY)"
+  ],
+  "derived_from_lines": [
+    190,
+    214
+  ]
+}

@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Combinatorial Optimization"
+scene_type = ["路径规划", "三维装箱", "物流配送"]
+difficulty = "hard"

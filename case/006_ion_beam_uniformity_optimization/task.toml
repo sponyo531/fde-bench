@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["预测建模", "工艺优化", "半导体离子注入"]
+difficulty = "hard"

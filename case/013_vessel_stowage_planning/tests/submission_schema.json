@@ -1,0 +1,78 @@
+{
+  "case": "013_vessel_stowage_planning",
+  "files": [
+    {
+      "name": "solution.py",
+      "format": "python",
+      "required": true,
+      "description": "Self-contained Python algorithm. Invoked as `python solution.py <input_path> <output_path>`. Reads the case instance JSON from sys.argv[1]; writes the assignment result JSON to sys.argv[2]. The evaluator finds this file at Path(submission_dir) / 'solution.py' (PLAN_FILE constant, line 1035).",
+      "program_output": {
+        "filename": "output.json",
+        "note": "Written by solution.py to the path given by sys.argv[2]; never submitted directly.",
+        "format": "json",
+        "root_keys": [
+          {
+            "name": "assignments",
+            "aliases": [],
+            "type": "array",
+            "required": true,
+            "note": "Must be the SOLE top-level key in the JSON object (set(document) != {'assignments'} raises error). Must be a non-empty list.",
+            "items_type": "array of exactly 2 integers",
+            "fields": [
+              {
+                "index": 0,
+                "name": "cntrGkey",
+                "role": "identifier",
+                "type": "integer",
+                "required": true,
+                "note": "Container ID (gkey); must exist in the instance's cntr_info_by_gkey. Identifies which container is being placed. No extractor remapping — values come directly from the input dataset and are validated against it."
+              },
+              {
+                "index": 1,
+                "name": "projectionGkey",
+                "role": "decision",
+                "type": "integer",
+                "required": true,
+                "note": "Slot (projection) ID (gkey); must exist in the instance's slot_info_by_gkey. This is the stowage assignment answer: which vessel slot this container is placed into. Changing this value changes the agent's answer."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "structural_checks": [
+    "solution.py must be present in submission_dir (line 1055-1057: program.is_file() check)",
+    "program output must be valid JSON and a dict (line 819-820)",
+    "output dict must have exactly one key: 'assignments' — no more, no fewer (line 823: set(document) != {'assignments'})",
+    "assignments must be a non-empty list (line 825: not isinstance(assignments, list) or not assignments)",
+    "each element must be a list of exactly 2 items (line 832: not isinstance(pair, list) or len(pair) != 2)",
+    "both items in each pair must be integers or integer-castable (line 835-837: _as_int check)",
+    "cntrGkey must exist in the case's cntr_info_by_gkey (line 839)",
+    "projectionGkey must exist in the case's slot_info_by_gkey (line 839)",
+    "no duplicate cntrGkey across all assignments (line 841)",
+    "no duplicate projectionGkey across all assignments (line 841)",
+    "container and slot must be stow-compatible: identical (lengthBs, stowFactor, weightClass) bucket (line 842: _is_compatible check)",
+    "for any twin slot pair both occupied: sum of grossWeightKg <= MAX_TWIN_WEIGHT_KG (default 70000 kg) AND |diff| <= MAX_TWIN_DIFF_KG (default 15000 kg) (lines 849-864)"
+  ],
+  "post_parse_validity_gates": [
+    "len(solution) >= FULL_LOAD_MINIMUMS[case_name] per case: V1=597, V2=2024, V3=719, V4=1345, V5=577, V6=1621 (line 927) — checked after parsing, not during; causes validity=False but not a parse error"
+  ],
+  "derived_from_lines": [
+    1035,
+    1043,
+    1055,
+    1060,
+    810,
+    817,
+    823,
+    825,
+    832,
+    835,
+    839,
+    841,
+    842,
+    849,
+    927
+  ]
+}

@@ -1,0 +1,131 @@
+# FDE-Bench 配置
+#
+# 一份文件覆盖所有需要配置的地方。密钥不写在此处——只写环境变量名，
+# 实际 token 由环境变量提供，避免密钥入库。
+#
+#   cp config.toml.example config.toml   # 按需修改
+#   export DELIVER_JUDGE_TOKEN=sk-...
+#   export DELIVER_ANSWERER_TOKEN=sk-...
+
+# ─────────────────────────────────────────────────────────────
+# 被测 agent：评测对象
+# ─────────────────────────────────────────────────────────────
+[agent]
+scaffold = "opencode"          # opencode | openhands
+model = ""                     # 留空则跟随脚手架自身配置；命令行 --model 优先
+timeout_s = 43200              # 单次 run 上限，与 experiments.toml 对齐（12 小时）
+# 工具调用轮数上限（0 = 不限）。与 timeout_s 是两个独立的失控形态：反复读同
+# 一个文件、每次都秒回的 agent 不会撞时长也不会撞 idle，却永远交付不了。
+# 默认不限——强制所有模型跑到同一轮数会把"高效做完"和"打转到上限"记成同一个数。
+# 只在能数到每次工具调用的后端（opencode serve）生效。
+max_turns = 0
+# ── 容器资源上限（宽松隔离，非严格对等）──
+# 目的：防单个 run 的越界行为（OOM、求解器吃满多核）拖垮并发邻居；不为
+# 追求跨 run 公平（公平由被测能力差异决定，不靠限资源制造）。0/空 = 不限制。
+# 走进程级 RLIMIT（cgroup v2 在本环境为 threaded，--cpus/--memory 拉不起容器）。
+# 机器 128 核 / 1TB 内存：内存给适值防 OOM；CPU 秒数按 核数×1h 折算。
+container_cpus   = 16        # 每 run CPU 上限（vCPU，折算 RLIMIT_CPU 累计秒数）
+container_memory = "8g"      # 每 run 内存上限（RLIMIT_AS）
+container_nproc  = 64        # 每 run 进程数上限（RLIMIT_NPROC）
+# 输出 token 下限。opencode 对不在其注册表里的模型套用内置默认 4096，
+# 而推理型模型的思维链一轮就能吃满 4096，导致 finish_reason=length、
+# 正式回答 0 字符——表面看像"什么都没做"，实为预算不够开口。
+min_output_tokens = 65536
+default_context_tokens = 262144
+
+# ─────────────────────────────────────────────────────────────
+# 澄清裁判：判定 agent 提问是否命中 gt.json 的考点（二元判定）
+# ─────────────────────────────────────────────────────────────
+[judge]
+model = "direct/glm-5.2"       # 单模型调用方；生产 judge 使用五模型组
+protocol = "openai"            # openai | anthropic
+base_url = ""                  # 填你的 API 端点
+token_env = "DELIVER_JUDGE_TOKEN"
+# 至少 2048；推理型 judge 预算不足会在 JSON 输出前截断。生产配置使用 4096。
+max_tokens = 4096
+# ⚠️ 必须锁定版本：judge 一换，Ask-F1 / CE-A / CE-B 的基准就变，
+# 跨批次结果不可比，升级需重跑全部澄清评分。
+#
+# ⚠️ 生产 judge 使用抽取器注册表中的五模型组，避免与单一被测模型同源的
+# 提问风格有系统性偏好。HiL-Bench 用冻结的第三方模型（Llama-3.3-70B）
+# 正是为此。若有其他端点可用，应换成与被测模型无关的 judge。
+
+# ─────────────────────────────────────────────────────────────
+# 产物抽取器：把 agent 的自由格式产物归一化成 evaluator 期望的 schema
+# （evaluator 本身是确定性代码，不需要配置）
+# ─────────────────────────────────────────────────────────────
+[extractor]
+model = ""                     # 留空跟随 SDK 默认；建议锁定版本
+token_env = "ANTHROPIC_API_KEY"
+base_url_env = "ANTHROPIC_BASE_URL"
+timeout_s = 900
+# extractor 走 claude_agent_sdk，认证读 ANTHROPIC_* 环境变量。
+# 它也是评分链路的一环：抽取失败会让本可评分的产物记为 0 分，
+# 故模型同样应锁定版本。
+
+# ─────────────────────────────────────────────────────────────
+# 模拟客户：C 条件下回答澄清提问（持有 information.md 与 gt.json）
+# ─────────────────────────────────────────────────────────────
+[answerer]
+model = ""                     # 锁定版本，如 "gpt-5.6-sol"
+protocol = "openai"
+base_url = ""                  # 填你的 API 端点
+token_env = "DELIVER_ANSWERER_TOKEN"
+style = "default"              # default | terse
+# ⚠️ 必须锁定版本：answerer 决定 C 条件的信息上限，换模型会改变
+# C − R 落差的含义。
+
+# ─────────────────────────────────────────────────────────────
+# 澄清预算
+# ─────────────────────────────────────────────────────────────
+[clarify]
+# 轮数上限仅作兜底防跑飞。同类工作（HiL-Bench / ClarEval / Ambig-SWE）
+# 均不设硬上限，改用指标惩罚过度提问——硬上限会把"问够了自己停"和
+# "还想问被截断"记成同一个数，而这个差别正是要测的判断力。
+max_rounds = 15
+# 每轮问题数必须限制：<clarify> 一次可塞任意多问题，一轮问 50 个与
+# 分 50 轮各问 1 个在"轮数"上不可比。这是可比性要求，不是防刷分。
+max_questions = 4
+
+# ─────────────────────────────────────────────────────────────
+# 隔离
+# ─────────────────────────────────────────────────────────────
+[sandbox]
+enabled = true
+# case 目录含 gt.json（考点）与 tests/（评估器、真值），agent 读到即评测失效。
+# 另需屏蔽祖先目录的 .claude/skills 等项目级配置——opencode 会向上遍历查找，
+# 实测曾自动加载运行者本机的 8 个业务 skill，使结果依赖"这台机器装了什么"。
+
+# ─────────────────────────────────────────────────────────────
+# OpenHands 后端（scaffold = "openhands" 时生效）
+# ─────────────────────────────────────────────────────────────
+[openhands]
+stream = false                # opt-in SSE transport; legacy parser still receives a full response
+venv = ".venv-openhands"       # 相对仓库根；独立 venv 见下
+runtime = "cli"                # cli = 本机直跑，不起 docker
+max_iterations = 200
+# OpenHands 不读取 opencode/opencode.jsonc，需显式保持与正式模型配置相同的输出预算。
+# OpenHands 1.6 会将其转成一些端点忽略的 max_completion_tokens，因此 GLM
+# 路由还会在 driver 中显式补发 max_tokens。
+max_output_tokens = 131072
+llm_timeout_s = 3600           # 单次模型请求上限；整条 run 仍受 agent.timeout_s 控制
+# 为何独立 venv：OpenHands 需要 rich>=14，而本机全局 rich 13.7.1 被 17 个包
+# （aider / angr / keras / cudf 等）依赖，不能升级。故隔离在自己的 venv 里，
+# 通过子进程调用。重建：
+#   python3 -m venv --system-site-packages .venv-openhands
+#   .venv-openhands/bin/pip install 'rich>=14' openhands-ai
+
+# ─────────────────────────────────────────────────────────────
+# 评分
+# ─────────────────────────────────────────────────────────────
+[score]
+timeout_s = 900                # extractor / evaluator 各自的子进程上限
+
+# ─────────────────────────────────────────────────────────────
+# DeepSeek Harness（scaffold = "deepseek-harness"，别名 "dsh"；走 `dsh --profile sdk` JSON-RPC stdio）
+# 安装：npm i @deepseek-ai/dsh@alpha --registry=https://registry.npmmirror.com（rc.2 子包在镜像不齐）
+# ─────────────────────────────────────────────────────────────
+[deepseek_harness]
+bin = ""                                    # 留空则找 PATH 上的 dsh；或写绝对路径如 /opt/dsh/node_modules/.bin/dsh
+base_url = ""                               # 通过环境变量或本地 config.toml 设置
+api_key_env = "DELIVER_AGENT_API_KEY"       # dsh 从该环境变量读取密钥

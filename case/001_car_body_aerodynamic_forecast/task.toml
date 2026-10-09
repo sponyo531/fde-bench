@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["预测建模", "CFD/空气动力学", "图神经网络"]
+difficulty = "hard"

@@ -1,0 +1,280 @@
+{
+  "case": "022_wheel_hub_two_stage_scheduling",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "ma_schedule",
+          "aliases": [
+            "机加排程",
+            "ma",
+            "MA_schedule"
+          ],
+          "type": "object",
+          "required": true,
+          "role": "structural",
+          "note": "第 382 行 'ma_schedule' not in sub 直接返回 schema 错误（validity=0）。第 146 行 result.get('ma_schedule', {}) or {}。两层嵌套 dict：机器ID -> 班次 -> 班次记录。EXTRACTOR_SPEC 允许选手交逐行长表 CSV（machine,shift,stage,product,qty,changeover,maintenance），extractor 需按 stage 聚合成本 dict。",
+          "key_field": {
+            "name": "machine_id",
+            "role": "identifier",
+            "type": "string",
+            "required": true,
+            "note": "机器数据表「机器ID」，须是资源组=机加的那 70 台之一；第 156 行 ref['ma_compat'].get(str(mid), set()) 取不到就等于该机什么都不能做（第 159 行判违规）。键统一转字符串。"
+          },
+          "value": {
+            "type": "object",
+            "key_field": {
+              "name": "shift",
+              "role": "identifier",
+              "type": "string of int",
+              "required": true,
+              "note": "班次号 0..31 的字符串形式；第 172 行 int(t_str) 会对键做整数解析，非整数键抛异常整份判 0。第 152 行 g() 同时兼容字符串键和整数键。"
+            },
+            "value": {
+              "type": "object",
+              "fields": [
+                {
+                  "name": "product",
+                  "aliases": [
+                    "product_id",
+                    "产品ID",
+                    "pid"
+                  ],
+                  "role": "decision",
+                  "type": "string or null",
+                  "required": true,
+                  "note": "该机该班生产的产品ID，null 表示空闲。第 159 行不兼容即违规；第 292-305 行用它独立重算装模状态序列，换型班留空会让下一个有产出的班被判「换产品未换型」。"
+                },
+                {
+                  "name": "qty",
+                  "aliases": [
+                    "quantity",
+                    "产量",
+                    "数量"
+                  ],
+                  "role": "decision",
+                  "type": "int",
+                  "required": true,
+                  "note": "整班件数。第 176 行 product=null 时必须为 0；第 182 行换型班必须为 0；第 186 行 t=0 上限 min(整班产量, 该产品压铸初始库存)；第 189 行 t>0 只能取 {0, 整班产量}。"
+                },
+                {
+                  "name": "changeover",
+                  "aliases": [
+                    "is_changeover",
+                    "换型",
+                    "setup"
+                  ],
+                  "role": "decision",
+                  "type": "bool",
+                  "required": false,
+                  "default_if_absent": "false",
+                  "note": "第 174 行 bool(info.get('changeover', False))。第 227-234 行按班次汇总：每班全厂机加换型>4、第 0 班有换型、末班(第 31 班)有换型都判违规。"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ca_schedule",
+          "aliases": [
+            "压铸排程",
+            "热工排程",
+            "ca",
+            "CA_schedule"
+          ],
+          "type": "object",
+          "required": true,
+          "role": "structural",
+          "note": "第 382 行缺失直接判 0；第 147 行 result.get('ca_schedule', {}) or {}。结构同 ma_schedule，但班次记录多一个 maintenance 字段。",
+          "key_field": {
+            "name": "machine_id",
+            "role": "identifier",
+            "type": "string",
+            "required": true,
+            "note": "须是机器数据表里资源组=压铸的那 16 台之一；第 162 行 ca_compat 取不到即视为不兼容。"
+          },
+          "value": {
+            "type": "object",
+            "key_field": {
+              "name": "shift",
+              "role": "identifier",
+              "type": "string of int",
+              "required": true,
+              "note": "0..31；第 241 行 int(t_str) 解析，非整数键抛异常。"
+            },
+            "value": {
+              "type": "object",
+              "fields": [
+                {
+                  "name": "product",
+                  "aliases": [
+                    "product_id",
+                    "产品ID",
+                    "pid"
+                  ],
+                  "role": "decision",
+                  "type": "string or null",
+                  "required": true,
+                  "note": "第 165 行不兼容即违规；第 296 行保养班的产品必须等于当前装模产品；第 206-208 行按 (换型或保养) 选 20 小时/24 小时那档整班产量。"
+                },
+                {
+                  "name": "qty",
+                  "aliases": [
+                    "quantity",
+                    "产量",
+                    "数量"
+                  ],
+                  "role": "decision",
+                  "type": "int",
+                  "required": true,
+                  "note": "第 200 行 product=null 时必须为 0；第 207 行只要挂了产品就必须精确等于 expected（换型班/保养班用 20 小时那档，其余用 24 小时那档），报 0 也违规。"
+                },
+                {
+                  "name": "changeover",
+                  "aliases": [
+                    "is_changeover",
+                    "换型",
+                    "setup"
+                  ],
+                  "role": "decision",
+                  "type": "bool",
+                  "required": false,
+                  "default_if_absent": "false",
+                  "note": "第 240-249 行：与 maintenance 合并计每班全厂事件数，>4 违规；第 0 班任何事件违规；末班换型违规（末班保养允许）。第 204 行与 maintenance 同真即违规。"
+                },
+                {
+                  "name": "maintenance",
+                  "aliases": [
+                    "is_maintenance",
+                    "保养",
+                    "maint"
+                  ],
+                  "role": "decision",
+                  "type": "bool",
+                  "required": false,
+                  "default_if_absent": "false",
+                  "note": "第 198 行读取。第 263 行把强制保养的连续计数归零；第 267 行连续生产同产品>4 班未保养判违规。"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ca_init_inv",
+          "aliases": [
+            "压铸初始库存"
+          ],
+          "type": "object",
+          "required": false,
+          "role": "passthrough",
+          "note": "第 148 行 result.get('ca_init_inv') or ref['ca_init_inv'] —— 选手若给了这个键就会整体覆盖从 data/production_data.xlsx 读出的压铸初始库存，进而放宽第 186/219 行的第 0 班上限和第 325-331 行的逐班库存轧账。必须与初始库存数据表（工序=热工(CA) 那些行，缺行的产品按 0）逐产品一致，extractor 不得改写数值。缺省即用数据表，推荐缺省。",
+          "key_field": {
+            "name": "product_id",
+            "role": "identifier",
+            "type": "string",
+            "note": "产品ID；第 148 行 str(k) 归一化。"
+          },
+          "value": {
+            "type": "float",
+            "role": "passthrough",
+            "note": "件数，第 148 行 float(v)。"
+          }
+        },
+        {
+          "name": "ma_init_inv",
+          "aliases": [
+            "机加初始库存",
+            "成品初始库存"
+          ],
+          "type": "object",
+          "required": false,
+          "role": "passthrough",
+          "note": "第 149 行同样会覆盖数据表读出的机加成品初始库存，而第 344 行 cum = ma_init.get(pid, ...) 是欠量累计的起点——虚报会直接压低 weighted_delay。必须与初始库存数据表（工序=机加(MA) 那些行，80 个产品全有记录）逐产品一致。缺省即用数据表，推荐缺省。",
+          "key_field": {
+            "name": "product_id",
+            "role": "identifier",
+            "type": "string",
+            "note": "产品ID。"
+          },
+          "value": {
+            "type": "float",
+            "role": "passthrough",
+            "note": "件数。"
+          }
+        },
+        {
+          "name": "num_shifts",
+          "aliases": [
+            "T",
+            "horizon",
+            "班次数"
+          ],
+          "type": "int",
+          "required": false,
+          "role": "ignored",
+          "note": "第 135-144 行：排程期长度 T 一律取 ref['num_shifts_ref']=max(最晚交期秒数//86400+2, 32)=32（数据实测最晚交期 2592000 秒 = 第 30 班），自报值只在不一致时写一条 horizon_notes 提示，不参与任何判定。2026-08-23 之前采信自报值，是可刷分口子。"
+        },
+        {
+          "name": "products",
+          "aliases": [
+            "product_ids",
+            "产品清单"
+          ],
+          "type": "array",
+          "required": false,
+          "role": "unused",
+          "note": "EXTRACTOR_SPEC 把它列为可选字段，但 evaluator 全文没有读取 sub['products']（产品集合一律来自 ref['products']，第 110/324/342 行）。给了不影响判分，缺了也不影响。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "solution.json 必须存在（第 376 行 os.path.exists 不过直接 fatal）",
+    "顶层必须是能 json.load 的对象，且同时含 ma_schedule 与 ca_schedule 两个键（第 382 行缺任一即 schema 错误、validity=0）",
+    "机加/压铸每台设备每班挂的产品必须在工序模式数据里为这台设备定义过（第 159、165 行）",
+    "没挂产品的班产量必须为 0（第 176 行 MA、第 200 行 CA）",
+    "机加换型班产量必须为 0（第 182 行）",
+    "机加第 0 班单台产量不得超过 min(整班产量, 该产品压铸初始库存)（第 186 行）",
+    "机加第 t>0 班产量只能取 0 或该机该产品的整班产量（第 189 行，差一件即违规）",
+    "压铸同一班次不得同时换型与保养（第 204 行）",
+    "压铸只要挂了产品，产量必须精确等于对应整班产量：换型或保养班按 20 小时、其余按 24 小时（第 206-208 行）",
+    "第 0 班按产品汇总的机加产量不得超过该产品的压铸初始库存（第 219 行）",
+    "每班全厂机加换型次数不得超过 4（第 229 行）",
+    "第 0 班机加不得换型（第 231 行）、末班（第 31 班）机加不得换型（第 233 行）",
+    "每班全厂压铸事件（换型+保养）不得超过 4（第 243 行）",
+    "第 0 班压铸不得有任何事件（第 245 行）、末班压铸不得换型（第 247 行，末班保养允许）",
+    "压铸设备连续生产同一产品超过 4 个班未保养即违规；换型班把连续计数置 1、保养班归零、空闲班既不计数也不打断（第 254-270 行）",
+    "压铸保养班标注的产品必须与当前装模产品一致（第 296 行）",
+    "任一设备两个有产出班次之间切换产品，中间必须有一个换型班；某产品在该设备上首次投产视为免费初始装模（第 301-306 行，MA 与 CA 都查）",
+    "逐班轧账：机加第 t 班只能消耗压铸初始库存加第 0..t-1 班的压铸产出，任一班可用半成品为负（容差 0.5 件）即违规（第 327-332 行）"
+  ],
+  "derived_from_lines": [
+    135,
+    146,
+    148,
+    149,
+    159,
+    176,
+    182,
+    186,
+    189,
+    204,
+    207,
+    219,
+    229,
+    231,
+    243,
+    245,
+    247,
+    267,
+    296,
+    303,
+    330,
+    344,
+    376,
+    382
+  ]
+}

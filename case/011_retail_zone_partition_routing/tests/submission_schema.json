@@ -1,0 +1,161 @@
+{
+  "case": "011_retail_zone_partition_routing",
+  "files": [
+    {
+      "name": "partition_result.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "zones",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "Exactly 5 entries, one per zone",
+          "item_fields": [
+            {
+              "name": "zone_id",
+              "role": "identifier",
+              "type": "int",
+              "required": true,
+              "note": "Must be unique across zones; must appear identically in routes_result.json"
+            },
+            {
+              "name": "retailer_ids",
+              "role": "decision",
+              "type": "array[int]",
+              "required": true,
+              "note": "Retailer idx values (from demo_data.xlsx) assigned to this zone; must be non-empty; union across all zones must equal the positive-demand retailer set exactly (no duplicates, no omissions)"
+            },
+            {
+              "name": "vehicle_count",
+              "role": "passthrough",
+              "type": "int",
+              "required": false,
+              "note": "Vehicle count for this zone; read by compute_step1_metrics (line 479) but not hard-validated — absence does not block scoring",
+              "role_rationale": "479 行仅被塞进 zone_details 回显，compose_quality_score 从未读它"
+            }
+          ]
+        }
+      ],
+      "structural_checks": [
+        "top-level key 'zones' must exist and be a list (hard fail if missing)",
+        "len(zones) must equal 5",
+        "zone_id must be unique across all zone entries",
+        "retailer_ids must be non-empty for every zone",
+        "len(retailer_ids) must not exceed ceil(total_positive_demand_retailers / 5 * 1.2) per zone",
+        "union of all retailer_ids must equal the set of positive-demand idx values exactly",
+        "no retailer_id may appear in more than one zone"
+      ],
+      "derived_from_lines": [
+        259,
+        339
+      ]
+    },
+    {
+      "name": "routes_result.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "zones",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "Exactly 5 entries, one per zone; zone_id set must match partition_result.json exactly",
+          "item_fields": [
+            {
+              "name": "zone_id",
+              "role": "identifier",
+              "type": "int",
+              "required": true,
+              "note": "Must match a zone_id from partition_result.json"
+            },
+            {
+              "name": "routes",
+              "role": "decision",
+              "type": "array",
+              "required": true,
+              "note": "Exactly 5 route objects per zone",
+              "item_fields": [
+                {
+                  "name": "route_id",
+                  "role": "identifier",
+                  "type": "int",
+                  "required": true,
+                  "note": "Must be unique within the zone; used as a sort key in compute_step2_metrics"
+                },
+                {
+                  "name": "sequence",
+                  "role": "decision",
+                  "type": "array[int]",
+                  "required": true,
+                  "note": "Ordered list of retailer idx values visited by this route; all must be positive-demand retailers belonging to this zone's partition; union across all routes in all zones must cover every positive-demand retailer exactly once"
+                },
+                {
+                  "name": "trips",
+                  "role": "decision",
+                  "type": "array",
+                  "required": true,
+                  "note": "List of trip objects; used to derive scheduled_trip_count when that field is absent",
+                  "item_fields": [
+                    {
+                      "name": "trip_id",
+                      "role": "identifier",
+                      "type": "int|str",
+                      "required": false,
+                      "note": "Appears only in violation error messages; not used in any computation"
+                    },
+                    {
+                      "name": "num_stops",
+                      "role": "decision",
+                      "type": "int",
+                      "required": false,
+                      "default": 0,
+                      "note": "Overload check fires only when num_stops > 0"
+                    },
+                    {
+                      "name": "load",
+                      "role": "decision",
+                      "type": "float",
+                      "required": false,
+                      "default": 0.0,
+                      "note": "Must not exceed 8000.0 when num_stops > 0"
+                    }
+                  ]
+                },
+                {
+                  "name": "scheduled_trip_count",
+                  "role": "decision",
+                  "type": "int",
+                  "required": false,
+                  "note": "If absent, defaults to len(trips); must be equal across all 5 routes within a zone"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "structural_checks": [
+        "top-level key 'zones' must exist and be a list (hard fail if missing)",
+        "len(zones) must equal 5",
+        "zone_id set must match the zone_id set from partition_result.json exactly",
+        "each zone must have exactly 5 routes",
+        "route_id must be unique within each zone",
+        "every retailer idx in every sequence must be a positive-demand retailer belonging to that zone's partition",
+        "union of all sequences across all zones must equal the positive-demand retailer set exactly (no duplicates, no omissions)",
+        "scheduled_trip_count (or len(trips) when absent) must be equal across all 5 routes within a zone",
+        "for each trip where num_stops > 0: load must not exceed 8000.0"
+      ],
+      "derived_from_lines": [
+        259,
+        432
+      ]
+    }
+  ],
+  "aliases_note": "No field in either file has an alias. Every key the evaluator reads is hardcoded with a single name and no 'or' fallback chain.",
+  "derived_from_lines": [
+    259,
+    432
+  ]
+}

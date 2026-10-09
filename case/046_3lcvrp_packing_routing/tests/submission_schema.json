@@ -1,0 +1,164 @@
+{
+  "case": "046_3lcvrp_packing_routing",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_type": "object",
+      "root_keys": [
+        {
+          "name": "routes",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "第 188 行 sol.get('routes')；不是 list 或为空则直接判违规（第 189-191 行）。路线条数 len(routes) 就是用车数（第 273 行），是主目标",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "route_id",
+                "aliases": [],
+                "role": "identifier",
+                "type": "int",
+                "required": false,
+                "default_if_absent": "数组下标 + 1",
+                "note": "第 199 行 r.get('route_id', ri + 1)，只用于报错信息，不参与判分"
+              },
+              {
+                "name": "customers",
+                "aliases": [],
+                "role": "decision",
+                "type": "array of string",
+                "required": true,
+                "note": "按访问顺序排的客户编号列表（算例 customers 的 id，实测 40 个，形如 C1）。第 200-203 行缺失或为空即违规；第 204-206 行出现未知客户即违规；第 209 行按这个顺序算配送中心→…→配送中心的里程；第 254-260 行每个客户必须恰好被一条路线服务，漏或重都违规。顺序影响里程，属于决策本身，不得重排"
+              },
+              {
+                "name": "items",
+                "aliases": [],
+                "role": "structural",
+                "type": "array",
+                "required": true,
+                "default_if_absent": "[]",
+                "note": "第 211 行 r.get('items') or []。只交路线不给三维摆放，会在第 262-264 行被判『货物未出现在任何路线』而作废",
+                "items": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "item_id",
+                      "aliases": [],
+                      "role": "identifier",
+                      "type": "string",
+                      "format": "{货物类型id}#{序号}，序号从 0 起",
+                      "required": true,
+                      "note": "第 214-217 行 str(it['item_id']).strip()，不在按 quantity 展开出的 369 个实例键里即判『未知货物实例』、整份作废。键由第 179-186 行生成：f\"{it['id']}#{k}\"，k 从 0 到 quantity-1。第 262-267 行还要求 369 件不漏不重"
+                    },
+                    {
+                      "name": "customer_id",
+                      "aliases": [],
+                      "role": "ignored",
+                      "type": "string",
+                      "required": false,
+                      "note": "EXTRACTOR_SPEC schema 里列了，但 evaluator 不读——第 237 行是从 expect[iid]['customer'] 反查货主，再校验它在本路线的 customers 里"
+                    },
+                    {
+                      "name": "pos_x",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "该件货在车厢内的起始角 x 坐标。第 222 行 float(it['pos_x'])，取不到即违规（第 227-228 行）；第 93 行不得为负；第 95-96 行 pos_x + dim_lx 不得超过车厢长 120"
+                    },
+                    {
+                      "name": "pos_y",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "起始角 y 坐标。第 222-223 行；第 93 行不得为负；第 97-98 行 pos_y + dim_ly 不得超过车厢宽 80"
+                    },
+                    {
+                      "name": "pos_z",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "起始角 z 坐标（落位高度）。第 223 行；第 93 行不得为负；第 99-100 行 pos_z + dim_lz 不得超过车厢高 75；第 124-125 行 z ≤ 1e-6 视为落在底板、免检支撑；第 135 行只认『下方货物 pos_z + dim_lz 恰好等于本件 pos_z』的货做支撑"
+                    },
+                    {
+                      "name": "dim_lx",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "旋转后对应车厢 x 轴的实际边长。第 224 行；第 231-234 行三个 dim 排序后必须与原始 length/width/height 排序后逐个相等（六种轴对齐朝向的某一种），否则违规"
+                    },
+                    {
+                      "name": "dim_ly",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "旋转后对应 y 轴的实际边长，校验同 dim_lx（第 224-225、231-234 行）；第 128 行与 dim_lx 相乘得底面积"
+                    },
+                    {
+                      "name": "dim_lz",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "旋转后对应 z 轴的实际边长，校验同 dim_lx（第 225、231-234 行）"
+                    },
+                    {
+                      "name": "weight",
+                      "aliases": [],
+                      "role": "ignored",
+                      "type": "float",
+                      "required": false,
+                      "note": "EXTRACTOR_SPEC schema 里列了，但 evaluator 不读选手自报值——第 245 行载重是从算例的 expect[item_id]['weight'] 独立取的"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "num_vehicles",
+          "aliases": [],
+          "role": "ignored",
+          "type": "int",
+          "required": false,
+          "note": "EXTRACTOR_SPEC 里可选；evaluator 不读，第 273 行按 len(routes) 独立重算"
+        },
+        {
+          "name": "total_distance",
+          "aliases": [],
+          "role": "ignored",
+          "type": "number",
+          "required": false,
+          "note": "EXTRACTOR_SPEC 里可选；evaluator 不读，第 209 / 295-301 行按四舍五入的欧氏距离独立重算"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "solution.json 必须存在于提交目录，缺文件即 fatal（第 163-166 行）",
+    "顶层必须有 routes 且为非空 list（第 188-191 行）",
+    "每条路线的 customers 必须是非空列表（第 200-203 行）",
+    "customers 里不得出现算例之外的客户编号（第 204-206 行）",
+    "每个客户必须恰好被一条路线服务：不得漏（第 257-258 行），不得被多条路线服务（第 259-260 行）",
+    "item_id 必须是按 quantity 展开出的 369 个实例之一，格式为『原始货物编号#序号』且序号从 0 起（第 179-186、214-217 行）",
+    "369 件货物一件都不能漏（第 262-264 行），也不得重复装载（第 265-267 行）",
+    "每件货必须给齐 pos_x/pos_y/pos_z 与 dim_lx/dim_ly/dim_lz，缺任一个即违规（第 219-229 行）",
+    "旋转后的三条边长必须是原始 length/width/height 的某个全排列，只能轴对齐、不能改尺寸（第 231-234 行）",
+    "每件货必须放在服务它主人的那条路线上（第 236-240 行）",
+    "单车载重不得超过 2200（第 244-247 行）",
+    "坐标不得为负（第 93-94 行）",
+    "不得超出车厢的 120 × 80 × 75（第 95-100 行）",
+    "任意两件货不得有正体积的重叠（第 110-119 行）",
+    "起始高度大于 0 的货，底面必须有下方货物的顶面严格贴平托住，且托住面积的并集占本件底面积不低于 0.75，否则判悬空或支撑不足（第 121-151 行）",
+    "以上任意一条命中即 validity=0、quality=0（第 269-271 行）"
+  ],
+  "derived_from_lines": [40, 43, 44, 93, 110, 121, 135, 147, 163, 179, 188, 200, 204, 211, 214, 219, 231, 236, 244, 254, 262, 269, 273]
+}

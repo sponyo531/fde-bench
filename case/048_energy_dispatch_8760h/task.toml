@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Combinatorial Optimization"
+scene_type = ["能源调度", "电力系统", "运行优化"]
+difficulty = "hard"

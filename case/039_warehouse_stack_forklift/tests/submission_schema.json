@@ -1,0 +1,88 @@
+{
+  "case": "039_warehouse_stack_forklift",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "operations",
+          "aliases": [],
+          "type": "array",
+          "role": "structural",
+          "required": true,
+          "note": "第 109 行 sol.get('operations')；第 111-113 行不是 list 或为空数组即 fatal；第 187-189 行若一行都解析不出来同样 fatal。顶层必须是对象（第 106-108 行）。",
+          "items": {
+            "type": "object",
+            "fields": [
+              {"name": "operation_id", "aliases": ["op_id", "id"], "role": "identifier", "type": "string", "required": false,
+               "note": "第 167 行 raw.get('operation_id') or f'operations[{idx}]'——缺了会用数组下标兜底，不判死。作用有两处：第 191 行同起始时刻的排序 tiebreak，以及第 185 行缺 trip_id 时的兜底趟次号。"},
+              {"name": "type", "aliases": ["op_type", "operation_type", "入库", "出库", "移库", "倒垛", "IN", "OUT", "move"], "role": "decision", "type": "enum", "required": true,
+               "enum": ["inbound", "outbound", "passive_move", "active_move"],
+               "note": "第 54 行 OP_TYPES；第 168-171 行取值不在这四个之内该行被丢弃并记违规。决定作业时长（第 124-129 行：inbound 3 / outbound 10 / 两种 move 各 10 分钟）与该行走哪一套校验。EXTRACTOR_SPEC 要求把中文/大写写法映射成这四个英文值，移库/倒垛分不清主被动时一律映射成 active_move。"},
+              {"name": "sku", "aliases": [], "role": "passthrough", "type": "string", "required": true,
+               "note": "第 181 行 str(raw.get('sku',''))。入库/出库行第 253-255、264-266 行必须与所挂任务的 sku 逐字相同；连同 batch 一起构成第 275、283 行库存推演的 state 键，写错等于取不到货。"},
+              {"name": "batch", "aliases": [], "role": "passthrough", "type": "string", "required": true,
+               "note": "第 181 行 str(raw.get('batch',''))，与 sku 同样参与第 253-255、264-266 行的任务比对和第 275、283 行的库存推演键。批次按字符串比对，不要改写成日期格式。"},
+              {"name": "source", "aliases": ["from", "from_location", "src"], "role": "decision", "type": "string", "required": true,
+               "note": "第 182 行。入库行必须正好是 'PACKING'（第 52、211-212 行）；出库行必须是真实垛位（第 220-221 行）；倒垛行源与目标都必须是真实垛位且不同（第 225-230 行）。出库与倒垛行按它扣库存（第 274-281 行）。"},
+              {"name": "target", "aliases": ["to", "to_location", "dest", "tgt"], "role": "decision", "type": "string", "required": true,
+               "note": "第 182 行。出库行必须正好是 'OUTBOUND'（第 53、218-219 行）；入库行必须是 locations 里真实存在的垛位（第 213-214 行）。入库与倒垛行按它加库存并在第 286-289 行核查落位上限。"},
+              {"name": "region", "aliases": ["area", "zone"], "role": "passthrough", "type": "string", "required": true,
+               "enum": ["ZONE_A", "ZONE_B", "ZONE_C"],
+               "note": "第 183 行。必须与源/目标垛位编号前两位一致（第 215-216、222-223、227-228 行），并用于第 237-238 行的叉车库区权限校验。EXTRACTOR_SPEC 说明缺 region 的行按 target/source 垛位编号前两位补齐。"},
+              {"name": "tons", "aliases": ["weight", "qty", "quantity", "吨数"], "role": "decision", "type": "float", "required": true,
+               "note": "第 175 行 _ut(raw['tons'])，缺失或非数值该行被丢弃并记违规（第 176-178 行）。第 205-206 行单行必须落在 (0, max_task_tons] 即 (0, 2] 吨；第 299-301 行同趟合计同样不得超过 2 吨。第 49-51 行按整数微吨比较，容差 0.001 吨。EXTRACTOR_SPEC 明令保留原始小数、不要四舍五入。"},
+              {"name": "start_minute", "aliases": ["start", "start_time", "begin"], "role": "decision", "type": "int", "required": true,
+               "note": "第 173 行 int(round(float(...)))，单位是距计划期起点的分钟数。第 200-201 行 end-start 必须精确等于该类型的规定时长；第 202-203 行区间必须整段落在 [0, day_minutes]；第 241-243 行必须整段落在叉车班次内；第 256-257、267-268 行不得早于所挂任务的 start_minute。第 191 行按它排序推演库存。"},
+              {"name": "end_minute", "aliases": ["end", "end_time", "finish"], "role": "decision", "type": "int", "required": true,
+               "note": "第 174 行。与 start_minute 的差必须精确等于规定时长（第 200-201 行），不允许自行加缓冲。"},
+              {"name": "forklift", "aliases": ["forklift_id", "driver", "truck"], "role": "decision", "type": "string", "required": true,
+               "note": "第 183 行。第 233-235 行必须是 resources.forklifts 名单里的 forklift_id；第 237-240 行库区权限与作业类型权限都要过；第 244、309-312 行累计当日经手吨数并核对 daily_ton_cap；与 trip_id 一起构成第 292-294 行的趟次键和第 303-307 行的同车不得并趟校验。"},
+              {"name": "task_id", "aliases": [], "role": "identifier", "type": "string", "required": false,
+               "note": "第 184 行。入库行必须挂到 inbound_tasks 里真实存在的 task_id（第 247-250 行），出库行同理挂 outbound_tasks（第 258-261 行），并据此在第 315-322 行核对每笔任务的吨数是否精确凑齐（容差 0.001 吨）。倒垛行必须留空——挂了任务号即违规（第 269-271 行）。"},
+              {"name": "trip_id", "aliases": ["trip", "trip_no"], "role": "grouping_key", "type": "string", "required": false,
+               "note": "第 185 行 str(raw.get('trip_id') or oid)——缺了用该行自己的 operation_id 兜底，于是这一行自成一趟。它诱导的分组必须守恒：第 292-294 行按 (forklift, trip_id) 聚合，第 297-298 行同趟各行必须共享完全相同的起止分钟，第 299-301 行同趟合计不得超 2 吨，第 302-307 行同一台车的不同趟次时间区间不得重叠。趟次号可以重编号，但哪几行是同一趟不能变。"}
+            ]
+          }
+        },
+        {
+          "name": "ending_inventory",
+          "aliases": [],
+          "type": "array",
+          "role": "ignored",
+          "required": false,
+          "note": "兼容旧提交的可选字段；evaluator 会从期初库存和 operations 独立重算期末库存，不读取或核对该字段。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "solution.json 必须存在（第 100-103 行），顶层必须是 JSON 对象（第 106-108 行）",
+    "operations 必须是非空数组，且至少有一行能解析出类型、时刻、吨数",
+    "每行的 type 必须是 inbound / outbound / passive_move / active_move 之一（第 168-171 行）",
+    "每行的 start_minute / end_minute / tons 必须齐备且是数值（第 172-178 行）",
+    "作业时长必须精确等于规定值：入库 3 分钟、出库 10 分钟、倒垛 10 分钟（第 200-201 行）",
+    "作业区间必须整段落在计划期 [0, day_minutes] 内（第 202-203 行）",
+    "单行吨数必须落在 (0, 2] 吨内（第 205-206 行）",
+    "入库行的 source 必须正好是 PACKING（第 211-212 行），目标垛位必须真实存在（第 213-214 行）",
+    "出库行的 target 必须正好是 OUTBOUND（第 218-219 行），源垛位必须真实存在（第 220-221 行）",
+    "倒垛行的源与目标必须都是真实垛位、且不能是同一个（第 225-226、229-230 行）",
+    "行上标注的 region 必须与源（出库/倒垛）或目标（入库）垛位编号前两位一致（第 215-216、222-223 行）",
+    "倒垛不得跨库区：源垛位、目标垛位、标注库区三者必须同属一个库房（第 227-228 行）",
+    "叉车必须在 resources.forklifts 名单内（第 233-235 行）、有该库区权限（第 237-238 行）、允许该作业类型（第 239-240 行）、作业区间整段落在班次内（第 241-243 行）",
+    "每台叉车当日经手吨数（四类作业一律计入）不得超过 daily_ton_cap（第 244、309-312 行）",
+    "入库/出库行必须挂真实存在的任务号（第 247-250、258-261 行），倒垛行必须不挂任务号（第 269-271 行）",
+    "入库/出库行的 sku、batch 必须与所挂任务完全一致（第 253-255、264-266 行）",
+    "入库/出库行的开始时刻不得早于所挂任务的 start_minute（第 256-257、267-268 行）",
+    "取货时源垛位上该 (sku, batch) 的实时库存必须足够支撑本趟（第 274-280 行），任何一格结存推成负数同样违规（第 327-329 行）",
+    "落位后该垛位总吨数不得超过「额定吨位与期初吨数取大」的上限（第 155、286-289 行）",
+    "同一趟（同 forklift + 同 trip_id）的所有行必须共享完全相同的起止分钟（第 297-298 行）",
+    "同一趟的吨数合计不得超过 max_task_tons=2 吨（第 299-301 行）",
+    "同一台叉车的不同趟次时间区间不得重叠（第 302-307 行）",
+    "每笔入库、出库任务的完成吨数必须与任务吨数相等，容差 0.001 吨，多凑少凑都算违规（第 315-322 行）",
+    "以上任何一条不合规，整份方案 validity 记 0，不是只丢那一行（第 350-352 行）"
+  ],
+  "derived_from_lines": [45, 54, 100, 106, 109, 155, 167, 168, 172, 179, 191, 200, 202, 205, 211, 213, 218, 220, 225, 227, 229, 233, 237, 239, 241, 244, 247, 253, 256, 258, 264, 267, 269, 274, 286, 292, 297, 299, 302, 309, 315, 319, 325, 327, 350]
+}

@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["风险建模", "二分类", "金融风控"]
+difficulty = "hard"

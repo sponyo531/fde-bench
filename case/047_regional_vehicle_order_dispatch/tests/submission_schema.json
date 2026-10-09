@@ -1,0 +1,75 @@
+{
+  "case": "047_regional_vehicle_order_dispatch",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "evaluator 第 30 行 PLAN_FILE；第 76 行以 utf-8 打开",
+      "root_keys": [
+        {
+          "name": "assignment",
+          "aliases": [],
+          "type": "object",
+          "required": true,
+          "role": "structural",
+          "note": "车辆下标 -> 该车承运的订单下标列表。第 85 行 sol.get('assignment')；第 86-88 行不是 dict 或为空即判违规、直接返回 0。若选手交的是 CSV(order_index, car_index)，按 car_index 归组成这个字典（EXTRACTOR_SPEC 第 17 行）",
+          "key_schema": {
+            "name": "<car_index>",
+            "aliases": [
+              "车辆下标",
+              "car_index",
+              "车牌号(需换算)"
+            ],
+            "role": "identifier",
+            "type": "int-as-string",
+            "range": "0..30（len(car_info_detail)-1，本算例 31 辆车）",
+            "note": "键对应 data/regional_dispatch_data.json 的 car_info_detail 数组下标，不能重新编号——每辆车的载重区间、接单数上限、工时上限、可跑区域都不同。第 93-98 行 int(k) 转不了即违规；第 99-101 行越界即违规。用车牌号的要按数组顺序换算成下标（EXTRACTOR_SPEC 第 18 行）"
+          },
+          "value_schema": {
+            "name": "<order_index_list>",
+            "aliases": [],
+            "role": "decision",
+            "type": "array",
+            "note": "该车承运的订单下标列表，这就是本题唯一的决策。第 102-104 行不是数组即违规；空列表表示这辆车不用（第 137-138 行未出现的车自动补空列表，第 148 行按非空列表统计用车数）",
+            "items": {
+              "name": "<order_index>",
+              "aliases": [
+                "order_index",
+                "eoorOrderNo(需换算)"
+              ],
+              "role": "identifier",
+              "type": "int",
+              "range": "0..148（len(order_info_detail)-1，本算例 149 单）",
+              "note": "对应 order_info_detail 数组下标。第 106-111 行元素转不成 int 即违规（不要写成 'order_16' 这类字符串，见 EXTRACTOR_SPEC 第 19 行）；第 112-114 行越界即违规；第 125-131 行全部 149 个下标必须恰好各出现一次"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须有 solution.json，否则 fatal（第 72-75 行）",
+    "顶层 assignment 必须是非空 dict，否则判违规返回 0（第 85-88 行）",
+    "每个车辆键必须能转成整数（第 93-98 行）",
+    "车辆下标必须落在 0..len(car_info_detail)-1（本算例 0..30）（第 99-101 行）",
+    "每个车辆键对应的值必须是数组（第 102-104 行）",
+    "订单列表里的每个元素必须能转成整数（第 106-111 行）",
+    "订单下标必须落在 0..len(order_info_detail)-1（本算例 0..148）（第 112-114 行）",
+    "全部 149 个订单必须恰好各出现一次：漏单（第 126、128-129 行）与重复分配（第 127、130-131 行）都是结构性错误，整份判无效",
+    "没出现的车辆会被自动补成空列表，不判错（第 137-138 行）",
+    "载重、订单-车辆互斥、订单-订单互斥、跨节点、方位角、接单数、工时这几类不达标不判方案无效，只计入 player_objective（第 153-164 行）"
+  ],
+  "derived_from_lines": [
+    72,
+    85,
+    93,
+    99,
+    102,
+    106,
+    112,
+    126,
+    137,
+    157
+  ]
+}

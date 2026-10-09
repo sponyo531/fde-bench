@@ -1,0 +1,79 @@
+{
+  "case": "007_lube_oil_inverse_formulation",
+  "files": [
+    {
+      "name": "recommendation.json",
+      "format": "json",
+      "required": true,
+      "note": "Top-level must be a JSON array of exactly 5 recipe objects, OR a JSON object whose array lives under one of root_wrapper_keys. No CSV variant exists.",
+      "root": "array",
+      "root_wrapper_keys": [
+        "recommendations",
+        "recipes",
+        "candidates",
+        "top5",
+        "results"
+      ],
+      "items": {
+        "type": "object",
+        "count_required": 5,
+        "fields": [
+          {
+            "name": "半成品名称",
+            "aliases": [
+              "半成品",
+              "product",
+              "half_product",
+              "name",
+              "type"
+            ],
+            "role": "identifier",
+            "required": false,
+            "note": "Product label. HALF_PRODUCT_TARGET=None so any value — or no value — is accepted. Hard-rejected only if known_products is non-empty, which it never is (oracle returns []). First matching key wins; if none present, stored as null."
+          },
+          {
+            "name": "原材料用量",
+            "aliases": [
+              "原材料",
+              "materials",
+              "ingredients",
+              "formula",
+              "bom",
+              "composition"
+            ],
+            "role": "decision",
+            "type": "object",
+            "value_type": "string → number (KG, finite, ≥ 0)",
+            "required": true,
+            "note": "Maps material name to KG usage. Values must be float-castable, finite, and non-negative; violating entries are skipped with a warning. Material names not in the oracle's known set are dropped with a warning (not a hard fail). The dict must be non-empty after filtering. These quantities are the agent's core answer — any change alters the scoring. 单位换算：源数据里若某原料带单位（客户原始 BOM 表有「数量 / 单位」两列，抗泡剂一类按 ML 计），必须先换成 KG 再填——evaluator 的 _oracle_bom_kg 用的是 unit==\"ML\" → 0.0485 KG 这个固定当量（不按数量比例折算）。原样保留 \"50.0 ML\" 这样的带单位字符串会 float() 失败、该条被静默丢弃，配方少一味添加剂，分数出现 1e-4 量级的无谓漂移（实测两个抽取器就差在这一处）。"
+          },
+          {
+            "name": "rank",
+            "role": "identifier",
+            "required": false,
+            "note": "Not read by the evaluator at all; the evaluator generates rank as i+1 from list position. May be present and is silently ignored."
+          }
+        ]
+      }
+    }
+  ],
+  "structural_checks": [
+    "top-level must resolve to a list (bare JSON array, or via root_wrapper_keys lookup on a dict)",
+    "list must contain exactly 5 recipe objects (N_RECOMMENDATIONS = 5)",
+    "each element must be a JSON object — null, array, or scalar triggers a normalization failure",
+    "each recipe's 原材料用量 (or accepted alias) must be a non-empty dict after unknown-material filtering",
+    "per-recipe sum of all material KG must be in [200.0, 2000.0]",
+    "light-grade base oil fraction (LIGHT_OILS = {M020, M022, M041, M049, M053}) must be in [16.0%, 29.0%] of total mass",
+    "heavy-grade base oil fraction (HEAVY_OILS = {M016, M035, M038, M039, M048, M051}) must be in [2.0%, 14.0%] of total mass",
+    "single base oil fraction must be ≤ 63.0% of total mass",
+    "each recipe must contain exactly 1 复合剂 (DI package) from {M054, M058, M059, M060, M061, M062}",
+    "复合剂 dose fraction must be within ±1.5 pp of its locked treat rate (B=6.88%, F=7.58%, G=8.30%, H=7.89%, I=9.40%, J=7.68%)"
+  ],
+  "derived_from_lines": [
+    196,
+    219,
+    265,
+    305,
+    472
+  ]
+}

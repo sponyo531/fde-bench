@@ -1,0 +1,171 @@
+# 实验矩阵。每个 [experiments.X] 段就是一次可独立执行的实验/消融。
+#
+#   python -m harness.matrix E1 --container "fde-bench:{case}"
+#   python -m harness.matrix E5_probe --dry-run
+#
+# 断点续跑：已有 usage.json 且 status 非 error/degraded 的 run 自动跳过。
+
+[defaults]
+# 发布包默认使用仓库内已经去敏、重新编号的 case/。
+case_root   = "case"
+out         = "results"
+scaffold    = "opencode"
+runs        = 3
+timeout_s   = 43200       # 硬上限：agent 自主交付，不强制跑满；对 CO/ML 长跑留有充足余量
+concurrency = 8
+# 数据隔离：agent 在容器里跑，case 目录不挂载 → gt.json/tests/ 天然不可见。
+# 缺镜像的 case 会在 preflight 阶段报错，不会静默裸跑。
+image       = "fde-bench:{case}"
+
+# 子集：覆盖各 task_type 的 20 个 case，消融实验用
+subset20 = [
+  "001_car_body_aerodynamic_forecast",
+  "002_city_delivery_route_planning",
+  "003_crop_yield_sparse_sampling",
+  "004_dayahead_power_price_forecast",
+  "005_flight_seat_booking_forecast",
+  "006_ion_beam_uniformity_optimization",
+  "007_lube_oil_inverse_formulation",
+  "008_material_property_forward_prediction",
+  "009_nuclear_construction_scheduling",
+  "010_retail_replenishment_transfer",
+  "011_retail_zone_partition_routing",
+  "012_silicon_steel_slitting_cutting",
+  "013_vessel_stowage_planning",
+  "014_warehouse_multi_shuttle_water_level_policy",
+  "015_truck_load_planning",
+  "016_aps_multi_table_scheduling",
+  "017_cold_rolling_coil_sequencing",
+  "018_multi_batch_mip_scheduling",
+  "019_multi_line_production_scheduling",
+  "020_multi_warehouse_shipping_3097",
+]
+
+# ─────────────────────────────────────────────────────────
+# E1 主表：瓶颈在哪
+#   Full − Hidden              信息值多少分       → 大则瓶颈在需求理解而非算法
+#   Interact − Hidden           自主澄清挣回多少   → 预期 ≈ 0（实测 0 提问）
+#   Interact-Req − Interact     强制澄清的增益     → Clarification Paralysis 的代价
+#   Full − Interact-Req         该问没问出来的部分
+# ─────────────────────────────────────────────────────────
+[experiments.E1]
+cases      = "all"
+conditions = ["Hidden", "Interact", "Interact-Req", "Full"]
+# 八个模型覆盖八个家族（Anthropic / OpenAI / Google / GLM / Kimi /
+# DeepSeek / xAI / 阿里）。铺开模型轴是为了证明「条件落差」不是某一个模型的偏科——
+# 落差在格内算（同模型的 F−R），跨格不相减，所以加模型只加证据、不引入混淆。
+models     = [
+  "responses/kimi-k3",
+  "direct/glm-5.3",
+  "chat/claude-opus-5",
+  "responses/gpt-6-astra",
+  "chat/gemini-3.1-pro-preview",
+  "chat/deepseek-v4-pro",
+  "responses/grok-4.6",
+  "chat/qwen3.8-max",
+]
+runs       = 3
+
+# ─────────────────────────────────────────────────────────
+# E2 消融：要求 agent 确认"自己以为懂的"，值多少分
+#   Interact-Conf − Interact-Req   量化 Confident Hallucination 的代价
+#   该措辞 23 篇文献中无先例，故拆出来单报而非塞进主表
+# ─────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────
+# E1_dsh：DeepSeek 自家脚手架 × 自家模型，与 E1 同 case / 条件 / 轮数，
+# 只换脚手架。结果落 <deepseek-harness--chat-deepseek-v4-pro>/…，
+# 与 E1 里 opencode × deepseek-v4-pro 那一格对照就是"脚手架值多少分"。
+# 需要镜像里有 dsh（env-runner/Dockerfile 已装）。
+# ─────────────────────────────────────────────────────────
+[experiments.E1_dsh]
+cases      = "all"
+conditions = ["Hidden", "Interact", "Interact-Req", "Full"]
+models     = ["chat/deepseek-v4-pro"]
+scaffold   = "deepseek-harness"
+runs       = 3
+
+[experiments.E2]
+cases      = "subset20"
+conditions = ["Interact-Req", "Interact-Conf"]
+# 消融只用单模型：它测的是「措辞改动值多少分」，同一模型内比较即可；
+# 铺七个模型会让 run 数×7 而结论不变（E2 单模型 run 数相应增加）。
+models     = ["direct/glm-5.3"]
+
+# ─────────────────────────────────────────────────────────
+# E3 消融：数据解释 vs 业务规则，哪个更值钱
+#   Full-Base                 原话 + 业务背景 + 产物形式（控制住"知道交什么"）
+#   Full-Data − Full-Base     数据解释的价值
+#   Full-Rule − Full-Base     业务规则的价值
+#   若两者之和 < Full − Full-Base，说明两类信息有协同
+# ─────────────────────────────────────────────────────────
+[experiments.E3]
+cases      = "subset20"
+conditions = ["Full-Base", "Full-Data", "Full-Rule"]
+models     = ["direct/glm-5.3"]     # 同 E2：消融单模型即可
+
+# ─────────────────────────────────────────────────────────
+# E3_probe 探路：先在 1 个 case 上看 F 的三档切片能拉开多少差距
+#   ⚠️ 这**不是** E5（Oracle 曲线）：本段按 information.md 的小节切，
+#   粒度是"信息类型"；E5 按 gt.json 的单个考点切。两者互补，别混引。
+# ─────────────────────────────────────────────────────────
+[experiments.E3_probe]
+cases      = ["002_city_delivery_route_planning"]
+conditions = ["Hidden", "Full-Base", "Full-Data", "Full-Rule", "Full"]
+models     = ["direct/glm-5.3"]
+runs       = 1
+concurrency = 5
+
+# ─────────────────────────────────────────────────────────
+# smoke：改完脚手架后的最小验证，1 case × 全部 8 条件 × 1 run
+# ─────────────────────────────────────────────────────────
+[experiments.smoke]
+cases      = ["002_city_delivery_route_planning"]
+conditions = ["Hidden", "Interact", "Interact-Req", "Interact-Conf", "Full-Base", "Full-Data", "Full-Rule", "Full"]
+models     = ["direct/glm-5.3"]
+runs       = 1
+concurrency = 4
+# 2400s 时 8 个里 5 个撞墙（半成品与完成品无法比较），放宽到 12 小时
+timeout_s  = 43200
+
+# 仅重跑澄清两档：smoke 首轮时提问截断尚未取消，CF 系列结果作废
+[experiments.cf_only]
+cases      = ["002_city_delivery_route_planning"]
+conditions = ["Interact-Req", "Interact-Conf"]
+models     = ["direct/glm-5.3"]
+runs       = 1
+concurrency = 2
+timeout_s  = 43200
+
+# ─────────────────────────────────────────────────────────
+# E5 Oracle 部分澄清曲线
+#   conditions 写 "oracle" 会按每个 case 的考点数自动展开成 k=0…N，
+#   k=0 等价 R（无任何考点答案），k=N 等价「该问的全问对了」。
+#   产出：考点覆盖率 → 交付质量 曲线。若近似直线，该卖点不成立。
+# ─────────────────────────────────────────────────────────
+[experiments.E5]
+cases      = "subset20"
+conditions = ["oracle"]
+models     = ["direct/glm-5.3"]
+runs       = 3
+
+# 单 case 探路：先看曲线形状，再决定要不要铺到 subset20
+[experiments.E5_probe]
+cases      = ["002_city_delivery_route_planning"]
+conditions = ["oracle"]
+models     = ["direct/glm-5.3"]
+runs       = 1
+concurrency = 4
+timeout_s  = 43200
+
+# ─────────────────────────────────────────────────────────
+# e2e：全链路连通性验证（1 case × 1 条件 × 1 run）
+#   跑通 = agent 执行 → 三模型抽取 → 守恒 → 投票 → 出分
+#   改完评分链路后先跑这个，再铺 smoke/E1
+# ─────────────────────────────────────────────────────────
+[experiments.e2e]
+cases      = ["002_city_delivery_route_planning"]
+conditions = ["Hidden"]
+models     = ["direct/glm-5.3"]
+runs       = 1
+concurrency = 1
+timeout_s  = 3600

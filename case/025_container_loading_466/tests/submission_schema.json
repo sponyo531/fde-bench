@@ -1,0 +1,193 @@
+{
+  "case": "025_container_loading_466",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "placements",
+          "aliases": [
+            "items",
+            "boxes",
+            "loading_plan"
+          ],
+          "type": "array",
+          "required": true,
+          "length": 466,
+          "note": "evaluator 第 219 行 sub.get('placements')；不是 list 或为空则 fatal（第 220-222 行）。别名取自 EXTRACTOR_SPEC 第 124-125 行列出的常见顶层 key",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "cargo_id",
+                "aliases": [
+                  "品名",
+                  "货号"
+                ],
+                "role": "identifier",
+                "type": "int",
+                "required": true,
+                "note": "清单「品 名」列的编号，取值 {121,122,123,124,125,126,128,129}（不是最左边的流水序号）。第 232-239 行按它统计件数并与清单件数逐类比对，清单里没有的编号直接违规；第 245 行用它查原始三边，第 267 行用它认托盘，第 183 行用它查单件重量"
+              },
+              {
+                "name": "x",
+                "aliases": [
+                  "pos_x"
+                ],
+                "role": "decision",
+                "type": "number",
+                "required": true,
+                "note": "沿柜长方向最小角坐标（cm，非中心坐标；中心坐标需按 cx-lx/2 换算）。evaluator 检查 x>=0、x+lx<=1203 以及货物间不重叠。"
+              },
+              {
+                "name": "y",
+                "aliases": [
+                  "pos_y"
+                ],
+                "role": "decision",
+                "type": "number",
+                "required": true,
+                "note": "沿柜宽方向最小角坐标（cm）。第 259/261 行查 y>=0 且 y+ly<=235；第 109/117/123 行重叠与投影检测"
+              },
+              {
+                "name": "z",
+                "aliases": [
+                  "pos_z"
+                ],
+                "role": "decision",
+                "type": "number",
+                "required": true,
+                "note": "离地高度最小角坐标（cm，0=地板）。第 259/261 行查 z>=0 且 z+lz<=239；第 267 行 cargo_id==122 必须 z==0（精确比对，无容差）；第 134-140 行支撑检测；第 185 行进重心计算"
+              },
+              {
+                "name": "lx",
+                "aliases": [
+                  "dim_lx",
+                  "len_x"
+                ],
+                "role": "decision",
+                "type": "number",
+                "required": true,
+                "note": "摆好后沿 x 的边长（cm）。第 247 行 sorted([lx,ly,lz]) 必须与该货原始三边 sorted 后逐值相等（允许 90 度翻转，不允许缩放/取整）"
+              },
+              {
+                "name": "ly",
+                "aliases": [
+                  "dim_ly",
+                  "len_y"
+                ],
+                "role": "decision",
+                "type": "number",
+                "required": true,
+                "note": "摆好后沿 y 的边长（cm）。同第 247 行排序逐值比对；注意 129 号的宽在源表里存成文本 '41.0'，取数时要先转数值"
+              },
+              {
+                "name": "lz",
+                "aliases": [
+                  "dim_lz",
+                  "len_z"
+                ],
+                "role": "decision",
+                "type": "number",
+                "required": true,
+                "note": "摆好后沿 z 的边长（cm）。同第 247 行排序逐值比对；第 140 行用 z+lz 判上方件的支撑面对齐"
+              }
+            ]
+          }
+        },
+        {
+          "name": "fillers",
+          "aliases": [
+            "padding",
+            "dunnage",
+            "filler_notes",
+            "填充物"
+          ],
+          "type": "array",
+          "required": true,
+          "note": "instruction 明确要求说明所用填充物、放置位置和作用；evaluator 会检查该数组非空且三项说明齐全。",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "type",
+                "aliases": [
+                  "name",
+                  "material",
+                  "填充物",
+                  "类型"
+                ],
+                "role": "description",
+                "type": "string",
+                "required": true,
+                "note": "填充或固定材料名称，例如防滑垫、气柱袋；不得为空。"
+              },
+              {
+                "name": "location",
+                "aliases": [
+                  "position",
+                  "placement",
+                  "位置"
+                ],
+                "role": "description",
+                "type": "string",
+                "required": true,
+                "note": "材料在柜内垫放或固定的位置；不得为空。"
+              },
+              {
+                "name": "purpose",
+                "aliases": [
+                  "function",
+                  "effect",
+                  "作用",
+                  "用途"
+                ],
+                "role": "description",
+                "type": "string",
+                "required": true,
+                "note": "该材料解决的稳固或防护问题；不得为空。"
+              }
+            ]
+          }
+        },
+        {
+          "name": "summary",
+          "aliases": [],
+          "type": "object",
+          "required": false,
+          "role": "ignored",
+          "note": "EXTRACTOR_SPEC 第 13 行注明 optional、ignored by the evaluator；evaluator 全文没有任何 sub.get('summary')，写不写都不影响判分"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "solution.json 必须存在，否则 fatal（第 213-215 行）",
+    "顶层 placements 必须存在、必须是非空 list，否则 fatal（第 219-222 行）",
+    "每条摆放记录必须同时含 cargo_id/x/y/z/lx/ly/lz 七个字段，缺任一个整份判 schema 错误、直接返回 0（第 200-201 行、第 223-227 行）",
+    "顶层 fillers 必须是非空数组；每项必须同时含非空字符串 type/location/purpose，缺失即整份判 schema 错误、直接返回 0",
+    "每个 cargo_id 的件数必须与清单件数严格相等（合计 466 件），多一件少一件都违规（第 233-236 行）",
+    "不得出现清单里没有的 cargo_id（填充物混进摆放记录会命中这条）（第 237-239 行）",
+    "摆好后三边排序必须与该货原始三边排序逐值相等（第 247-254 行）",
+    "三个坐标都不得为负，且 x+lx<=1203、y+ly<=235、z+lz<=239（第 258-264 行）",
+    "cargo_id==122 的托盘每一件 z 必须精确等于 0，不留容差（第 267-269 行）",
+    "任意两件的三维长方体不得相交（第 100-112 行、第 272-274 行）",
+    "z>1.0 的每一件必须存在一件下方货物，其顶面 z+lz 与本件 z 之差不超过 1.0 且 x-y 投影相交，否则判悬空（第 127-145 行、第 278-280 行）",
+    "以上任一条违规即 validity=0、quality=0（第 288-292 行）"
+  ],
+  "derived_from_lines": [
+    201,
+    213,
+    219,
+    223,
+    233,
+    237,
+    247,
+    258,
+    267,
+    272,
+    278
+  ]
+}

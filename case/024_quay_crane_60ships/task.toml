@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Combinatorial Optimization"
+scene_type = ["路径规划", "岸桥调度"]
+difficulty = "hard"

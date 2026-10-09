@@ -1,0 +1,144 @@
+{
+  "case": "037_microgc_pillar_cfd_design",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "pillars",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "role": "structural",
+          "max_length": 8,
+          "note": "evaluator 第 82 行 sol.get('pillars')；第 83-85 行不是 list 或为空则 fatal；第 86-88 行长度 >8（MAX_PILLARS，第 47 行）也是 fatal，不是忽略多出来的。文件以 utf-8-sig 打开（第 80 行）",
+          "items": {
+            "type": "object",
+            "note": "按 shape 分三种参数组合，第 58-68 行 _build() 分派",
+            "fields": [
+              {
+                "name": "shape",
+                "aliases": [
+                  "type",
+                  "kind"
+                ],
+                "role": "decision",
+                "type": "enum",
+                "values": [
+                  "circle",
+                  "ellipse",
+                  "teardrop"
+                ],
+                "required": true,
+                "note": "第 59 行 str(p.get('shape','')).strip().lower()，大小写与首尾空格会被归一；第 68 行取值不在三者之内直接 raise → 第 94-96 行 fatal"
+              },
+              {
+                "name": "cx",
+                "aliases": [
+                  "x"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "柱心 x 坐标，单位米（EXTRACTOR_SPEC 第 19-20 行：数值照搬、不替选手换算，写 120 会被当 120 米）。三种形状都要（第 61/63/66 行）；第 98-102 行必须是有限数；pillar_geometry 第 179-182 行查 cx±外接圆半径 距两端壁 ≥10μm"
+              },
+              {
+                "name": "cy",
+                "aliases": [
+                  "y"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "柱心 y 坐标，单位米。三种形状都要（第 61/63/66 行）；pillar_geometry 第 183-186 行查 cy±外接圆半径 距上下壁 ≥10μm"
+              },
+              {
+                "name": "r",
+                "aliases": [
+                  "radius"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": "shape==circle",
+                "note": "圆半径（米）。第 61 行 float(p['r'])，circle 时缺键即 KeyError → fatal；外接圆半径=r，特征尺寸=2r 须落在 10~80μm（pillar_geometry 第 187-191 行，容差 1e-10）"
+              },
+              {
+                "name": "a",
+                "aliases": [
+                  "semi_major"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": "shape==ellipse",
+                "note": "椭圆半轴（米）。第 63 行；外接圆半径取 max(a,b)（pillar_geometry 第 67-68 行），写成 b>a 也照 b 算"
+              },
+              {
+                "name": "b",
+                "aliases": [
+                  "semi_minor"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": "shape==ellipse",
+                "note": "椭圆另一半轴（米）。第 63 行；与 a 一起决定外接圆半径与 Ramanujan 周长（pillar_geometry 第 61-65 行）"
+              },
+              {
+                "name": "theta",
+                "aliases": [
+                  "angle"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": false,
+                "default_if_absent": "0.0",
+                "note": "椭圆长轴与 x 轴夹角，弧度。第 64 行 float(p.get('theta', 0.0))——唯一带默认值的参数，缺了不判死；只影响 contains() 生成的固体掩码，不影响外接圆与周长"
+              },
+              {
+                "name": "r_front",
+                "aliases": [],
+                "role": "decision",
+                "type": "float",
+                "required": "shape==teardrop",
+                "note": "水滴形前缘圆弧半径（米）。第 66 行；与 k 一起定总长 L=2·k·r_front，外接圆半径=L/2（pillar_geometry 第 93、119-120 行）"
+              },
+              {
+                "name": "k",
+                "aliases": [
+                  "ratio"
+                ],
+                "role": "decision",
+                "type": "float",
+                "required": "shape==teardrop",
+                "note": "水滴形长径比。第 67 行；特征尺寸=2·k·r_front 须在 10~80μm。注意约束只看这个外接圆，不看实际轮廓"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须有 solution.json，否则 fatal（第 76-79 行）",
+    "顶层 pillars 必须是非空 list，否则 fatal（第 82-85 行）",
+    "pillars 长度不得超过 8，超了整份判无效而不是截断（第 86-88 行）",
+    "每根柱子的 shape 归一成小写后必须是 circle/ellipse/teardrop 之一，否则 fatal（第 59、68、91-96 行）",
+    "对应形状的参数键必须齐全且可转 float：circle 要 cx/cy/r，ellipse 要 cx/cy/a/b（theta 可缺、默认 0），teardrop 要 cx/cy/r_front/k（第 60-67、91-96 行）",
+    "cx、cy、外接圆半径都必须是有限数，出现 inf/nan 即 fatal（第 98-102 行）",
+    "特征尺寸（=2×外接圆半径）必须落在 10μm~80μm，容差仅 1e-10 m（第 104 行调用 check_constraints；pillar_geometry 第 187-191 行）",
+    "柱心到四壁的距离减去外接圆半径必须 ≥10μm，等价于整根柱子的外接圆完全落在 500μm×200μm 通道内并留出壁面间距（pillar_geometry 第 179-186 行）",
+    "任意两根柱子的形心距减去两个外接圆半径必须 ≥10μm（pillar_geometry 第 194-197 行）",
+    "以上任一条不满足即 validity=0、quality=0，不逐条扣分（第 104-108 行）",
+    "所有长度一律按米解释，抽取环节不得替选手做单位换算（EXTRACTOR_SPEC 第 19-20 行）"
+  ],
+  "derived_from_lines": [
+    59,
+    76,
+    82,
+    86,
+    91,
+    98,
+    104
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "case": "024_quay_crane_60ships",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "main() 第 324 行用 submission_dir / PLAN_FILE 拼路径, PLAN_FILE = 'solution.json'(第 58 行)",
+      "root_keys": [
+        {
+          "name": "num_cranes",
+          "aliases": [],
+          "type": "int",
+          "required": false,
+          "role": "ignored",
+          "note": "EXTRACTOR_SPEC 建议补全, 但评估器从不读它 —— compute_score 第 258 行用 len(cranes) 独立重算"
+        },
+        {
+          "name": "total_move_seconds",
+          "aliases": [],
+          "type": "float",
+          "required": false,
+          "role": "ignored",
+          "note": "同上, 第 259-264 行按 move 事件的起讫时刻重算, 自报值一律丢弃"
+        },
+        {
+          "name": "cranes",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "role": "structural",
+          "note": "第 285 行 'cranes' not in result 或不是 list 则 fatal; 第 288 行空数组也 fatal。数组长度就是计分用的岸桥台数(第 258 行), 空壳条目照样算一台",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "crane_id",
+                "aliases": [],
+                "role": "identifier",
+                "type": "int",
+                "required": true,
+                "note": "第 232 行 sorted(cranes, key=crane_id), 第 238-245 行 C6 按这个顺序逐时刻比位置 —— crane_id 越小必须物理位置越靠左"
+              },
+              {
+                "name": "events",
+                "aliases": [],
+                "role": "structural",
+                "type": "array",
+                "required": true,
+                "note": "第 151 行 fill_idle_gaps(crane['events']) 直接下标取用, 缺这个键会抛 KeyError 落进第 313 行的 exception 分支",
+                "items": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "type",
+                      "aliases": [
+                        "event_type"
+                      ],
+                      "role": "decision",
+                      "type": "string",
+                      "allowed_values": [
+                        "work",
+                        "move",
+                        "wait"
+                      ],
+                      "required": true,
+                      "note": "第 93 行 ev['type']=='move' 判位置口径; 第 172 行判 move; 第 189 行判 work; 第 135 行 work/wait 取 berth。其它取值既不计移动耗时也不产生作业秒数"
+                    },
+                    {
+                      "name": "start_time",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "string",
+                      "format": "YYYY-MM-DD HH:MM:SS",
+                      "note": "第 64-65 行 strptime 严格按这个格式解析, 带 T 或毫秒会抛异常; 第 159 行要求 end > start"
+                    },
+                    {
+                      "name": "end_time",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "string",
+                      "format": "YYYY-MM-DD HH:MM:SS",
+                      "note": "第 159-160 行 end<=start 判 C3/C7 违规; 第 164 行相邻事件重叠(负间隔 < -1s)判 C7 违规"
+                    },
+                    {
+                      "name": "berth",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "int|null",
+                      "required": false,
+                      "note": "work/wait 事件的所在泊位(第 96、136 行); work 事件第 196 行必须等于该船在 vessel_workload.csv 里登记的 berth_no; move 事件填 null"
+                    },
+                    {
+                      "name": "from_berth",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "int|null",
+                      "required": false,
+                      "note": "仅 move 事件; 第 173 行为 None 判 C4 违规; 第 176-177 行 |to-from|×880 秒必须等于事件时长"
+                    },
+                    {
+                      "name": "to_berth",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "int|null",
+                      "required": false,
+                      "note": "仅 move 事件; 第 94 行 move 结束时的位置取 to_berth; 第 139 行移动途中按 from→to 线性插值参与 C6"
+                    },
+                    {
+                      "name": "vessel_id",
+                      "aliases": [
+                        "vessel"
+                      ],
+                      "role": "identifier",
+                      "type": "string|null",
+                      "required": false,
+                      "note": "仅 work 事件; 第 192 行缺失判 C5 违规; 第 193-194 行必须是 vessel_workload.csv 的 60 个 vessel_id 之一"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "缺 solution.json 直接 fatal(第 279-281 行)",
+    "顶层不是对象、或没有 cranes 数组, fatal(第 285 行)",
+    "cranes 为空数组, fatal(第 288 行)",
+    "任一事件 end_time <= start_time, 判 C3/C7 违规(第 159-160 行)",
+    "同一岸桥相邻两事件重叠超过 1 秒, 判 C7 违规(第 164-166 行); 空档超过 1 秒不算违规, 由 fill_idle_gaps 自动补一段 wait(第 114-124 行)",
+    "move 事件缺 from_berth 或 to_berth, 判 C4 违规(第 173-174 行)",
+    "move 事件时长与 |to_berth - from_berth| × 880 秒相差超过 1 秒, 判 C4 违规(第 176-182 行)",
+    "work 事件缺 vessel_id, 判 C5 违规(第 192 行)",
+    "work 事件的 vessel_id 不在 60 艘船清单里, 判 C5 违规(第 193-194 行)",
+    "work 事件的 berth 不等于该船登记泊位, 判 C5 违规(第 196-198 行)",
+    "work 事件结束晚于该船靠泊结束时刻, 判 C2 违规(第 203-204 行)",
+    "work 事件开始早于该船靠泊开始时刻, 判 C2 违规(第 205-206 行)",
+    "任一船在自己窗口内累计的作业秒数(四舍五入到整秒)小于按四档箱型算出的需求秒数, 判 C1 违规(第 214-220 行)",
+    "任一时刻, 按 crane_id 升序排列的岸桥位置出现逆序(差值超过 0.01 格), 判 C6 穿越违规; 逐事件起讫时刻加每段 move 的中点各查一遍(第 223-247 行)",
+    "以上任一违规 -> validity_score=0、quality_score=0(第 292-300 行)"
+  ],
+  "derived_from_lines": [
+    58,
+    159,
+    164,
+    173,
+    176,
+    192,
+    193,
+    196,
+    203,
+    205,
+    214,
+    232,
+    238,
+    258,
+    279,
+    285,
+    288
+  ]
+}

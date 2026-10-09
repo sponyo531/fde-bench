@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Combinatorial Optimization"
+scene_type = ["结构设计", "CFD仿真优化", "微流控器件"]
+difficulty = "hard"

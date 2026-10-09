@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["选址评估", "回归建模", "银行零售"]
+difficulty = "hard"

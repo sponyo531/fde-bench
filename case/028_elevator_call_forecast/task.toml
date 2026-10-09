@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["需求预测", "时序预测"]
+difficulty = "hard"

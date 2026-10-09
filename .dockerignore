@@ -1,0 +1,15 @@
+# 从仓库根 docker build 时，context 会被整个打包传给 daemon（2.9 GB，其中
+# results 1.5G + _archive 1.2G）。这些一个字节都不进镜像（Dockerfile 里没有
+# COPY/ADD），纯粹白传 —— 而共享文件系统上遍历本身就慢，实测导致构建卡在「传 context」
+# 阶段，连 Step 1 都打不出来，看着像 daemon 死了。
+#
+# 正规做法是用 env-runner/ 当 context（只包含构建所需文件）。
+# 这个文件只是兜底。
+results/
+_archive/
+docs/
+.venv-openhands/
+.git/
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/

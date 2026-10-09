@@ -1,0 +1,52 @@
+{
+  "case": "008_material_property_forward_prediction",
+  "files": [
+    {
+      "name": "submission.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "row_id",
+          "role": "identifier",
+          "type": "integer",
+          "required": true,
+          "note": "numeric integer; joined to the private truth by row_id — must cover every row_id in the held-out test set (98 rows); no duplicate values allowed; the extractor may remap agent row numbering to the canonical row_id list from data/test.xlsx"
+        },
+        {
+          "name": "conductivity",
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "predicted ionic conductivity; must be numeric, non-null, and finite; units are the agent's responsibility (task spec: 1e-4 S/cm); do NOT rescale or alter the predicted value"
+        },
+        {
+          "name": "activation",
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "predicted activation energy (Ea); must be numeric, non-null, and finite; do NOT alter the predicted value"
+        },
+        {
+          "name": "density",
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "predicted relative density; must be numeric, non-null, and finite; units are the agent's responsibility (task spec: %); do NOT alter the predicted value"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "file submission.csv must exist at the root of submission_dir",
+    "all four columns [row_id, conductivity, activation, density] must be present — column names are matched verbatim, no aliases and no fuzzy matching",
+    "every value in all four columns must be parseable as a number (pd.to_numeric with errors='coerce' must yield no NaN)",
+    "conductivity, activation, and density must all be finite (np.isfinite check across the whole block)",
+    "row_id must contain no duplicate values",
+    "the set of row_id values must be a superset of every row_id in the private truth file — i.e. all 98 test rows must have a prediction"
+  ],
+  "derived_from_lines": [
+    72,
+    94
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "case": "044_bank_branch_siting_score",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "row_count": "≥2017（data/test_branches.csv 的 2017 个待评网点各一行；多写的行不判错，但同样要满足取值要求）",
+      "note": "evaluator 第 28 行 PLAN_FILE；第 55 行以 utf-8-sig 读取，带 BOM 也能读",
+      "columns": [
+        {
+          "name": "业务/服务名称",
+          "aliases": [
+            "branch",
+            "name",
+            "网点名称"
+          ],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "网点名称，与 data/test_branches.csv / tests/_private/test_truth.csv 逐字对齐（形如「BRANCH_00001」）。第 29 行 ID_COL；第 56-59 行缺列即 fatal；第 77 行 astype(str).str.strip() 后比对（首尾空格会被去掉，其他改写不行）；第 78-81 行重复即 fatal；第 96 行按它 merge 真值"
+        },
+        {
+          "name": "选址评分",
+          "aliases": [
+            "pred",
+            "score",
+            "predicted",
+            "y_pred",
+            "预测得分"
+          ],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "该网点的选址评分预测，0~100 闭区间。第 30 行 VAL_COL；第 61-64 行 pd.to_numeric 后不得有空值；第 66-68 行不得 inf/nan；第 69-75 行越出 0~100（容差 1e-9）即 fatal；第 100 行与真值算绝对差后取平均。不要改动数值、不要截断或缩放"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须有 predictions.csv，否则 fatal（第 50-53 行）",
+    "表头必须同时含「业务/服务名称」与「选址评分」两列，缺任一列即 fatal（第 56-59 行）",
+    "选址评分列必须全部能解析成数值，出现空值即 fatal（第 61-64 行）",
+    "选址评分不得含 inf 或 nan（第 66-68 行）",
+    "每一个选址评分都必须落在 0~100 闭区间，容差 1e-9；只要一个越界整份作废（第 69-75 行）",
+    "业务/服务名称去首尾空格后不得重复（第 78-81 行）",
+    "tests/_private/test_truth.csv 里的 2017 个待评网点一个都不能缺（第 85-92 行）；名单以外的多余行不判错——evaluator 只查 need-got，不查 got-need",
+    "以上任一条不满足即 validity=0、quality=0，不进入质量比较",
+    "真值只存在于 tests/_private/test_truth.csv（第 33、83 行），评估器独立读取，不信任提交自报"
+  ],
+  "derived_from_lines": [
+    28,
+    50,
+    56,
+    61,
+    66,
+    69,
+    77,
+    85,
+    96,
+    100
+  ]
+}

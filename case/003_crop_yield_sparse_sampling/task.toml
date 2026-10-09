@@ -1,0 +1,4 @@
+[metadata]
+task_type   = "Machine Learning"
+scene_type  = ["预测建模", "作物产量预测", "遥感"]
+difficulty = "hard"

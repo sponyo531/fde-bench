@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["时序预测", "多步预测", "水处理工艺控制"]
+difficulty = "hard"

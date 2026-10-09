@@ -1,0 +1,46 @@
+{
+  "case": "014_warehouse_multi_shuttle_water_level_policy",
+  "files": [
+    {
+      "name": "solution.py",
+      "format": "python_module",
+      "required": true,
+      "note": "Not a table — a Python source file that is imported by the evaluator via importlib. No columns, no JSON keys.",
+      "callable": {
+        "name": "policy",
+        "role": "required_attribute",
+        "signature": "policy(ctx) -> dict",
+        "note": "Must be a top-level callable. If missing or not callable the evaluator raises AttributeError and returns validity_score=0.",
+        "return_value": {
+          "type": "dict",
+          "note": "If the return value is not a dict the evaluator silently substitutes {} (no crash, but scores zero).",
+          "fields": [
+            {
+              "name": "key",
+              "role": "identifier",
+              "type": "str",
+              "description": "SKU ID. The evaluator looks up actual shipment by this key in act[day]. A different label for the same SKU is a remapping, not a different answer."
+            },
+            {
+              "name": "value",
+              "role": "decision",
+              "type": "float",
+              "constraints": ">=0",
+              "description": "Water-level upper bound for this SKU, in carton boxes. This is the agent's answer — changing it changes HIT/WASTE/FILL and therefore the score."
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "structural_checks": [
+    "solution.py must exist in submission_dir (FileNotFoundError → validity_score=0)",
+    "solution.py must expose a top-level callable named 'policy' (AttributeError → validity_score=0)",
+    "policy(ctx) should return a dict; a non-dict return is tolerated (replaced with {}) but scores zero"
+  ],
+  "aliases": "none — there are no payload.get() or 'or' alias chains; the evaluator calls policy() directly and iterates the returned dict",
+  "derived_from_lines": [
+    244,
+    255
+  ]
+}

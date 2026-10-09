@@ -1,0 +1,48 @@
+{
+  "case": "005_flight_seat_booking_forecast",
+  "files": [
+    {
+      "name": "submission.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "sample_id",
+          "aliases": [],
+          "role": "identifier",
+          "type": "int64",
+          "required": true,
+          "note": "Identifies the test flight sample. Cast to int64 via pd.to_numeric. Extractor may reattach from test_samples.csv row order if the agent's output lacks an explicit key, but must document the assumption."
+        },
+        {
+          "name": "horizon",
+          "aliases": [],
+          "role": "identifier",
+          "type": "int64",
+          "required": true,
+          "note": "Observation-day index in the 7-day booking window. **Direction is fixed by the truth table and is NOT free to choose**: bookings accumulate monotonically toward departure, and the private truth has mean bkd 57.6 at horizon=1 rising to 146.1 at horizon=7. So horizon=1 is the EARLIEST observation (farthest from departure) and horizon=7 is the day CLOSEST to departure. Mapping from a DAYS_BEFORE column (0=departure day, 6=six days before): horizon = 7 - DAYS_BEFORE. Mapping from a 0-indexed day column that already counts forward in time: horizon = day_index + 1. Getting the direction backwards inverts the whole booking curve — it still yields 7 rows per sample and passes every structural check, but predicts 136 where truth is 69. Verify by checking that predicted bkd increases with horizon before writing."
+        },
+        {
+          "name": "bkd_pred",
+          "aliases": [],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "Predicted total booked count (BKD). Must be finite, non-negative, and non-null. Must NOT be rescaled or clipped by the extractor — a wrong-but-well-formed value is a legitimate low score."
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "all three columns (sample_id, horizon, bkd_pred) must be present — evaluator uses verbatim names, no fuzzy matching",
+    "all values must be numeric and non-null after pd.to_numeric(..., errors='coerce')",
+    "bkd_pred must be finite (no inf / nan)",
+    "bkd_pred must be >= 0",
+    "no duplicate (sample_id, horizon) pairs",
+    "every (sample_id, horizon) pair present in the private truth set must have a corresponding prediction row — full coverage is mandatory"
+  ],
+  "derived_from_lines": [
+    85,
+    115
+  ]
+}

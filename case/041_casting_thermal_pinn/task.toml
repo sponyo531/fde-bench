@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["机器学习", "物理场代理建模", "铸造工艺仿真"]
+difficulty = "hard"

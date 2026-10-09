@@ -1,46 +1,146 @@
-# FDE-Bench project page
+# FDE-Bench
 
-A standalone research project page for **FDE-Bench: Evaluating End-to-End Delivery from Underspecified Real-World Business Requests**.
+**Evaluating End-to-End Delivery from Underspecified Real-World Business Requests**
 
-Project page: <https://sponyo531.github.io/fde-bench/>
+[Project page and paper](https://sponyo531.github.io/fde-bench/) · [Case inventory](case/) · [中文说明](README.zh-CN.md)
 
-The page includes sortable results for 18 agent configurations, a searchable inventory of 49 cases, an illustrative warehouse example, the evaluation protocol, authors, and a downloadable paper. The research code and dataset are not linked or included.
+FDE-Bench evaluates whether an agent can turn an incomplete business request into a deliverable that meets the customer's requirements. It separates asking the right clarification questions from producing a valid, useful solution.
 
-## Preview locally
+The benchmark contains **49 cases: 29 combinatorial-optimization tasks and 20 machine-learning tasks**, with **266 annotated clarification targets**. Cases cover manufacturing, logistics, energy, retail, finance, and engineering. Each includes an initial request, business data, complete requirements, a deterministic delivery evaluator, and a customer-accepted FDE reference deliverable.
 
-No build step or Node dependencies are needed. From this directory:
+## Information conditions
 
-```bash
-python -m http.server 8000
+The model, task, and agent scaffold stay fixed while information access changes.
+
+| Condition | Initial information | Customer interaction |
+| --- | --- | --- |
+| Hidden | Initial request and business data | No answers |
+| Interact | Initial request and business data | The agent decides whether to ask |
+| Interact-Req | Initial request and business data | The agent must clarify before solving and decides when it has enough information |
+| Full | Initial request, complete requirements, and business data | No answers |
+
+The paper reports `Hidden`, `Interact-Req`, and `Full`, together with an oracle analysis. `Interact`, `Interact-Conf`, `Full-Base`, `Full-Data`, and `Full-Rule` are additional experiments implemented by the harness; do not read them as reported paper results. `oracle_k<N>` progressively exposes annotated requirements. Delivery scoring checks artifact validity, hard constraints, and task-specific quality. Quality is normalized against the accepted FDE deliverable; that reference is not a claim of global optimality. See the paper and each case evaluator for precise definitions.
+
+## What is included
+
+```text
+harness/                 Evaluation, clarification, scoring, and agent adapters
+agents/                  Condition-specific instruction blocks
+case/<case-name>/
+  instruction.md         Initial business request
+  information.md         Complete business requirements
+  gt.json                Annotated clarification targets
+  task.toml              Task metadata
+  data/                  Agent-visible inputs, restored from release archives
+  environment/           Case-specific dependency environment
+  tests/                 Evaluator, schema, reference, and scoring-only truth
+env-runner/              Unified runner Docker image
+experiments.toml         Experiment matrices and case subsets
+data-manifest.json       External data paths, sizes, checksums, and availability
+scripts/                 Data restoration and environment build utilities
 ```
 
-Open <http://localhost:8000>. If running on a remote machine, forward port 8000 in your editor. All fonts, scripts, figures, and the PDF are served locally; the page does not depend on an external CDN or analytics service.
+`information.md`, `gt.json`, evaluators, references, and scoring-only truth are kept outside the solving workspace. The term `_private` in a case directory means **hidden from the evaluated agent**, not absent from the public evaluation package. Do not expose the repository root to the solving agent.
 
-## GitHub Pages
+### Data availability
 
-Use the **contents of this directory** as the root of a dedicated repository, such as `sponyo531/fde-bench`. Do not upload the surrounding research workspace.
+Large inputs are distributed as two GitHub Release archives rather than stored in Git history. A source checkout alone does not contain the complete input data.
 
-1. Push these files to the repository's `main` branch.
-2. In **Settings → Pages → Build and deployment**, choose **GitHub Actions**.
-3. Run **Deploy project page** from the Actions tab, or push another commit to `main`.
-4. GitHub will display the deployed URL in Settings → Pages. For that repository name it will normally be `https://sponyo531.github.io/fde-bench/`.
+- `fde-bench-data-case001.tar.gz`: aerodynamic-forecasting case 001.
+- `fde-bench-data-cases002-049.tar.gz`: external inputs for the other available cases, **excluding case 040**.
 
-The included workflow publishes the static files with GitHub's official Pages actions. Relative asset paths work both at a project URL and at a domain root. No custom domain is configured.
+Case 040 (`frailty_cohort_analysis`) retains its protocol and evaluator, but its row-level cohort data, held-out outcomes, and per-person reference output are withheld pending confirmation of redistribution rights. The downloadable data therefore cover **48 of the 49 benchmark cases**. Do not interpret a run without those files as a model failure.
 
-## Update content
+The two archives restore paths under `case/`. See [data release details](DATA.md), including checksums and local-archive installation.
 
-- `index.html`: page copy, section structure, metadata, and PDF links.
-- `styles.css`: layout, type, colors, and mobile rules.
-- `app.js`: filters, sorting, case browsing, accessible tabs, and citation copy.
-- `data.js`: result rows, the case inventory, authors, and affiliations.
-- `assets/FDE-Bench.pdf`: the current manuscript; replace it when the paper changes.
-- `assets/logo.png`: the supplied team icon without the original wordmark.
-- `assets/fonts/`: self-hosted DM Sans and Source Serif 4, with their SIL Open Font License notices.
+## Quick start
 
-Result values and case descriptions were extracted from `benchmark/arxiv/5_experiments.tex` (Table 1) and `benchmark/arxiv/8_appendix.tex` (case-level evaluator reference). Author information comes from `benchmark/arxiv/main.tex`. The dataset is a snapshot, not an automatically updated leaderboard. Quality uses four decimal places; the other metrics are percentages and use two.
+Use Python 3.11 or newer. Linux with Docker is recommended for benchmark runs. Listing available adapters and experiments does not call a model API or require downloaded datasets.
 
-Once an arXiv identifier is available, update the primary paper links and the BibTeX entry generated in `app.js`. Do not invent an identifier or link to the previous anonymous repository. If the site moves to another repository or domain, update the absolute `og:image`, canonical, and `og:url` metadata in `index.html`.
+```bash
+git clone https://github.com/sponyo531/fde-bench.git
+cd fde-bench
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m harness --list
+```
 
-## Design and attribution
+### 1. Restore case data
 
-The original page layout takes editorial inspiration from [RSI-Exam](https://rsi-exam.ai/): serif headlines, restrained color, clear results, and section labels. Its code and assets are not copied. The scientific figures, logo, and paper are supplied project material. Font license notices are kept in `assets/fonts/`; no additional license is imposed here on the research paper, figures, data, or research code.
+```bash
+python scripts/fetch_data.py
+python scripts/fetch_data.py --check
+python -m harness -e smoke --dry-run
+```
+
+The script verifies archive checksums before extraction and checks restored files against `data-manifest.json`. The smoke dry run requires restored case inputs but does not call a model API. `--check` also reports the deliberately withheld case separately.
+
+### 2. Configure models and credentials
+
+```bash
+cp config.toml.example config.toml
+```
+
+Set the answerer and clarification-judge model IDs, API endpoints, and token environment variables in `config.toml`. Credentials belong in environment variables, not tracked files. Select an installed agent CLI listed by `python -m harness --list`.
+
+For OpenCode, copy `opencode-routes.example.jsonc` to a private location outside the repository and configure the routes for your provider. Point `FDE_OPENCODE_CONFIG` to that file. `FDE_EXTRACTOR_OPENCODE_CONFIG` can optionally select a separate scoring configuration; otherwise the extractor uses the solver configuration.
+
+```bash
+export FDE_OPENCODE_CONFIG=/absolute/path/to/private/opencode.jsonc
+export DELIVER_AGENT_BASE_URL=https://your-chat-endpoint/v1
+export DELIVER_AGENT_API_KEY=YOUR_KEY
+export DELIVER_JUDGE_TOKEN=YOUR_JUDGE_KEY
+export DELIVER_ANSWERER_TOKEN=YOUR_ANSWERER_KEY
+```
+
+The example routes `chat/`, `responses/`, and `direct/` denote API protocols/routes, not public hosted services. Configure the corresponding `DELIVER_RESPONSES_*` or `DELIVER_DIRECT_*` variables only when using those routes. Freeze the answerer, judge, extractor, and solver versions when comparing results; changing them changes the evaluation setting.
+
+### 3. Build an execution environment
+
+Build the unified runner, which includes agent CLIs and the scientific-computing stack:
+
+```bash
+./build_images.sh --runner
+```
+
+The image is `fde-bench-runner:v1`. Building it downloads substantial dependencies and requires Docker/network access. Alternatively, build a case-specific scientific environment with `./build_images.sh 002_city_delivery_route_planning`; these environments rely on the selected agent CLI being installed on the host. The script supports `--dry-run` to inspect commands.
+
+### 4. Run one case
+
+```bash
+python -m harness \
+  -a opencode -m YOUR_PROVIDER/YOUR_MODEL \
+  -c Hidden,Interact,Interact-Req,Full \
+  -d 002_city_delivery_route_planning -k 1 \
+  --container fde-bench-runner:v1
+```
+
+Use `-e smoke --container fde-bench-runner:v1` for the predefined eight-condition smoke matrix. `experiments.toml` contains the paper's larger matrices and provider-neutral model identifiers; adapt model routes to your service rather than assuming those endpoints are supplied with the release. The full E1 case list includes withheld case 040, so a complete 49-case reproduction requires its separately authorized data.
+
+Results default to `results/`. Completed compatible runs are skipped when resuming. To summarize a result directory:
+
+```bash
+python -m harness.scoring.report results/opencode
+```
+
+## Agent adapters
+
+Adapters are discovered from `harness/backends/`. Supported adapters include OpenCode, Codex, Claude Code, Gemini CLI, Kimi CLI, DeepSeek Harness, and OpenHands. Some require separate installations or optional environments; see their adapter modules and the runner Dockerfile. OpenHands uses the legacy API pinned in the supplied environment and should not be silently upgraded.
+
+To add a headless CLI, create `harness/backends/<name>/__init__.py` and export an `AGENTS` dictionary. Existing adapters show how to handle native clarification tools, plain-text turns, session continuation, and usage accounting.
+
+## Validation and limitations
+
+```bash
+python -m pip install -r requirements-dev.txt
+pytest harness/tests
+```
+
+Listing experiments, validating downloaded release files, and dry-running a matrix after data restoration are offline checks. They do not validate provider credentials or reproduce model results. Case-specific Dockerfiles preserve their own dependency pins; `requirements.txt` is a host-side convenience set, not a replacement for those environments.
+
+## License and provenance
+
+No open-source or dataset redistribution license has yet been assigned to this release. Public visibility does not itself grant such a license. See [LICENSE_STATUS.md](LICENSE_STATUS.md) for the current status and third-party-data notes. Dependency packages remain subject to their respective licenses.
+
+Please cite the paper linked from the [project page](https://sponyo531.github.io/fde-bench/) when discussing the benchmark.

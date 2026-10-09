@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["销量预测", "间歇性需求", "奢侈品零售"]
+difficulty = "hard"

@@ -1,0 +1,145 @@
+{
+  "case": "012_silicon_steel_slitting_cutting",
+  "files": [
+    {
+      "name": "solution.csv",
+      "format": "csv",
+      "required": true,
+      "discovery": "submission_dir/solution.csv first; falls back to first match of **/solution.csv (line 313-318)",
+      "preprocessing": [
+        "strip whitespace from all column names (line 340)",
+        "drop all-NA rows (line 352)",
+        "drop rows where mother_cut_weight is null or <= 0 (lines 353-357)"
+      ],
+      "columns": [
+        {
+          "name": "mother_id",
+          "aliases": [],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "names the source mother coil; must match a coil in data/mother_coil.csv (evaluator assigns IDs M_0..M_11 by row order when the raw file has no ID column); same coil reused across cuts must carry the same mother_id",
+          "role_rationale": "母卷标识是查表键不是决策：evaluator 拿它去 data/mother_coil.csv 对齐母卷宽度，agent 写「母卷1000mm」、抽取器映射成「M_0」是标准的标识符归一化。标成 decision 会让守恒校验把这个合法映射当成凭空造值报出来。真正的决策是切割方案——每卷切几刀、每刀多宽。"
+        },
+        {
+          "name": "mother_width",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "mm",
+          "required": true,
+          "note": "width of the mother coil used in this cut; must match the coil's actual width within 10 mm; evaluator falls back to the coil's own width if this field is missing"
+        },
+        {
+          "name": "mother_cut_weight",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "kg",
+          "required": true,
+          "note": "weight of material cut off in this operation (断刀重量); must be >= 100 kg; cumulative sum per mother_id must not exceed that coil's total weight (10 kg tolerance)"
+        },
+        {
+          "name": "sub1_width",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "mm",
+          "required": true,
+          "note": "width of sub-strip in slot 1; must appear in requirements.csv widths (exact match); slot is live when both sub1_width and sub1_long are non-null and > 0"
+        },
+        {
+          "name": "sub1_long",
+          "aliases": [],
+          "role": "informational",
+          "type": "number",
+          "unit": "mm",
+          "required": true,
+          "note": "length of sub-strip in slot 1. INFORMATIONAL ONLY — not scored. By definition it equals mother_cut_weight / (mother_width * 7.65) * 10000, so it carries no information the evaluator lacks; output weight is prorated from mother_cut_weight and the widths instead. Do NOT recompute or 'correct' this field to make anything consistent — copy whatever the agent produced. A mismatch is reported as a warning and costs no score."
+        },
+        {
+          "name": "sub2_width",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "mm",
+          "required": false,
+          "note": "leave blank (null/empty) to mark slot unused; slot is live only when both sub2_width and sub2_long are non-null and > 0"
+        },
+        {
+          "name": "sub2_long",
+          "aliases": [],
+          "role": "informational",
+          "type": "number",
+          "unit": "mm",
+          "required": false,
+          "note": "length of sub-strip in slot 2. INFORMATIONAL ONLY — not scored. Copy the agent's value verbatim; never recompute it. See sub1_long."
+        },
+        {
+          "name": "sub3_width",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "mm",
+          "required": false
+        },
+        {
+          "name": "sub3_long",
+          "aliases": [],
+          "role": "informational",
+          "type": "number",
+          "unit": "mm",
+          "required": false,
+          "note": "length of sub-strip in slot 3. INFORMATIONAL ONLY — not scored. Copy the agent's value verbatim; never recompute it. See sub1_long."
+        },
+        {
+          "name": "sub4_width",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "mm",
+          "required": false
+        },
+        {
+          "name": "sub4_long",
+          "aliases": [],
+          "role": "informational",
+          "type": "number",
+          "unit": "mm",
+          "required": false,
+          "note": "length of sub-strip in slot 4. INFORMATIONAL ONLY — not scored. Copy the agent's value verbatim; never recompute it. See sub1_long."
+        },
+        {
+          "name": "sub5_width",
+          "aliases": [],
+          "role": "decision",
+          "type": "number",
+          "unit": "mm",
+          "required": false
+        },
+        {
+          "name": "sub5_long",
+          "aliases": [],
+          "role": "informational",
+          "type": "number",
+          "unit": "mm",
+          "required": false,
+          "note": "length of sub-strip in slot 5. INFORMATIONAL ONLY — not scored. Copy the agent's value verbatim; never recompute it. See sub1_long."
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "file must exist as solution.csv directly under submission_dir, or anywhere under it (recursive search)",
+    "file must be parseable as CSV",
+    "after preprocessing (drop all-NA rows, drop rows with null/non-positive mother_cut_weight), at least one data row must remain",
+    "each surviving row: mother_id must be a non-empty string referencing a known coil in data/mother_coil.csv",
+    "each surviving row: mother_cut_weight must be present and > 0 (enforced both as a pre-filter and as a hard constraint)",
+    "each surviving row: exactly 1 to 5 sub slots must be live (sub{i}_width AND sub{i}_long both non-null and > 0)"
+  ],
+  "alias_note": "The evaluator uses ONLY the canonical English column names above — no or-chain aliases anywhere in the evaluator parsing code. The alias/fallback list in the EXTRACTOR_SPEC docstring (evaluator.py lines 34-39) is a hint for the upstream extractor that transforms agent output into solution.csv; the evaluator itself never sees those names.",
+  "derived_from_lines": [
+    338,
+    205
+  ]
+}

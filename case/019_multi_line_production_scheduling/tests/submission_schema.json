@@ -1,0 +1,101 @@
+{
+  "case": "019_multi_line_production_scheduling",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "fg_schedule",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "No aliases accepted; key is checked by exact name. Duplicate (date, line, model) rows are summed.",
+          "fields": [
+            {
+              "name": "date",
+              "role": "decision",
+              "type": "date",
+              "format": "YYYY-MM-DD",
+              "required": true,
+              "note": "Accessed as row['date'] (KeyError if absent). Normalised by _norm_date: also accepts YYYY/MM/DD and YYYY.MM.DD. Range 2025-08-01 to 2025-08-31."
+            },
+            {
+              "name": "line",
+              "role": "decision",
+              "type": "string",
+              "required": true,
+              "note": "Accessed as str(row['line']).strip() (KeyError if absent). Expected values: '1#' / '2#' / '3#'."
+            },
+            {
+              "name": "model",
+              "role": "decision",
+              "type": "string",
+              "required": true,
+              "note": "Accessed as str(row['model']).strip() (KeyError if absent). Expected values: '101A' through '110A'. Together with date and line forms the composite accumulation key."
+            },
+            {
+              "name": "qty",
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "note": "Accessed via row.get('qty', 0); defaults to 0 if absent. Converted with int(round(float(...))). Negative values are not truncated at parsing but effectively penalised downstream."
+            }
+          ]
+        },
+        {
+          "name": "semi_schedule",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "No aliases accepted; key is checked by exact name. Duplicate (date, semi) rows are summed.",
+          "fields": [
+            {
+              "name": "date",
+              "role": "decision",
+              "type": "date",
+              "format": "YYYY-MM-DD",
+              "required": true,
+              "note": "Accessed as row['date'] (KeyError if absent). Normalised by _norm_date. Range 2025-07-31 to 2025-08-31 (includes lead-time pre-day 7/31)."
+            },
+            {
+              "name": "semi",
+              "role": "decision",
+              "type": "string",
+              "required": true,
+              "note": "Accessed as str(row['semi']).strip() (KeyError if absent). Expected values: 'AA' / 'BB' / 'CC'. Together with date forms the composite accumulation key."
+            },
+            {
+              "name": "self_qty",
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "note": "Accessed via row.get('self_qty', 0); defaults to 0 if absent. Converted with int(round(float(...))). Daily in-house production quantity."
+            },
+            {
+              "name": "buy_qty",
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "note": "Accessed via row.get('buy_qty', 0); defaults to 0 if absent. Converted with int(round(float(...))). Daily purchased quantity; semantically meaningful only for semi='BB' rows."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "top-level value must be a JSON object (dict)",
+    "key 'fg_schedule' must be present — no aliases tolerated",
+    "key 'semi_schedule' must be present — no aliases tolerated",
+    "fg_schedule must be a JSON array (list)",
+    "semi_schedule must be a JSON array (list)"
+  ],
+  "derived_from_lines": [
+    558,
+    569,
+    329,
+    342
+  ]
+}

@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["资源分配", "配方反向设计"]
+difficulty = "hard"

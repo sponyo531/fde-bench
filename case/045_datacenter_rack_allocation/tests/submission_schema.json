@@ -1,0 +1,123 @@
+{
+  "case": "045_datacenter_rack_allocation",
+  "files": [
+    {
+      "name": "solution.csv",
+      "format": "csv",
+      "required": true,
+      "note": "第 26 行 PLAN_FILE=\"solution.csv\"；第 105 行只在 submission_dir 根目录按这个名字找。第 91 行 open(..., encoding=\"utf-8-sig\") + csv.DictReader，所有单元格都当字符串读。产物必须是结果表，共 1112 行（server.csv 每台服务器一行）——EXTRACTOR_SPEC notes 第 14 行明确：若选手交的是 solution.py 之类的代码而不是结果表，说明产物不符合要求，不得代为执行取结果。若选手交的是 JSON 数组（每项一个 dict），展开成表格。",
+      "columns": [
+        {
+          "name": "server_id",
+          "aliases": [
+            "服务器",
+            "server",
+            "id"
+          ],
+          "role": "identifier",
+          "type": "string（第 124/197 行 str(...).strip()，字符串比对）",
+          "required": true,
+          "note": "第 124 行 row.get(\"server_id\",\"\")；第 198-200 行不在 server.csv 的 id 集合里即 hard_violations 并中断该批次；第 201-204 行同一 server_id 出现两次即违规；第 146-150 行 server.csv 的 1112 个 id 必须全部出现，少一台整份判不合格。必须保持原样，不要补零、不要被 Excel 转成科学计数法。"
+        },
+        {
+          "name": "rack_id",
+          "aliases": [
+            "机柜",
+            "rack_col_id",
+            "rack"
+          ],
+          "role": "decision",
+          "type": "string",
+          "required": "allocation_status=1 时必填；未分配时留空",
+          "note": "第 216 行 row.get(\"rack_id\",\"\")；第 217-219 行必须是 rack_col.csv 的 id（未分配的行不会走到这里，第 212-214 行已 continue）。这是真正的决策之一：装哪个机柜决定了兼容性（第 234 行）、功率上限（第 239 行）与四项成本里的三项（第 158-163 行）。"
+        },
+        {
+          "name": "pos",
+          "aliases": [
+            "位置",
+            "start_pos",
+            "U位",
+            "起始位"
+          ],
+          "role": "decision",
+          "type": "string（纯数字或形如 12A）",
+          "required": "allocation_status=1 时必填；未分配时留空",
+          "note": "第 220 行 row.get(\"pos\",\"\")；第 221-223 行 allocation_status=1 而 pos 为空即违规；第 224-227 行经 _parse_pos（第 40-50 行）解析：纯数字取值、以 A 结尾且前缀是数字取数字部分、其余（B/C/D 后缀等）返回 None 判违规。这是起始 U 位号，第 246-253 行按服务器高度往上逐位检查存在且未占用。"
+        },
+        {
+          "name": "allocation_status",
+          "aliases": [
+            "状态",
+            "assigned",
+            "分配状态"
+          ],
+          "role": "decision",
+          "type": "int（1 已分配 / 0 未分配）",
+          "required": true,
+          "note": "第 206-211 行 int(float(...))；留空会被当成 1（已分配），因此未分配的行必须把 0 明确写出来，否则会因为缺 rack_id/pos 被判违规。非法字符串直接 hard_violations。第 212-214 行 status != 1 即计入未分配清单，每台按第 29 行 UNASSIGNED_COST=1.0 记一笔代价（第 166 行）。"
+        },
+        {
+          "name": "batch",
+          "aliases": [
+            "批次",
+            "batch_id"
+          ],
+          "role": "ignored",
+          "type": "string",
+          "required": true,
+          "note": "required_columns 里列了这一列，但 evaluator 从不读它：第 125 行的分批一律取 servers[sid][\"batch\"]，即 server.csv 里那台机器自己的批次归属。填错、填空、乃至整列自己重划批次都不会改变分组，也不会报错——想靠重新划批次多蹭几次「各批次独立起算」是行不通的。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须存在 solution.csv，否则 error_info.fatal「缺 solution.csv」、validity=0（第 105-108 行）",
+    "文件至少要有一行数据，空表 fatal「solution.csv 为空」（第 109-112 行）",
+    "server_id 必须是 server.csv 里真实存在的 id，未知即 hard_violations（第 198-200 行）",
+    "同一台服务器不得出现两行（第 201-204 行）",
+    "server.csv 的全部 1112 台服务器都必须出现，缺则报缺失台数与前 5 个例子（第 146-150 行）",
+    "allocation_status 必须能解析成整数；留空按 1（已分配）处理；非法值 hard_violations（第 206-211 行）",
+    "allocation_status=1 的行，rack_id 必须是 rack_col.csv 里存在的机柜（第 216-219 行）",
+    "allocation_status=1 的行，pos 不得为空（第 221-223 行），且必须能被 _parse_pos 解析成可上架位号（第 224-227 行；B/C/D 面不是可上架位）",
+    "硬约束1 兼容性：机柜的 attr 必须出现在该服务器网卡在 nic_attr_mapping.csv 里的属性集合内，否则判不兼容（第 234-237 行）",
+    "硬约束2 电力：该批次内机柜累计已用功率加上这台服务器的功率不得超过额定功率，容差 1e-6（第 30、239-243 行）",
+    "硬约束3 连续空位：从 pos 起按服务器高度往上数的每个位号都必须在该机柜真实存在，且当前 state 不为 1（第 246-256 行）",
+    "批次分组按 server.csv 的 batch 字段（第 122-126 行），每个批次都用 fresh_state() 从到货前的原始已用功率与 U 位占用重新起算（第 116-119、135 行）——同一机柜同一 U 位可以在不同批次里各放一台",
+    "任一硬约束违规即写入 error_info.hard_violations（最多前 8 条）并直接返回，validity=0（第 142-144 行）；累计错误达到 8 条时提前跳出批次循环（第 139-140 行）",
+    "成本若算出非有限值也判违规（第 168-170 行）",
+    "以上全过才 validity=1.0（第 172 行）"
+  ],
+  "derived_from_lines": [
+    26,
+    29,
+    30,
+    40,
+    91,
+    105,
+    109,
+    122,
+    125,
+    135,
+    139,
+    142,
+    146,
+    158,
+    161,
+    162,
+    163,
+    166,
+    168,
+    172,
+    197,
+    198,
+    201,
+    206,
+    212,
+    216,
+    220,
+    224,
+    234,
+    239,
+    246
+  ]
+}

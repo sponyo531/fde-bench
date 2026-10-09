@@ -1,0 +1,119 @@
+{
+  "case": "043_water_coagulant_dosing",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "note": "长表，一行一个 (window_id, step)，四条线各一列；共 147 × 36 = 5292 行(不含表头)。以 utf-8-sig 读入(第 61 行)。KEYS + DOSE_COLS 之外的多余列被第 72 行切掉、不参与判定，但六个必需列一个都不能缺",
+      "columns": [
+        {
+          "name": "window_id",
+          "aliases": [
+            "window",
+            "win",
+            "窗口"
+          ],
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "第 32、66-69 行必需列；第 74-79 行须能 to_numeric 后转 int，含非数值即判 invalid_submission。取值必须与 data/forecast_windows.csv 的 window_id 一一对上(1..147)"
+        },
+        {
+          "name": "step",
+          "aliases": [
+            "horizon",
+            "h",
+            "t",
+            "未来第几步"
+          ],
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "第 32 行必需列；1~36，step=1 是该窗口 hist_step=72 之后的第一个五分钟、36 是第三小时末。第 86-89 行 (window_id, step) 不得重复，第 91-102 行不得缺、也不得多"
+        },
+        {
+          "name": "dose_1",
+          "aliases": [
+            "pred_dose_1",
+            "dose1",
+            "1号线投矾量"
+          ],
+          "role": "decision",
+          "type": "number",
+          "required": true,
+          "note": "第 33、104-114 行：必须是有限数值(空值/文字/nan/inf 均判 invalid)、且不得为负；第 128 行按该线实际投加量 > 0 掩码计分"
+        },
+        {
+          "name": "dose_2",
+          "aliases": [
+            "pred_dose_2",
+            "dose2",
+            "2号线投矾量"
+          ],
+          "role": "decision",
+          "type": "number",
+          "required": true,
+          "note": "同 dose_1(第 104-114、128 行)"
+        },
+        {
+          "name": "dose_3",
+          "aliases": [
+            "pred_dose_3",
+            "dose3",
+            "3号线投矾量"
+          ],
+          "role": "decision",
+          "type": "number",
+          "required": true,
+          "note": "同 dose_1(第 104-114、128 行)"
+        },
+        {
+          "name": "dose_4",
+          "aliases": [
+            "pred_dose_4",
+            "dose4",
+            "4号线投矾量"
+          ],
+          "role": "decision",
+          "type": "number",
+          "required": true,
+          "note": "同 dose_1(第 104-114、128 行)"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "提交目录下必须有 predictions.csv，缺文件直接判 0(第 55-58 行)",
+    "predictions.csv 必须能被 pandas 解析(第 60-64 行)",
+    "window_id / step / dose_1 / dose_2 / dose_3 / dose_4 六列缺任何一列即 fatal(第 66-69 行)",
+    "window_id 与 step 必须能转成数值，出现非数值即判 invalid_submission(第 73-77 行)",
+    "(window_id, step) 不得重复出现(第 86-89 行)",
+    "私有真值表里的每个 (window_id, step) 都必须出现，一行都不能少——停线时段的行照样要交(第 91-96 行)",
+    "不得多出待预测清单以外的 (window_id, step) 组合(第 97-102 行)",
+    "四条线的预测值都必须是有限数值，空值 / 文字 / nan / inf 均不合规(第 104-109 行)",
+    "四条线的预测值都不得为负，出现一个负数即整份判零(第 110-113 行)",
+    "以上任一条命中即 validity=0、quality=0(第 116-118 行)",
+    "计分时逐线剔掉真值为 0(停线)的时刻，掩码只影响计分、不影响上面的完整性校验(第 128 行)",
+    "真值只存在于 tests/_private/test_truth.csv，evaluator 从 _private 读、不从 data_dir 读(第 35、71 行)"
+  ],
+  "derived_from_lines": [
+    31,
+    32,
+    33,
+    35,
+    55,
+    61,
+    66,
+    71,
+    74,
+    86,
+    91,
+    97,
+    105,
+    110,
+    116,
+    122,
+    128
+  ]
+}

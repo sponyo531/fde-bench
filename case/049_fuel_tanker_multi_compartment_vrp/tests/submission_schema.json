@@ -1,0 +1,264 @@
+{
+  "case": "049_fuel_tanker_multi_compartment_vrp",
+  "note": "行号标注：不带前缀的指 tests/evaluator.py；带 kv 前缀的指 tests/validator_core.py（evaluator 导入 validator_core as kv，硬约束全部在其中）。",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "trips",
+          "aliases": [
+            "(顶层直接是 trip 数组，不套 trips 键)"
+          ],
+          "type": "array",
+          "role": "structural",
+          "required": true,
+          "note": "第 147 行 plan.get('trips', plan)——顶层可以是裸数组，也可以是 {'trips': [...]}；第 148-150 行不是 list 或为空即硬违规。一趟车一个对象。",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "tripId",
+                "aliases": [],
+                "role": "identifier",
+                "type": "int",
+                "required": false,
+                "note": "趟次号，只出现在报错文案里（kv 第 98、117、255、260 行用 _fld 兜底）。但 kv 第 111 行是裸下标 trip['tripId']，一旦某趟已经触发『仓的燃料类型与定义不符』且又没写 tripId，会抛 KeyError，被 evaluator 第 159-163 行兜成硬违规——建议保留。不参与打分。"
+              },
+              {
+                "name": "vehicleType",
+                "aliases": [
+                  "vehicle_type",
+                  "carType"
+                ],
+                "role": "ignored",
+                "type": "string",
+                "required": false,
+                "note": "车型名（'4.2m' / '7.6m'）。kv 第 232-233 行拿它比对客户的 availableVehicles，不匹配只写 warnings（kv 第 239-242 行），不判死、不影响分数。注意 EXTRACTOR_SPEC 的 schema 里没有列这个键——不写它会导致所有带准入限制的客户都出告警，但不影响 validity。"
+              },
+              {
+                "name": "distance",
+                "aliases": [],
+                "role": "ignored",
+                "type": "float",
+                "required": false,
+                "note": "自报本趟里程（米）。第 181-182 行：打分用的 total_distance 由 _recompute_distance 按 input_data.json 的经纬度复算，自报值只进 self_reported_distance 诊断字段，差五成以上时第 199-202 行给个提示。它也进 kv.score 的 combined_score_raw（第 203 行），但那个值不参与 quality。extractor 必须原样搬运、不得替选手重算。"
+              },
+              {
+                "name": "duration",
+                "aliases": [],
+                "role": "ignored",
+                "type": "int",
+                "required": false,
+                "note": "自报本趟时长（分钟）。只被 kv.score 用来算 max_duration / min_duration（kv 第 404-421 行），结果落在 combined_score_raw 里，不参与 validity 与 quality。"
+              },
+              {
+                "name": "depot",
+                "aliases": [],
+                "role": "passthrough",
+                "type": "object",
+                "required": false,
+                "note": "装货油库点。第 95 行 pt(t.get('depot'))，取其 locationId 或 id 去 input_data.json 的 locations 里查坐标；取不到时第 95 行退回 input 的 depots[0].locationId。参与复算里程的路径，不参与硬约束。"
+              },
+              {
+                "name": "departPoint",
+                "aliases": [],
+                "role": "passthrough",
+                "type": "object",
+                "required": false,
+                "note": "发车SITE_002。第 94 行同上，取不到时退回 input 的 departs[0].locationId。"
+              },
+              {
+                "name": "customers",
+                "aliases": [],
+                "role": "decision",
+                "type": "array",
+                "required": true,
+                "note": "本趟按访问顺序排列的客户列表——顺序本身就是决策，第 100-103 行按这个顺序串起来复算里程，extractor 不得重排。空列表不会直接判死，但订单覆盖那一关（kv 第 158-162 行）过不去。",
+                "items": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "locationId",
+                      "aliases": [],
+                      "role": "identifier",
+                      "type": "string",
+                      "required": true,
+                      "note": "必须指向 input_data.json 里 customers 的 locationId。kv 第 134-136 行取不到即硬错误；kv 第 174-181 行与 arriveTime / departTime 一起查齐；第 101 行还拿它查坐标算里程。"
+                    },
+                    {
+                      "name": "arriveTime",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "string",
+                      "required": true,
+                      "note": "到站时刻，yyyymmddHHMM 字符串（如 '202603050830'）。kv 第 175-181 行缺失即硬错误；kv 第 198-215 行拿它和客户 workTime 比时间窗，但不在窗内只写 warnings，不判死。"
+                    },
+                    {
+                      "name": "departTime",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "string",
+                      "required": true,
+                      "note": "离站时刻，同样 yyyymmddHHMM。kv 第 176-181 行只查它在不在，缺失即硬错误；除此之外全程不参与任何判定。"
+                    },
+                    {
+                      "name": "name",
+                      "aliases": [
+                        "address",
+                        "distance",
+                        "duration",
+                        "chargeTime"
+                      ],
+                      "role": "ignored",
+                      "type": "any",
+                      "required": false,
+                      "note": "EXTRACTOR_SPEC 的 schema 里列了 name / address / distance / duration / chargeTime，但 evaluator 与 validator_core 全文都不读客户层的这几个键，既不判死也不打分。"
+                    },
+                    {
+                      "name": "orders",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "array",
+                      "required": true,
+                      "note": "这一家本趟交付的订单列表。kv 第 141-142 行按客户 locationId 汇总，再与 input 的订单清单逐笔对账（kv 第 145-167 行）。不能把同一家的多张订单合并成一笔。",
+                      "items": {
+                        "type": "object",
+                        "fields": [
+                          {
+                            "name": "order_id",
+                            "aliases": [
+                              "orderId"
+                            ],
+                            "role": "identifier",
+                            "type": "string",
+                            "required": true,
+                            "note": "kv 第 67-75 行 _oid 依次认 order_id / orderId，两个都没有时 kv 第 149-154 行记硬错误。必须与 input 订单号逐字一致——kv 第 158-162 行按它查『订单是否被交付』。"
+                          },
+                          {
+                            "name": "volume",
+                            "aliases": [],
+                            "role": "decision",
+                            "type": "float",
+                            "required": true,
+                            "note": "该订单交付体积。kv 第 163-167 行用 `!=` 直接与 input 的 order['volume'] 比较——精确相等、连一点浮点容差都不给，所以 extractor 绝不能四舍五入或改写这个数。"
+                          },
+                          {
+                            "name": "oilType",
+                            "aliases": [
+                              "oilCategory",
+                              "wareId"
+                            ],
+                            "role": "ignored",
+                            "type": "any",
+                            "required": false,
+                            "note": "EXTRACTOR_SPEC 在订单层列了 oilType / oilCategory / wareId，但代码只从订单里取订单号与 volume（kv 第 146-167 行），这三个键读都不读。"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "loadInfo",
+                "aliases": [],
+                "role": "decision",
+                "type": "array",
+                "required": true,
+                "note": "本趟每个油仓装了什么。kv 第 90-117 行查仓-油品匹配、kv 第 247-261 行查装载百分比、kv 第 272-279 行汇总总量。缺这个键会让总量对账（kv 第 264-279 行）直接对不上而判死。",
+                "items": {
+                  "type": "object",
+                  "fields": [
+                    {
+                      "name": "wareId",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "int",
+                      "required": true,
+                      "note": "装的是哪个仓（1-5）。kv 第 94-100 行缺失即硬错误；kv 第 104-117 行必须能在 input_data.json 某个车型的 vehcileType 里找到同号仓，找不到即硬错误。"
+                    },
+                    {
+                      "name": "oilType",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "int",
+                      "required": true,
+                      "note": "装的油品大类编码（1 汽油 / 2 柴油 / 3 燃气）。kv 第 96-100 行缺失即硬错误；kv 第 107-112 行必须等于该仓登记的 loadType，不等即硬错误。"
+                    },
+                    {
+                      "name": "oilCategory",
+                      "aliases": [
+                        "fuelCategory"
+                      ],
+                      "role": "ignored",
+                      "type": "string",
+                      "required": false,
+                      "note": "油品细类（92#/95#/98#/0#）。判定一律以整数编码 oilType 为准（仓定义 ware['loadType'] 存的也是整数），这个字段不参与任何校验——『一个仓一趟只能装一种细类油品』这条业务规矩在代码里并没有被校验。原先 kv 第 95 行取过它却从不使用，2026-08-26 已删掉那行死代码。"
+                    },
+                    {
+                      "name": "volume",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": true,
+                      "note": "该仓装载体积（升）。kv 第 249-257 行缺失即硬错误；kv 第 272-279 行全部 loadInfo 的 volume 之和必须等于全部订单需求总量，误差不得超过 0.01 升。"
+                    },
+                    {
+                      "name": "volumePercent",
+                      "aliases": [],
+                      "role": "decision",
+                      "type": "float",
+                      "required": false,
+                      "note": "自报装载百分比。kv 第 251 行缺省当 0；kv 第 258-261 行只查『是否大于 100』——真实仓容（4.2m 车 3000 L / 7.6m 车 5000 L，就在 input_data.json 的 vehcileType.volume 里）从不参与校验，代码不会拿 volume 去除仓容。填了就要自洽。"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "solution.json 必须存在于提交目录（第 136-139 行）",
+    "内容必须能被 json.load 解析（第 140-145 行）",
+    "顶层必须是非空的 trip 数组，或 {'trips': [...]}（第 147-150 行）",
+    "校验过程中抛出的任何异常（多为提交侧键名缺失被裸下标取到）一律按硬违规处理，不再打崩评估（第 155-163 行）",
+    "loadInfo 每一条都必须有 wareId 与 oilType（kv 第 94-100 行）",
+    "loadInfo 的 wareId 必须能在 input_data.json 的某个车型仓定义里找到（kv 第 104-117 行）",
+    "该仓登记的 loadType 必须等于这条 loadInfo 的 oilType：汽油只能进 1/2/3 号仓、柴油只能进 4 号仓（kv 第 107-112 行）",
+    "提交里每条客户记录都必须写 locationId（kv 第 134-136 行）",
+    "客户下的每张订单都必须能取到订单号（order_id 或 orderId），取不到即硬错误（kv 第 67-75、149-154 行）",
+    "input 里每个客户的每张订单都必须出现在提交里，漏一张即硬错误（kv 第 158-162 行）",
+    "每张订单的 volume 必须与清单精确相等——用 != 直接比较，没有任何容差（kv 第 163-167 行）",
+    "客户那一层必须同时有 locationId、arriveTime、departTime 三个键（kv 第 174-181 行）",
+    "loadInfo 每一条都必须有 volume 与 wareId（kv 第 249-257 行）",
+    "自报的 volumePercent 一旦填了就不得大于 100（kv 第 251、258-261 行）",
+    "全部 loadInfo 的 volume 之和必须等于全部订单的需求总量，误差不超过 0.01 升（kv 第 264-279 行）",
+    "时间窗不满足只写 warnings，不判死（kv 第 202-215 行）",
+    "客户的车型准入不满足只写 warnings，不判死；判定读的是 trip 的 vehicleType 键（kv 第 218-242 行）",
+    "真实仓容从不被校验：kv 第 245-261 行完全没有用到车型仓定义里的 volume，只核对自报的百分比",
+    "一趟串几家（input 的 connectSize）、车辆台数（vehicles.count）、一车多趟（multiTrip）在代码里都没有任何校验分支",
+    "打分里程一律按 input_data.json 的 locations 经纬度复算，路径口径为 SITE_002 → 油库 → 各客户（按提交的 customers 顺序）→ 油库（backFlag=True 时回程），坐标查不到的点跳过；自报 distance 不采信（第 59-108、181-182 行）"
+  ],
+  "derived_from_lines": [
+    44,
+    46,
+    59,
+    94,
+    100,
+    136,
+    140,
+    147,
+    155,
+    165,
+    181,
+    191,
+    199,
+    203
+  ]
+}

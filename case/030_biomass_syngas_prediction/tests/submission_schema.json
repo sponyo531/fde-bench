@@ -1,0 +1,64 @@
+{
+  "case": "030_biomass_syngas_prediction",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "sample_id",
+          "aliases": ["id", "sample", "index"],
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "data/test_features.csv 的 sample_id（实测 0..126，共 127 行）。第 57 行 pd.to_numeric 转数值，转不动即 fatal；第 70-72 行重复即 fatal；第 74-79 行 truth 的 sample_id 集合减去提交集合非空即 fatal。注意评估器只查『缺』不查『多』——多出来的 sample_id 不报错，第 83-84 行按 truth 左连接后被丢弃"
+        },
+        {
+          "name": "H2(vol%)",
+          "aliases": ["H2", "h2", "h2_pred", "pred_H2"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 29 行 TARGETS[0]，列名必须逐字带 (vol%) 后缀，第 51-54 行缺列即 fatal。量纲与 train.csv 的同名目标列一致：0~1 的分数，不是 0~100 的百分数，不要乘 100"
+        },
+        {
+          "name": "CO(vol%)",
+          "aliases": ["CO", "co", "co_pred", "pred_CO"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 29 行 TARGETS[1]，同上；0~1 的分数"
+        },
+        {
+          "name": "CO2(vol%)",
+          "aliases": ["CO2", "co2", "co2_pred", "pred_CO2"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 29 行 TARGETS[2]，同上；0~1 的分数"
+        },
+        {
+          "name": "CH4(vol%)",
+          "aliases": ["CH4", "ch4", "ch4_pred", "pred_CH4"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 29 行 TARGETS[3]，同上；0~1 的分数"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "predictions.csv 必须存在于提交目录，缺文件即 fatal（第 45-48 行）",
+    "sample_id 与四个目标列必须齐全、列名逐字一致，缺任一列即 fatal（第 51-54 行）",
+    "五列都要能转成数值，出现非数值/缺失即 fatal（第 57-63 行）",
+    "四个目标列不得含 inf/nan（第 64-66 行）",
+    "四个目标列不得出现负数（第 67-69 行）",
+    "sample_id 不得重复（第 70-72 行）",
+    "tests/_private/test_truth.csv 里的每个 sample_id 都必须出现在提交里，缺任一即 fatal（第 74-79 行）",
+    "以上全过则 validity=1.0（第 81 行）；超出私有测试集的额外行不判错，只是被忽略",
+    "选手若额外给了四个组分之外的列（如 y_true / 概率 / 中间量），评估器不读，可以丢弃"
+  ],
+  "derived_from_lines": [28, 29, 45, 51, 57, 64, 67, 70, 74, 81, 83]
+}

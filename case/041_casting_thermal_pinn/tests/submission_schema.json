@@ -1,0 +1,96 @@
+{
+  "case": "041_casting_thermal_pinn",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "encoding": "utf-8-sig",
+      "required": true,
+      "columns": [
+        {
+          "name": "time_s",
+          "aliases": [
+            "t",
+            "time"
+          ],
+          "role": "identifier",
+          "type": "float",
+          "required": true,
+          "note": "待预测时刻，取值必须是 data/prediction_targets.csv 里 part=part2 的那 5 个时刻（1.2/2.4/3.6/4.8/6.0）；第 99 行按 np.isclose(atol=1e-6) 分组"
+        },
+        {
+          "name": "i",
+          "aliases": [
+            "x",
+            "ix"
+          ],
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "网格第一维索引，从 1 开始；第 101 行减 1，第 104-106 行越出 [1,44] 记违规"
+        },
+        {
+          "name": "j",
+          "aliases": [
+            "y",
+            "iy"
+          ],
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "网格第二维索引，从 1 开始；第 102 行减 1，范围 [1,24]（第 104-106 行）"
+        },
+        {
+          "name": "k",
+          "aliases": [
+            "z",
+            "iz"
+          ],
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "网格第三维索引，从 1 开始；第 103 行减 1，范围 [1,10]（第 104-106 行）。part2 网格 44×24×10 = 10560 个节点"
+        },
+        {
+          "name": "temperature",
+          "aliases": [
+            "T",
+            "temp",
+            "value",
+            "pred"
+          ],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "该时刻该节点的预测温度，摄氏度；第 107 行写入稠密网格，第 123-133 行参与越界与单调方向校验，第 145 行与私有真值算逐时刻 RMSE。EXTRACTOR_SPEC 第 17 行：保留原始精度，不要四舍五入或裁剪"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "predictions.csv 必须存在，否则 fatal（第 69-72 行）",
+    "time_s/i/j/k/temperature 五列必须齐全，缺列直接判违规（第 74-78 行）",
+    "五列经 pd.to_numeric 后不得留空或无法解析成数值（第 88-94 行）",
+    "每个时刻的 i/j/k 都必须落在 part2 网格范围内，越界即违规（第 104-106 行）",
+    "同一时刻内不得出现重复的 (i,j,k) 节点索引（第 108-110 行）",
+    "每个待预测时刻都必须覆盖 part2 的全部 10560 个节点，漏一个即违规（第 111-113 行）",
+    "任一时刻的温度最低值不得低于 −10℃、最高值不得高于 1750℃（第 123-125 行）",
+    "每个铸件节点（材料标识 2）在每个时刻都不得比它自己的起始温度高出 1℃ 以上（第 126-129 行）",
+    "每个砂型节点（材料标识 1）在每个时刻都不得比它自己的起始温度低 1℃ 以上（第 130-133 行）",
+    "以上任一条命中即 validity=0，不进入 RMSE 计算（第 135-137 行）"
+  ],
+  "derived_from_lines": [
+    69,
+    74,
+    88,
+    99,
+    104,
+    108,
+    111,
+    123,
+    126,
+    130,
+    135,
+    145
+  ]
+}

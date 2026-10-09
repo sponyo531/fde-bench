@@ -1,0 +1,80 @@
+{
+  "case": "029_hydropower_cascade_dispatch",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "顶层是一个 JSON 对象，必须包含出库流量矩阵 Q_out；为兼容旧提交，可包含额外字段，但评测器会忽略它们。",
+      "root_keys": [
+        {
+          "name": "Q_out",
+          "aliases": [
+            "q_out",
+            "outflow",
+            "出库流量",
+            "Q"
+          ],
+          "type": "array of array (5 x 7)",
+          "required": true,
+          "role": "structural",
+          "note": "评测器读取 Q_out；不是 list 或维度并非 5×7 时判为 fatal。这是唯一真正参与判分的字段，水位、出力和发电量全部由它重算。",
+          "items": {
+            "type": "array",
+            "length": 7,
+            "note": "第一维是电站序号 0~4，行序固定为梯级次序站点A/站点B/站点C/站点D/站点E；第二维是天序号 0~6。",
+            "fields": [
+              {
+                "name": "Q_out[i][t]",
+                "aliases": [],
+                "role": "decision",
+                "type": "float",
+                "required": true,
+                "note": "第 i 座电站第 t 天的出库流量，单位 m³/s。所有值统一转换为 float，转换失败则 fatal。站点D必须等于 Q_out[2][t]+10，站点E必须等于 Q_out[3][t]+5，容差 1.0 m³/s。"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须存在 solution.json，否则 error_info.fatal「缺 solution.json」、validity=0",
+    "文件必须能被 json.load 解析，否则 validity=0",
+    "Q_out 必须存在且是 list，否则 fatal「solution.json 缺 Q_out 字段」；其他顶层字段不参与评测",
+    "Q_out 必须恰好 5 行、每行恰好 7 列，否则 fatal",
+    "Q_out 每个元素必须能转换为 float，否则 fatal「Q_out 含非数值」",
+    "水量平衡：站点D当日出库必须 = 站点C当日出库 + 10，容差 1.0 m³/s",
+    "水量平衡：站点E当日出库必须 = 站点D当日出库 + 5，容差 1.0 m³/s",
+    "水位下限：三座调节库重算出的每日末水位不得低于死水位 1802/1090/790，容差 0.05 m",
+    "水位上限：不得高于 1845/1130/845（站点C用汛期上限 845，比正常蓄水位 850 低 5 m），容差 0.05 m",
+    "生态流量：五座电站每一天的出库都不得低于 50 m³/s，容差 0.05",
+    "出力爬坡：相邻两天的出力变化不得超过该站装机的 20%（34/52/72/13.2/26.4 MW），容差 0.05 MW，五座全查，且判的是已经与装机取小之后的出力",
+    "任一违规即写入 error_info.constraint（最多前 8 条）并直接返回，validity=0、quality=0",
+    "全过后 validity=1.0；总发电量若不是有限数则回滚 validity=0"
+  ],
+  "derived_from_lines": [
+    33,
+    46,
+    51,
+    74,
+    82,
+    84,
+    87,
+    90,
+    93,
+    101,
+    113,
+    115,
+    117,
+    120,
+    125,
+    128,
+    140,
+    147,
+    154,
+    158,
+    160,
+    161
+  ]
+}

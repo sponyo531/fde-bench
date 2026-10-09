@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Combinatorial Optimization"
+scene_type = ["资源优化", "装箱/装载"]
+difficulty = "hard"

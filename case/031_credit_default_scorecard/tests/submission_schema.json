@@ -1,0 +1,63 @@
+{
+  "case": "031_credit_default_scorecard",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "encoding": "utf-8-sig",
+      "required": true,
+      "columns": [
+        {
+          "name": "customer_id",
+          "aliases": [
+            "id",
+            "客户号"
+          ],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "申请人客户号；第 79-82 行必须存在此列，第 95-97 行不得重复，第 100-104 行必须覆盖私有真值表里的全部 customer_id（多交的行不参与打分，第 110 行 truth.merge(how='left')）"
+        },
+        {
+          "name": "prob_default",
+          "aliases": [
+            "pred",
+            "score",
+            "probability",
+            "p1",
+            "default_prob"
+          ],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "constraints": {
+            "finite": true,
+            "min": 0.0,
+            "max": 1.0
+          },
+          "note": "违约概率；第 84-87 行 pd.to_numeric 后不得有空值，第 89-91 行必须有限，第 92-94 行必须落在 [0,1] 闭区间。EXTRACTOR_SPEC 第 12-13 行：若选手交的是 0/1 硬分类，照搬该列不要转换；若给了好/坏两列概率，取违约(=1)那一列"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "predictions.csv 必须存在，否则 fatal（第 74-76 行）",
+    "customer_id、prob_default 两列都必须存在，缺任一列 fatal（第 79-82 行）",
+    "prob_default 经 pd.to_numeric 转换后不得出现空值/非数值（第 84-87 行）",
+    "prob_default 不得含 inf/nan（第 89-91 行）",
+    "prob_default 必须全部落在 [0,1] 闭区间，出现任何越界值整份 fatal（第 92-94 行）",
+    "customer_id 不得重复（第 95-97 行）",
+    "私有真值表里的每个 customer_id 都必须出现在提交中，缺一个即 fatal（第 100-104 行）",
+    "以上任一条命中即 validity=0，不进入 AUC/KS 计算（第 106 行之前全部 return）"
+  ],
+  "derived_from_lines": [
+    74,
+    79,
+    84,
+    89,
+    92,
+    95,
+    100,
+    110
+  ]
+}

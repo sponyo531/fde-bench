@@ -1,0 +1,3130 @@
+{
+  "num_cranes": 11,
+  "total_move_seconds": 189200.0,
+  "cranes": [
+    {
+      "crane_id": 1,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 18:30:00",
+          "berth": 1,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 18:30:00",
+          "end_time": "2024-07-13 05:31:20",
+          "berth": 1,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_007"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 07:55:20",
+          "end_time": "2024-07-13 08:10:00",
+          "berth": null,
+          "from_berth": 1,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 08:10:00",
+          "end_time": "2024-07-13 20:22:56",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_013"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 20:23:20",
+          "end_time": "2024-07-13 20:38:00",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 20:38:00",
+          "end_time": "2024-07-14 11:04:00",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_016"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:04:00",
+          "end_time": "2024-07-14 11:18:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 12:20:00",
+          "end_time": "2024-07-14 22:10:44",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_025"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:11:20",
+          "end_time": "2024-07-14 22:55:20",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:55:20",
+          "end_time": "2024-07-15 12:04:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_027"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 12:04:40",
+          "end_time": "2024-07-15 12:48:40",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 12:48:40",
+          "end_time": "2024-07-15 22:14:39",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_034"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 22:29:20",
+          "end_time": "2024-07-15 22:44:00",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 00:10:00",
+          "end_time": "2024-07-16 11:33:38",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_037"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 11:47:20",
+          "end_time": "2024-07-16 12:02:00",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 23:50:00",
+          "end_time": "2024-07-17 05:09:20",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_048"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 07:00:00",
+          "end_time": "2024-07-18 15:11:05",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_060"
+        }
+      ]
+    },
+    {
+      "crane_id": 2,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 18:30:00",
+          "berth": 1,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 18:30:00",
+          "end_time": "2024-07-13 05:30:59",
+          "berth": 1,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_007"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 07:55:20",
+          "end_time": "2024-07-13 08:10:00",
+          "berth": null,
+          "from_berth": 1,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 08:10:00",
+          "end_time": "2024-07-13 14:07:20",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_013"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:07:20",
+          "end_time": "2024-07-13 14:51:20",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:51:20",
+          "end_time": "2024-07-13 20:00:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 20:00:40",
+          "end_time": "2024-07-13 20:15:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 20:16:40",
+          "end_time": "2024-07-13 20:31:20",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 20:31:20",
+          "end_time": "2024-07-14 11:03:59",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_016"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:04:00",
+          "end_time": "2024-07-14 11:48:00",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:48:00",
+          "end_time": "2024-07-14 14:40:00",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_021"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 14:40:00",
+          "end_time": "2024-07-14 15:38:40",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 15:38:40",
+          "end_time": "2024-07-14 19:50:00",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_025"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 19:50:00",
+          "end_time": "2024-07-14 20:34:00",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:40:00",
+          "end_time": "2024-07-15 12:47:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_027"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 12:47:20",
+          "end_time": "2024-07-15 13:31:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 13:31:20",
+          "end_time": "2024-07-15 22:14:00",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_034"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 22:29:20",
+          "end_time": "2024-07-15 22:44:00",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 00:10:00",
+          "end_time": "2024-07-16 06:37:20",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_037"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 06:37:20",
+          "end_time": "2024-07-16 06:52:00",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 06:52:00",
+          "end_time": "2024-07-16 10:49:20",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_040"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 10:49:20",
+          "end_time": "2024-07-16 11:04:00",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 11:04:00",
+          "end_time": "2024-07-16 11:33:20",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_037"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 11:48:00",
+          "end_time": "2024-07-16 12:02:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 23:50:00",
+          "end_time": "2024-07-17 05:08:43",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_048"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-17 05:09:20",
+          "end_time": "2024-07-17 05:38:40",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 03:00:00",
+          "end_time": "2024-07-18 13:29:29",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_055"
+        }
+      ]
+    },
+    {
+      "crane_id": 3,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 20:40:00",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 20:40:00",
+          "end_time": "2024-07-13 05:12:40",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_008"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:35:20",
+          "end_time": "2024-07-13 06:50:00",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 06:50:00",
+          "end_time": "2024-07-13 08:24:40",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_012"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 08:24:40",
+          "end_time": "2024-07-13 08:39:20",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 08:39:20",
+          "end_time": "2024-07-13 14:07:20",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_013"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:07:20",
+          "end_time": "2024-07-13 14:51:20",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:51:20",
+          "end_time": "2024-07-13 20:00:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 20:00:40",
+          "end_time": "2024-07-13 20:15:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 20:16:40",
+          "end_time": "2024-07-13 20:31:20",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 20:31:20",
+          "end_time": "2024-07-14 10:36:00",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_016"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 10:36:00",
+          "end_time": "2024-07-14 11:05:20",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:05:20",
+          "end_time": "2024-07-14 11:30:28",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:30:40",
+          "end_time": "2024-07-14 11:45:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:45:20",
+          "end_time": "2024-07-14 17:56:40",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_021"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 18:26:00",
+          "end_time": "2024-07-14 18:40:40",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 18:40:40",
+          "end_time": "2024-07-14 22:10:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:10:00",
+          "end_time": "2024-07-14 22:24:40",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:25:20",
+          "end_time": "2024-07-14 22:40:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:40:00",
+          "end_time": "2024-07-15 12:46:56",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_027"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 12:47:20",
+          "end_time": "2024-07-15 13:02:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 13:02:00",
+          "end_time": "2024-07-15 21:33:20",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_031"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 22:00:00",
+          "end_time": "2024-07-15 22:44:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 00:10:00",
+          "end_time": "2024-07-16 03:30:00",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_037"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 03:30:00",
+          "end_time": "2024-07-16 03:44:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 04:50:00",
+          "end_time": "2024-07-16 12:21:57",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_040"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 03:00:00",
+          "end_time": "2024-07-18 06:48:40",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_055"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-18 06:48:40",
+          "end_time": "2024-07-18 07:03:20",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 07:03:20",
+          "end_time": "2024-07-18 22:32:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_059"
+        }
+      ]
+    },
+    {
+      "crane_id": 4,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 20:40:00",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 20:40:00",
+          "end_time": "2024-07-13 05:12:40",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_008"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:35:20",
+          "end_time": "2024-07-13 06:50:00",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 06:50:00",
+          "end_time": "2024-07-13 08:36:00",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_012"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 08:36:00",
+          "end_time": "2024-07-13 08:50:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 08:50:40",
+          "end_time": "2024-07-13 14:07:20",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_013"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:07:20",
+          "end_time": "2024-07-13 14:51:20",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:51:20",
+          "end_time": "2024-07-13 20:48:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 20:48:00",
+          "end_time": "2024-07-13 21:17:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 21:17:20",
+          "end_time": "2024-07-13 23:09:20",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_016"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 23:09:20",
+          "end_time": "2024-07-13 23:38:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 23:38:40",
+          "end_time": "2024-07-14 11:05:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:05:20",
+          "end_time": "2024-07-14 11:20:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:20:00",
+          "end_time": "2024-07-14 17:56:36",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_021"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 18:26:00",
+          "end_time": "2024-07-14 18:40:40",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 18:40:40",
+          "end_time": "2024-07-14 22:10:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:10:00",
+          "end_time": "2024-07-14 22:24:40",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:25:20",
+          "end_time": "2024-07-14 22:40:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:40:00",
+          "end_time": "2024-07-15 12:46:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_027"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 12:46:40",
+          "end_time": "2024-07-15 13:01:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 13:01:20",
+          "end_time": "2024-07-15 21:32:52",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_031"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 06:50:00",
+          "end_time": "2024-07-16 15:23:53",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_041"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 06:40:00",
+          "end_time": "2024-07-17 11:35:05",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_049"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 14:10:00",
+          "end_time": "2024-07-17 16:41:04",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_052"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 21:40:00",
+          "end_time": "2024-07-18 02:05:20",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_054"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-18 02:05:20",
+          "end_time": "2024-07-18 02:20:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 06:50:00",
+          "end_time": "2024-07-18 22:32:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_059"
+        }
+      ]
+    },
+    {
+      "crane_id": 5,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 16:10:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 16:10:00",
+          "end_time": "2024-07-12 20:25:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_005"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-12 20:25:20",
+          "end_time": "2024-07-12 20:40:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 20:40:00",
+          "end_time": "2024-07-13 05:12:27",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_008"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:35:20",
+          "end_time": "2024-07-13 06:50:00",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 06:50:00",
+          "end_time": "2024-07-13 08:36:00",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_012"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 08:36:00",
+          "end_time": "2024-07-13 08:50:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 2,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 08:50:40",
+          "end_time": "2024-07-13 12:22:40",
+          "berth": 2,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_013"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 12:22:40",
+          "end_time": "2024-07-13 12:37:20",
+          "berth": null,
+          "from_berth": 2,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 12:37:20",
+          "end_time": "2024-07-13 14:12:00",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_012"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:12:00",
+          "end_time": "2024-07-13 14:41:20",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:41:20",
+          "end_time": "2024-07-14 11:05:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:05:20",
+          "end_time": "2024-07-14 11:20:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:20:00",
+          "end_time": "2024-07-14 17:46:40",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_021"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 17:46:40",
+          "end_time": "2024-07-14 18:01:20",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 18:40:00",
+          "end_time": "2024-07-14 22:10:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:10:00",
+          "end_time": "2024-07-14 22:24:40",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:25:20",
+          "end_time": "2024-07-14 22:40:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:40:00",
+          "end_time": "2024-07-15 12:40:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_027"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 12:40:00",
+          "end_time": "2024-07-15 12:54:40",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 12:54:40",
+          "end_time": "2024-07-15 21:32:40",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_031"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 06:50:00",
+          "end_time": "2024-07-16 15:23:20",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_041"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 06:40:00",
+          "end_time": "2024-07-17 11:34:40",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_049"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 14:10:00",
+          "end_time": "2024-07-17 16:40:40",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_052"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 21:40:00",
+          "end_time": "2024-07-18 02:05:20",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_054"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-18 02:05:20",
+          "end_time": "2024-07-18 02:20:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 06:50:00",
+          "end_time": "2024-07-18 22:32:37",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_059"
+        }
+      ]
+    },
+    {
+      "crane_id": 6,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 16:10:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 16:10:00",
+          "end_time": "2024-07-12 21:57:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_005"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-12 21:57:20",
+          "end_time": "2024-07-12 22:12:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 22:12:00",
+          "end_time": "2024-07-13 05:12:00",
+          "berth": 4,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_008"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:35:20",
+          "end_time": "2024-07-13 06:50:00",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 06:50:00",
+          "end_time": "2024-07-13 14:11:28",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_012"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:12:00",
+          "end_time": "2024-07-13 14:41:20",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:41:20",
+          "end_time": "2024-07-14 10:51:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 10:51:20",
+          "end_time": "2024-07-14 11:50:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:50:00",
+          "end_time": "2024-07-14 12:00:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 12:00:00",
+          "end_time": "2024-07-14 17:05:20",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_023"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 17:05:20",
+          "end_time": "2024-07-14 18:10:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 18:10:40",
+          "end_time": "2024-07-14 18:40:00",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 18:40:00",
+          "end_time": "2024-07-14 22:10:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:10:00",
+          "end_time": "2024-07-14 22:24:40",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:25:20",
+          "end_time": "2024-07-14 22:40:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:40:00",
+          "end_time": "2024-07-15 06:29:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_027"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 06:29:20",
+          "end_time": "2024-07-15 06:58:40",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 06:58:40",
+          "end_time": "2024-07-15 15:00:41",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 15:01:20",
+          "end_time": "2024-07-15 15:16:00",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 8,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 15:16:00",
+          "end_time": "2024-07-15 15:22:15",
+          "berth": 8,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_032"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 15:23:20",
+          "end_time": "2024-07-15 16:07:20",
+          "berth": null,
+          "from_berth": 8,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:07:20",
+          "end_time": "2024-07-15 16:39:56",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 17:28:00",
+          "end_time": "2024-07-15 17:42:40",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 17:42:40",
+          "end_time": "2024-07-15 21:44:00",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_030"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 21:44:00",
+          "end_time": "2024-07-15 22:13:20",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 22:13:20",
+          "end_time": "2024-07-16 00:47:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_035"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 00:47:20",
+          "end_time": "2024-07-16 01:02:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 01:02:00",
+          "end_time": "2024-07-16 04:48:41",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_033"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 04:48:41",
+          "end_time": "2024-07-16 08:41:20",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_036"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 12:10:00",
+          "end_time": "2024-07-16 18:54:36",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_043"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 18:54:36",
+          "end_time": "2024-07-17 02:34:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_047"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 06:50:00",
+          "end_time": "2024-07-17 09:06:18",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_050"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-17 11:40:00",
+          "end_time": "2024-07-17 12:09:20",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 12:10:00",
+          "end_time": "2024-07-17 20:38:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_051"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-17 20:38:00",
+          "end_time": "2024-07-17 20:52:40",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 21:40:00",
+          "end_time": "2024-07-18 03:26:49",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_054"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-18 03:32:40",
+          "end_time": "2024-07-18 03:47:20",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 06:50:00",
+          "end_time": "2024-07-18 22:32:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_059"
+        }
+      ]
+    },
+    {
+      "crane_id": 7,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 16:10:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 16:10:00",
+          "end_time": "2024-07-12 21:57:20",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_005"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-12 21:57:20",
+          "end_time": "2024-07-12 22:12:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 23:40:00",
+          "end_time": "2024-07-13 05:42:00",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_009"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 05:42:00",
+          "end_time": "2024-07-13 06:11:20",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 4,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:35:20",
+          "end_time": "2024-07-13 06:50:00",
+          "berth": null,
+          "from_berth": 4,
+          "to_berth": 3,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 06:50:00",
+          "end_time": "2024-07-13 14:11:20",
+          "berth": 3,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_012"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:11:20",
+          "end_time": "2024-07-13 14:40:40",
+          "berth": null,
+          "from_berth": 3,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:40:40",
+          "end_time": "2024-07-13 23:12:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 23:12:00",
+          "end_time": "2024-07-14 00:25:20",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:25:20",
+          "end_time": "2024-07-14 08:47:58",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_017"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 08:48:00",
+          "end_time": "2024-07-14 09:02:40",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 09:02:40",
+          "end_time": "2024-07-14 10:28:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_018"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 10:28:40",
+          "end_time": "2024-07-14 11:20:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_019"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:20:40",
+          "end_time": "2024-07-14 11:50:00",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:50:00",
+          "end_time": "2024-07-14 12:00:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 12:00:00",
+          "end_time": "2024-07-14 17:04:44",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_023"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 17:04:44",
+          "end_time": "2024-07-14 18:10:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 18:10:40",
+          "end_time": "2024-07-14 18:40:00",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 18:40:00",
+          "end_time": "2024-07-15 14:39:20",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 14:39:20",
+          "end_time": "2024-07-15 14:54:00",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 8,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 14:54:00",
+          "end_time": "2024-07-15 15:19:20",
+          "berth": 8,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_032"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 15:19:20",
+          "end_time": "2024-07-15 16:03:20",
+          "berth": null,
+          "from_berth": 8,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:03:20",
+          "end_time": "2024-07-15 16:38:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 16:38:40",
+          "end_time": "2024-07-15 16:53:20",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:53:20",
+          "end_time": "2024-07-15 21:44:40",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_030"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 21:44:40",
+          "end_time": "2024-07-15 22:14:00",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 22:14:00",
+          "end_time": "2024-07-16 00:59:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_035"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 01:03:20",
+          "end_time": "2024-07-16 01:18:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 01:18:00",
+          "end_time": "2024-07-16 04:48:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_033"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 04:48:40",
+          "end_time": "2024-07-16 08:40:49",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_036"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 12:10:00",
+          "end_time": "2024-07-16 12:40:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_043"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 12:40:00",
+          "end_time": "2024-07-16 12:54:40",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 12:54:40",
+          "end_time": "2024-07-16 17:57:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_045"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 17:57:20",
+          "end_time": "2024-07-16 18:12:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 18:12:00",
+          "end_time": "2024-07-16 18:54:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_043"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 18:54:00",
+          "end_time": "2024-07-17 02:33:42",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_047"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 06:50:00",
+          "end_time": "2024-07-17 09:06:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_050"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-17 11:40:00",
+          "end_time": "2024-07-17 12:09:20",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 12:10:00",
+          "end_time": "2024-07-17 20:37:31",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_051"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 06:40:00",
+          "end_time": "2024-07-18 12:06:47",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_058"
+        }
+      ]
+    },
+    {
+      "crane_id": 8,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 16:10:00",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 16:10:00",
+          "end_time": "2024-07-12 21:57:01",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_005"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-12 21:57:20",
+          "end_time": "2024-07-12 22:12:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 23:40:00",
+          "end_time": "2024-07-13 06:10:00",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_009"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:53:20",
+          "end_time": "2024-07-13 07:08:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 07:08:00",
+          "end_time": "2024-07-13 12:38:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_011"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:10:40",
+          "end_time": "2024-07-13 14:40:00",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:40:00",
+          "end_time": "2024-07-13 22:56:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 22:56:40",
+          "end_time": "2024-07-14 00:10:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:10:00",
+          "end_time": "2024-07-14 01:50:00",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_017"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 01:50:00",
+          "end_time": "2024-07-14 02:04:40",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 02:04:40",
+          "end_time": "2024-07-14 10:28:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_018"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 10:28:40",
+          "end_time": "2024-07-14 11:20:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_019"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 11:20:40",
+          "end_time": "2024-07-14 11:50:00",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 11:50:00",
+          "end_time": "2024-07-14 12:00:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 12:00:00",
+          "end_time": "2024-07-14 17:04:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_023"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 17:04:40",
+          "end_time": "2024-07-14 21:43:20",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 21:43:20",
+          "end_time": "2024-07-14 22:12:40",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 22:12:40",
+          "end_time": "2024-07-15 11:06:00",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_026"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 11:06:00",
+          "end_time": "2024-07-15 11:20:40",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 8,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 11:20:40",
+          "end_time": "2024-07-15 15:11:20",
+          "berth": 8,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_032"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 15:11:20",
+          "end_time": "2024-07-15 15:55:20",
+          "berth": null,
+          "from_berth": 8,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 15:55:20",
+          "end_time": "2024-07-15 16:38:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 16:38:40",
+          "end_time": "2024-07-15 16:53:20",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:53:20",
+          "end_time": "2024-07-15 21:44:40",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_030"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 21:44:40",
+          "end_time": "2024-07-15 22:14:00",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 22:14:00",
+          "end_time": "2024-07-16 00:59:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_035"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 01:13:20",
+          "end_time": "2024-07-16 01:28:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 01:28:00",
+          "end_time": "2024-07-16 04:48:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_033"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 04:48:40",
+          "end_time": "2024-07-16 08:40:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_036"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 12:10:00",
+          "end_time": "2024-07-16 12:25:20",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_043"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 12:25:20",
+          "end_time": "2024-07-16 12:40:00",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 12:40:00",
+          "end_time": "2024-07-16 23:12:21",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_045"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-17 06:35:20",
+          "end_time": "2024-07-17 06:50:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 06:50:00",
+          "end_time": "2024-07-17 09:06:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_050"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-17 11:40:00",
+          "end_time": "2024-07-17 12:09:20",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 12:10:00",
+          "end_time": "2024-07-17 20:37:20",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_051"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 06:40:00",
+          "end_time": "2024-07-18 12:06:40",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_058"
+        }
+      ]
+    },
+    {
+      "crane_id": 9,
+      "events": [
+        {
+          "type": "work",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-11 00:11:16",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_001"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-12 08:54:40",
+          "end_time": "2024-07-12 09:09:20",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 09:10:00",
+          "end_time": "2024-07-12 10:09:12",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_004"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 23:40:00",
+          "end_time": "2024-07-13 06:09:22",
+          "berth": 6,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_009"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 06:27:20",
+          "end_time": "2024-07-13 06:42:00",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 7,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 06:42:00",
+          "end_time": "2024-07-13 12:37:50",
+          "berth": 7,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_011"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 14:10:40",
+          "end_time": "2024-07-13 14:40:00",
+          "berth": null,
+          "from_berth": 7,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:40:00",
+          "end_time": "2024-07-13 22:56:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 22:56:40",
+          "end_time": "2024-07-14 00:10:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:10:00",
+          "end_time": "2024-07-14 00:30:40",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_017"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 00:30:40",
+          "end_time": "2024-07-14 00:45:20",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:45:20",
+          "end_time": "2024-07-14 10:28:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_018"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 10:28:40",
+          "end_time": "2024-07-14 21:19:53",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_019"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 21:30:00",
+          "end_time": "2024-07-14 21:44:40",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 21:44:40",
+          "end_time": "2024-07-15 00:11:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_024"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 00:11:20",
+          "end_time": "2024-07-15 00:26:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 00:26:00",
+          "end_time": "2024-07-15 13:03:12",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_022"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 13:03:12",
+          "end_time": "2024-07-15 13:04:00",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_033"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 13:04:00",
+          "end_time": "2024-07-15 13:33:20",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 13:33:20",
+          "end_time": "2024-07-15 16:38:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 16:38:40",
+          "end_time": "2024-07-15 16:53:20",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:53:20",
+          "end_time": "2024-07-15 21:44:40",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_030"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 21:44:40",
+          "end_time": "2024-07-15 22:14:00",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 22:14:00",
+          "end_time": "2024-07-16 00:59:14",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_035"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 01:13:20",
+          "end_time": "2024-07-16 01:28:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 01:28:00",
+          "end_time": "2024-07-16 04:08:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_033"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 04:08:40",
+          "end_time": "2024-07-16 04:23:20",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 04:23:20",
+          "end_time": "2024-07-16 09:38:48",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_039"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 12:40:00",
+          "end_time": "2024-07-16 12:55:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_045"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 12:55:20",
+          "end_time": "2024-07-16 13:10:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 13:10:00",
+          "end_time": "2024-07-16 22:12:00",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_046"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 15:10:00",
+          "end_time": "2024-07-17 18:38:59",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_053"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 03:30:00",
+          "end_time": "2024-07-18 10:38:18",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_056"
+        }
+      ]
+    },
+    {
+      "crane_id": 10,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 04:00:00",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 04:00:00",
+          "end_time": "2024-07-12 11:28:18",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_002"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 16:10:00",
+          "end_time": "2024-07-13 00:55:01",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_006"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 01:56:00",
+          "end_time": "2024-07-13 02:10:40",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 03:30:00",
+          "end_time": "2024-07-13 11:08:05",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_010"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 13:08:00",
+          "end_time": "2024-07-13 13:37:20",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 13:46:40",
+          "end_time": "2024-07-13 14:01:20",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:01:20",
+          "end_time": "2024-07-13 16:47:20",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_014"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 16:47:20",
+          "end_time": "2024-07-13 17:02:00",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 8,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 17:06:00",
+          "end_time": "2024-07-13 17:35:20",
+          "berth": null,
+          "from_berth": 8,
+          "to_berth": 6,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 17:36:00",
+          "end_time": "2024-07-13 17:50:40",
+          "berth": null,
+          "from_berth": 6,
+          "to_berth": 5,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 17:50:40",
+          "end_time": "2024-07-13 22:56:40",
+          "berth": 5,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_015"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 22:56:40",
+          "end_time": "2024-07-14 00:10:00",
+          "berth": null,
+          "from_berth": 5,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:10:00",
+          "end_time": "2024-07-14 00:25:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_017"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 00:25:20",
+          "end_time": "2024-07-14 00:40:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:40:00",
+          "end_time": "2024-07-14 10:28:04",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_018"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 10:28:04",
+          "end_time": "2024-07-14 16:42:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_019"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 16:42:40",
+          "end_time": "2024-07-14 16:57:20",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 16:57:20",
+          "end_time": "2024-07-14 22:33:20",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_020"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 22:33:20",
+          "end_time": "2024-07-14 23:02:40",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 23:02:40",
+          "end_time": "2024-07-15 05:36:17",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_024"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 05:39:20",
+          "end_time": "2024-07-15 05:54:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 05:54:00",
+          "end_time": "2024-07-15 12:30:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_029"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 12:30:40",
+          "end_time": "2024-07-15 16:38:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 16:38:40",
+          "end_time": "2024-07-15 16:53:20",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:53:20",
+          "end_time": "2024-07-15 21:44:40",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_030"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 21:48:40",
+          "end_time": "2024-07-15 22:03:20",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 22:04:00",
+          "end_time": "2024-07-15 22:18:40",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 22:18:40",
+          "end_time": "2024-07-16 00:58:40",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_035"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 03:10:40",
+          "end_time": "2024-07-16 03:25:20",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 03:26:00",
+          "end_time": "2024-07-16 03:40:40",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 03:40:40",
+          "end_time": "2024-07-16 07:25:20",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_038"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 07:25:20",
+          "end_time": "2024-07-16 16:20:31",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_042"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 16:20:31",
+          "end_time": "2024-07-16 19:20:00",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_044"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-16 19:20:00",
+          "end_time": "2024-07-16 19:34:40",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 19:34:40",
+          "end_time": "2024-07-16 22:11:53",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_046"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-17 15:10:00",
+          "end_time": "2024-07-17 18:38:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_053"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 03:30:00",
+          "end_time": "2024-07-18 08:43:20",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_056"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-18 08:43:20",
+          "end_time": "2024-07-18 08:58:00",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 08:58:00",
+          "end_time": "2024-07-18 19:02:56",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_057"
+        }
+      ]
+    },
+    {
+      "crane_id": 11,
+      "events": [
+        {
+          "type": "wait",
+          "start_time": "2024-07-11 00:00:00",
+          "end_time": "2024-07-12 05:20:00",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-12 05:20:00",
+          "end_time": "2024-07-12 06:01:56",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_003"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 03:30:00",
+          "end_time": "2024-07-13 11:08:00",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_010"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 13:08:00",
+          "end_time": "2024-07-13 13:37:20",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 13:46:40",
+          "end_time": "2024-07-13 14:01:20",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 9,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-13 14:01:20",
+          "end_time": "2024-07-13 19:28:40",
+          "berth": 9,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_014"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-13 23:46:40",
+          "end_time": "2024-07-14 00:01:20",
+          "berth": null,
+          "from_berth": 9,
+          "to_berth": 10,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:10:00",
+          "end_time": "2024-07-14 00:25:20",
+          "berth": 10,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_017"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 00:25:20",
+          "end_time": "2024-07-14 00:40:00",
+          "berth": null,
+          "from_berth": 10,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 00:40:00",
+          "end_time": "2024-07-14 10:28:00",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_018"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 10:28:00",
+          "end_time": "2024-07-14 10:35:20",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_019"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 10:35:20",
+          "end_time": "2024-07-14 10:50:00",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 10:50:00",
+          "end_time": "2024-07-14 23:41:02",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_020"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-14 23:43:20",
+          "end_time": "2024-07-14 23:58:00",
+          "berth": null,
+          "from_berth": 12,
+          "to_berth": 11,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-14 23:58:00",
+          "end_time": "2024-07-15 00:10:00",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 00:10:00",
+          "end_time": "2024-07-15 12:30:25",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_029"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 12:30:25",
+          "end_time": "2024-07-15 16:32:40",
+          "berth": 11,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_028"
+        },
+        {
+          "type": "move",
+          "start_time": "2024-07-15 16:32:40",
+          "end_time": "2024-07-15 16:47:20",
+          "berth": null,
+          "from_berth": 11,
+          "to_berth": 12,
+          "vessel_id": null
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-15 16:47:20",
+          "end_time": "2024-07-15 21:44:38",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_030"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 00:10:00",
+          "end_time": "2024-07-16 07:24:44",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_038"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 07:24:44",
+          "end_time": "2024-07-16 16:20:00",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_042"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-16 16:20:00",
+          "end_time": "2024-07-16 20:18:51",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_044"
+        },
+        {
+          "type": "work",
+          "start_time": "2024-07-18 05:30:00",
+          "end_time": "2024-07-18 19:02:40",
+          "berth": 12,
+          "from_berth": null,
+          "to_berth": null,
+          "vessel_id": "SHIP_057"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "case": "016_aps_multi_table_scheduling",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "scheduled_ops",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "The evaluator reads the exact top-level key scheduled_ops; no alias is accepted. If several candidate result files exist, use the precise source with full timestamps and unrounded durations. A display table rounded to minutes can fail the duration check. The authoritative set is the 23 schedulable WOP records defined from the provided workbook, not the number of rows shown in a report.",
+          "fields": [
+            {
+              "name": "wop_oid",
+              "role": "identifier",
+              "type": "string",
+              "required": true,
+              "note": "De-identified WOP.OID from the WOP sheet (for example, schedulable ID WOP_0008). It must match an entry in the evaluator's independently computed schedulable set. Unknown IDs are not scored."
+            },
+            {
+              "name": "resource",
+              "role": "decision",
+              "type": "string",
+              "required": true,
+              "note": "Concrete device CODE from RES.CODE with ENA=1. It must be an allowed concrete device for this wop_oid. A resource-group name is not a valid device assignment."
+            },
+            {
+              "name": "start_dt",
+              "role": "decision",
+              "type": "datetime",
+              "format": "ISO8601; either a T or space separator is accepted and a trailing Z is ignored. Example: 2026-05-27T08:00:00",
+              "required": true,
+              "note": "Must be in the Monday-Saturday 08:00-18:00 work window."
+            },
+            {
+              "name": "end_dt",
+              "role": "decision",
+              "type": "datetime",
+              "format": "ISO8601; same parsing rules as start_dt",
+              "required": true,
+              "note": "Its working-minutes span is independently checked against MAK multiplied by QTY with a 1% tolerance."
+            },
+            {
+              "name": "duration_min",
+              "role": "ignored",
+              "type": "number",
+              "required": false,
+              "note": "Optional. The evaluator recomputes duration from the clean workbook and does not read this field."
+            }
+          ]
+        },
+        {
+          "name": "exceptions",
+          "aliases": [],
+          "type": "array",
+          "required": false,
+          "note": "Optional documentation-only field. The evaluator does not read it."
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "scheduled_ops must be present and a non-empty list",
+    "start_dt and end_dt must be parseable ISO8601 datetimes",
+    "Only wop_oid values in the evaluator's 23-operation schedulable set are scored",
+    "All 23 schedulable operations must be covered for the coverage constraint to pass"
+  ],
+  "derived_from_lines": [
+    370,
+    385
+  ]
+}

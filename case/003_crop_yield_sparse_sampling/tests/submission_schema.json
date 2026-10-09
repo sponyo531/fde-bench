@@ -1,0 +1,70 @@
+{
+  "case": "003_crop_yield_sparse_sampling",
+  "files": [
+    {
+      "name": "submission.csv",
+      "format": "csv",
+      "required": true,
+      "note": "Preferred path: submission_dir/submission.csv; evaluator also globs submission_dir/**/submission.csv and takes the first match.",
+      "columns": [
+        {
+          "name": "year",
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "Parsed as int(float(row['year'])). Part of the composite key (year, state_id, county_id) that must match the evaluator's private test set."
+        },
+        {
+          "name": "state_id",
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "Parsed as int(float(row['state_id'])). Part of the composite key."
+        },
+        {
+          "name": "county_id",
+          "role": "identifier",
+          "type": "int",
+          "required": true,
+          "note": "Parsed as int(float(row['county_id'])). Part of the composite key."
+        },
+        {
+          "name": "predicted_yield",
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "Parsed as float(row['predicted_yield']). Must be finite (not NaN, not Inf). The agent's soybean yield prediction in bushels/acre."
+        }
+      ]
+    }
+  ],
+  "aliases": {
+    "note": "The evaluator checks column names as exact literals (lines 116-119). No .get() alias chains exist in evaluator code. The EXTRACTOR_SPEC docstring (lines 3-20) lists aliases for the *extractor* to normalize before copying the file (state->state_id, county->county_id, pred/yield/prediction/predicted->predicted_yield), but the evaluator itself requires the canonical names above."
+  },
+  "structural_checks": [
+    "submission.csv must exist under submission_dir (searched recursively if not at top level)",
+    "HC1: all four columns [year, state_id, county_id, predicted_yield] must be present as literal header names",
+    "file must not be empty (at least one data row)",
+    "HC2: year, state_id, county_id must each be parseable as int(float(x)); predicted_yield must be parseable as a finite float (no NaN, no Inf)",
+    "HC3: no duplicate (year, state_id, county_id) triples",
+    "HC4: the set of (year, state_id, county_id) triples must equal the evaluator's private test set exactly — no missing rows, no extra rows"
+  ],
+  "derived_from_lines": [
+    37,
+    38,
+    50,
+    57,
+    79,
+    81,
+    99,
+    103,
+    106,
+    111,
+    116,
+    119,
+    124,
+    143,
+    146,
+    154
+  ]
+}

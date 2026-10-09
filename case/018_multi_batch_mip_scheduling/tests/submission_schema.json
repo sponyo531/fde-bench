@@ -1,0 +1,136 @@
+{
+  "case": "018_multi_batch_mip_scheduling",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "batches",
+          "aliases": [],
+          "type": "object",
+          "required": true,
+          "note": "dict keyed by sourceId; evaluator iterates over exactly these 5 keys: BATCH-24A-01, BATCH-24A-02, BATCH-24A-03, BATCH-24A-04, BATCH-24B-01 (hardcoded SOURCE_IDS, line 64-70); a missing key scores validity=0 for that batch",
+          "value_schema": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "schedule",
+                "aliases": [],
+                "type": "array",
+                "required": false,
+                "note": "defaults to [] if key is absent (line 400: .get('schedule', [])); empty list gives validity=1 but quality=0 for that batch",
+                "item_fields": [
+                  {
+                    "name": "工单编码",
+                    "role": "identifier",
+                    "type": "int or str",
+                    "required": true,
+                    "note": "work-order ID from 订单列表.工单编码; may be int or a string like '123_余' for split-remainder rows; evaluator strips '_余' suffix when aggregating qty (line 271-275)"
+                  },
+                  {
+                    "name": "产品编码",
+                    "role": "identifier",
+                    "type": "str",
+                    "required": true,
+                    "note": "product code; used only as a lookup key against reference 产品列表 — never compared to an expected set from the submission itself"
+                  },
+                  {
+                    "name": "线体编码",
+                    "role": "decision",
+                    "type": "str or null",
+                    "required": true,
+                    "note": "production line the agent assigned this work order to; null/absent when 是否未排==Y; if changed the constraint checks (线体可用性, 工作日历, 产能) and scoring all change"
+                  },
+                  {
+                    "name": "订单编码",
+                    "role": "grouping_key",
+                    "type": "str",
+                    "required": true,
+                    "note": "order code grouping work-order rows that belong to the same customer order; used in 整单同天同线体率 and 跟随约束",
+                    "role_rationale": "292 行按它 groupby 算 same_day_line_rate，全评估器只从提交读、零外部交叉验证。每行发唯一订单号会让每组 len==1 → same_day_line_rate=1.0"
+                  },
+                  {
+                    "name": "系列编码",
+                    "role": "grouping_key",
+                    "type": "str",
+                    "required": true,
+                    "note": "product-family / series code from reference data; used only in series_score aggregation (line 311)",
+                    "role_rationale": "311 行在 (线体,日期) 槽内做 distinct 计数算 series_score。缺失时 .get(...,'') 让所有行归一类 → series_score=1.0"
+                  },
+                  {
+                    "name": "要求交付日期",
+                    "role": "decision",
+                    "type": "date",
+                    "format": "YYYY-MM-DD",
+                    "required": true,
+                    "note": "required delivery date; read directly from solution rows (line 285), NOT reloaded from reference for this comparison; evaluator truncates to 10 chars so a datetime suffix is tolerated",
+                    "role_rationale": "285 行与排产日期做 <= 比较直接算 on_time_rate。缺失时默认 '2999-01-01' 使比较恒真 → on_time_rate=1.0。orders_df 里的真值在 104 行归一化后从未被读，是死代码"
+                  },
+                  {
+                    "name": "排产日期",
+                    "role": "decision",
+                    "type": "date",
+                    "format": "YYYY-MM-DD",
+                    "required": true,
+                    "note": "the production date the agent chose; '2999-01-01' signals unscheduled; evaluator truncates to 10 chars (lines 155, 171, 207, 226, 285, 293, 310, 322)"
+                  },
+                  {
+                    "name": "排产数量",
+                    "role": "decision",
+                    "type": "int",
+                    "required": true,
+                    "note": "quantity the agent chose to produce on 排产日期; used in 产能 constraint, 超量排产 constraint, schedule_rate, and balance_score"
+                  },
+                  {
+                    "name": "是否未排",
+                    "role": "decision",
+                    "type": "enum",
+                    "values": [
+                      "Y",
+                      "N"
+                    ],
+                    "required": true,
+                    "note": "N = scheduled (row enters all constraint checks and metrics); Y = unscheduled (row excluded from scoring, only participates in 跟随约束 target lookup); default 'Y' if absent"
+                  },
+                  {
+                    "name": "行号",
+                    "role": "identifier",
+                    "type": "float or null",
+                    "required": false,
+                    "note": "row number within an order; used as the target of 跟随行号 references in 跟随约束 (lines 203-210); null / absent means this row is not a follow target"
+                  },
+                  {
+                    "name": "跟随行号",
+                    "role": "identifier",
+                    "type": "float or null",
+                    "required": false,
+                    "note": "points to the 行号 of the row this row must co-schedule with (same day, same line); null / absent means no follow constraint on this row (lines 212-232)"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "'batches' must be present and be a non-empty dict (line 383-385: 'if not batches or not isinstance(batches, dict)' → fatal error, score 0)",
+    "each of the 5 SOURCE_IDS must appear as a key in 'batches'; a missing batch gives validity=0 for that batch and collapses overall_score to 0.0 (lines 394-398, 414, 417)",
+    "'schedule' within each batch defaults to [] if absent — not a fatal error, but an empty or absent schedule will score 0 for that batch (line 400)",
+    "top-level key 'source_ids' mentioned in EXTRACTOR_SPEC docstring is NEVER read by the evaluator — omit or include freely",
+    "row fields 班次, 生产节拍, 线体優先级 appear in EXTRACTOR_SPEC docstring but are NEVER accessed via .get() on solution rows; evaluator reads 生産節拍 and 线体優先级 independently from reference Excel (lines 136-138, 248-250)"
+  ],
+  "alias_audit": {
+    "note": "There are NO alias chains (no 'payload.get(X) or payload.get(Y)') anywhere on submission data. The only or-chain .get() in the file is load_baseline() reading its own internal reference JSON (line 111). Every submission key is a single fixed string.",
+    "batches_aliases": [],
+    "schedule_aliases": [],
+    "row_field_aliases": "none — all row fields are accessed by exact Chinese-character key names only"
+  },
+  "derived_from_lines": [
+    379,
+    400
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "case": "010_retail_replenishment_transfer",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "days",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "no alias — evaluator checks 'days' in submission exactly (line 517); non-dict entries silently dropped (line 361)",
+          "item_fields": [
+            {
+              "name": "date",
+              "role": "decision",
+              "type": "string",
+              "format": "YYYY-MM-DD",
+              "required": true,
+              "note": "natural key; days_by_date indexes on this value (line 361); dates outside 2025-03-13..2025-03-29 are silently ignored",
+              "role_rationale": "394 行 arrival_day = day_i + lt。361/394 行 days_by_date.get(date, {}) 使范围外日期被静默忽略：整天的 transfers/purchases 消失而 validity 仍为 1.0"
+            },
+            {
+              "name": "transfers",
+              "role": "structural",
+              "type": "array",
+              "required": false,
+              "note": "day.get('transfers', []) or [] — missing or null treated as empty list (line 395)",
+              "item_fields": [
+                {
+                  "name": "from_type",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "allowed_values": [
+                    "store",
+                    "wh"
+                  ],
+                  "note": "routing decision; value outside {'store','wh'} → HC0 violation and record skipped (lines 408-410)"
+                },
+                {
+                  "name": "from_id",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "note": "str(t.get('from_id', '')).strip() — identifies source store or warehouse (line 402)",
+                  "role_rationale": "412 行决定扣哪个位置的库存(HC1)；417 行与 DSD 指定供应商做 equality 比对(HC4)"
+                },
+                {
+                  "name": "to_store_id",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "note": "str(t.get('to_store_id', '')).strip() — destination store (line 403)",
+                  "role_rationale": "414/423/426/449 行决定 DSD 归属、LT 天数、到货补给哪个店的 balance"
+                },
+                {
+                  "name": "item_id",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "note": "str(t.get('item_id', '')).strip() — item being transferred (line 404)",
+                  "role_rationale": "404/414 行 → get_weight_kg → 运费公式；且是 balance/forecast/dsd 的实值键"
+                },
+                {
+                  "name": "qty",
+                  "role": "decision",
+                  "type": "number",
+                  "required": true,
+                  "note": "float(t.get('qty', 0) or 0) — records with qty <= 0 are silently skipped (line 405, 407)"
+                }
+              ]
+            },
+            {
+              "name": "purchases",
+              "role": "structural",
+              "type": "array",
+              "required": false,
+              "note": "day.get('purchases', []) or [] — missing or null treated as empty list (line 396)",
+              "item_fields": [
+                {
+                  "name": "supplier_id",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "note": "str(p.get('supplier_id', '')).strip() — external supplier (line 431)",
+                  "role_rationale": "441 行直接判 supplier_id != required_supplier(HC4)"
+                },
+                {
+                  "name": "to_store_id",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "note": "str(p.get('to_store_id', '')).strip() — destination store (line 432)",
+                  "role_rationale": "414/423/426/449 行决定 DSD 归属、LT 天数、到货补给哪个店的 balance"
+                },
+                {
+                  "name": "item_id",
+                  "role": "decision",
+                  "type": "string",
+                  "required": true,
+                  "note": "str(p.get('item_id', '')).strip() — item being purchased (line 433)",
+                  "role_rationale": "404/414 行 → get_weight_kg → 运费公式；且是 balance/forecast/dsd 的实值键"
+                },
+                {
+                  "name": "qty",
+                  "role": "decision",
+                  "type": "number",
+                  "required": true,
+                  "note": "float(p.get('qty', 0) or 0) — records with qty <= 0 are silently skipped (line 434, 436)"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission must be a JSON object (isinstance check, line 517)",
+    "'days' key must be present in the top-level object (line 517); no alias accepted",
+    "each element of 'days' must be a dict — non-dict entries are silently dropped (line 361)",
+    "transfers[].from_type must be exactly 'store' or 'wh' — any other value is an HC0 hard-constraint violation and the record is skipped (lines 408-410)",
+    "transfers[].qty <= 0 and purchases[].qty <= 0 entries are silently skipped, not violations (lines 407, 436)",
+    "an empty 'days' list passes schema validation and scores 0 (no non-empty check beyond isinstance+key presence)"
+  ],
+  "alias_audit": {
+    "note": "No or-chain aliases exist anywhere in the submission-reading path. Every .get() call uses a single key name with a default value only. Specifically: submission.get('days',[]) has no alias; day.get('transfers',[]) has no alias; day.get('purchases',[]) has no alias; all transfer and purchase field .get() calls are single-name with empty-string or 0 defaults.",
+    "grep_targets_checked": [
+      "submission.get(\"days\", [])  — line 361",
+      "day.get(\"transfers\", []) or []  — line 395",
+      "day.get(\"purchases\", []) or []  — line 396",
+      "t.get(\"from_type\")  — line 401",
+      "t.get(\"from_id\", \"\")  — line 402",
+      "t.get(\"to_store_id\", \"\")  — line 403",
+      "t.get(\"item_id\", \"\")  — line 404",
+      "t.get(\"qty\", 0)  — line 405",
+      "p.get(\"supplier_id\", \"\")  — line 431",
+      "p.get(\"to_store_id\", \"\")  — line 432",
+      "p.get(\"item_id\", \"\")  — line 433",
+      "p.get(\"qty\", 0)  — line 434"
+    ]
+  },
+  "derived_from_lines": [
+    510,
+    517,
+    361,
+    394,
+    395,
+    396,
+    401,
+    405,
+    431,
+    436
+  ]
+}

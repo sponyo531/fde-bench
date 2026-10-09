@@ -1,0 +1,83 @@
+{
+  "case": "040_frailty_cohort_analysis",
+  "files": [
+    {
+      "name": "trajectory_groups.csv",
+      "format": "csv",
+      "required": true,
+      "note": "评测器在 submission_dir 根目录读取 trajectory_groups.csv。若选手交的是宽表（每组一列 0/1 或后验概率矩阵），extractor 取硬分组（概率最大的组）转成两列长表，不重新编号、排序或聚类。",
+      "columns": [
+        {
+          "name": "hhidpn",
+          "aliases": [
+            "id",
+            "ID",
+            "person_id"
+          ],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "列名必须为 hhidpn；值转成字符串并去除首尾空格后不得重复。data/hrs_cohort.csv 的全部 1365 个 hhidpn 必须一个不少；多交的 id 会被忽略。"
+        },
+        {
+          "name": "group",
+          "aliases": [
+            "class",
+            "cluster",
+            "traj",
+            "label",
+            "trajectory_group",
+            "轨迹组"
+          ],
+          "role": "grouping_key",
+          "type": "string",
+          "required": true,
+          "note": "分组标签可用数字或字符串；整体重命名标签不改变得分，但划分必须保持不变。读取时先识别真实空值，再转成字符串并去除首尾空格；真实空值或空串直接 fatal。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "submission_dir 下必须存在 trajectory_groups.csv，否则 validity=0",
+    "文件必须能被 pandas 解析，否则 validity=0",
+    "hhidpn 与 group 两列都必须存在且列名逐字一致",
+    "hhidpn 去空格后不得重复",
+    "group 不得为真实空值或去空格后的空串",
+    "data/hrs_cohort.csv 里的每个 hhidpn 都必须出现",
+    "组数 K 必须落在 [2, 5] 内",
+    "每一组的人数必须 ≥ 30",
+    "每一组的人数占全队列比例必须 ≥ 2%",
+    "每一组在 p2006/p2008/p2010/p2012 四个波次上都必须至少有一个可观测得分",
+    "质心一致性门槛：按可观测波次的平均平方差把每个人归到最近质心的组，实际标签与之相符的比例必须 ≥ 0.80",
+    "以上全过才 validity=1.0；额外列会被忽略"
+  ],
+  "derived_from_lines": [
+    29,
+    30,
+    31,
+    32,
+    34,
+    35,
+    36,
+    37,
+    76,
+    80,
+    81,
+    91,
+    92,
+    98,
+    101,
+    104,
+    110,
+    117,
+    119,
+    123,
+    125,
+    131,
+    139,
+    142,
+    149,
+    152,
+    155
+  ]
+}

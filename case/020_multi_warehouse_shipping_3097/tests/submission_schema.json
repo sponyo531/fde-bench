@@ -1,0 +1,131 @@
+{
+  "case": "020_multi_warehouse_shipping_3097",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "root_keys": [
+        {
+          "name": "orders",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "Every ORDER_CODE in orders.xlsx must appear exactly once. Coverage violations are scored as constraint failures.",
+          "fields": [
+            {
+              "name": "ORDER_CODE",
+              "role": "identifier",
+              "required": true,
+              "note": "Must match a code in orders.xlsx; used for coverage, JSJ check, C9 deadline, and C10 套 grouping. Accessed via o.get(\"ORDER_CODE\") — None if absent, causing coverage miss."
+            },
+            {
+              "name": "MATERIAL_CODE",
+              "role": "identifier",
+              "required": "required for shipped orders",
+              "note": "Accessed as o[\"MATERIAL_CODE\"] (bracket, not .get) on line 334 inside the shipped-order guard. KeyError if a non-delayed order omits this field. Delayed orders never reach that branch."
+            },
+            {
+              "name": "QTY",
+              "role": "identifier",
+              "required": false,
+              "note": "Order quantity from source data; not decided by agent. Read as o.get(\"QTY\", 0) for C3 daily-limit and C6 inventory-balance checks. Defaults to 0 if absent."
+            },
+            {
+              "name": "is_delayed",
+              "role": "decision",
+              "type": "boolean",
+              "required": false,
+              "note": "true = order is delayed (ship_date and warehouse should be null/omitted). false (default) = order ships. Controls whether an order appears in `shipped` list and objective delayed_count."
+            },
+            {
+              "name": "ship_date",
+              "role": "decision",
+              "type": "date",
+              "format": "YYYY-MM-DD",
+              "required": "required when is_delayed is false",
+              "note": "Must be a valid send_date in the planning window (C1). Must be <= order deadline (C9). Null / absent for delayed orders."
+            },
+            {
+              "name": "warehouse",
+              "role": "decision",
+              "required": "required when is_delayed is false",
+              "note": "Name of the shipping warehouse. JSJ orders must use an external warehouse (外租库) (C2). Daily throughput per warehouse is capped by limit_num_day (C3). Null / absent for delayed orders."
+            }
+          ]
+        },
+        {
+          "name": "transfers",
+          "aliases": [],
+          "type": "array",
+          "required": false,
+          "note": "Optional. Defaults to [] if the key is absent. May be an empty list if the plan needs no inter-warehouse transfers.",
+          "fields": [
+            {
+              "name": "machine_id",
+              "role": "identifier",
+              "required": true,
+              "note": "Material/machine type being transferred. Used in C5 (batch count per machine_id <= db_limit) and C8 (禁调品名 types must never be transferred). Also used as the material axis in inventory-conservation bookkeeping (C6/C7)."
+            },
+            {
+              "name": "from_warehouse",
+              "role": "decision",
+              "required": true,
+              "note": "Source warehouse. Must be a factory warehouse (工厂库) — C4."
+            },
+            {
+              "name": "to_warehouse",
+              "role": "decision",
+              "required": true,
+              "note": "Destination warehouse. Must be an external warehouse (外租库) — C4."
+            },
+            {
+              "name": "qty",
+              "role": "decision",
+              "type": "number",
+              "required": false,
+              "note": "Quantity transferred. Read as t.get(\"qty\", 0). Used in inventory-balance simulation (C6/C7) and transfer_cost formula (wms: qty/2, aps: qty)."
+            },
+            {
+              "name": "transfer_type",
+              "role": "decision",
+              "required": true,
+              "note": "\"wms\" or \"aps\". Determines cost weight: wms transfers cost qty/2, aps transfers cost qty. No other values are recognised."
+            },
+            {
+              "name": "trigger_date",
+              "role": "decision",
+              "type": "date",
+              "format": "YYYY-MM-DD",
+              "required": true,
+              "note": "Date the transfer is executed. Must be a valid date in day_idx (the send_date planning window). If not found in day_idx the transfer is silently skipped in inventory simulation, so an invalid date effectively removes the transfer from scoring."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "root must be a JSON object (dict), not an array or scalar — line 418",
+    "\"orders\" key must be present at the root level — line 418; no accepted aliases",
+    "\"orders\" must be a list; coverage check requires every ORDER_CODE from orders.xlsx to appear exactly once — lines 229-240",
+    "\"transfers\" key is optional; missing key is treated as an empty list — line 215",
+    "For every non-delayed order (is_delayed != true): ship_date must be a valid send_date string and warehouse must be a non-null warehouse name — verified in C1/C3/C6 checks",
+    "MATERIAL_CODE must be present on every shipped (non-delayed) order — accessed via bracket notation o[\"MATERIAL_CODE\"] on line 334, raises KeyError if absent"
+  ],
+  "derived_from_lines": [
+    83,
+    214,
+    215,
+    229,
+    242,
+    264,
+    334,
+    336,
+    390,
+    391,
+    412,
+    415,
+    418
+  ]
+}

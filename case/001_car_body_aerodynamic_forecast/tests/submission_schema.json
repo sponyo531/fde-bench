@@ -1,0 +1,47 @@
+{
+  "case": "001_car_body_aerodynamic_forecast",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "vtu_name",
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "Test-vehicle filename exactly as keyed in data/frontal_areas.json (including @05000.vtu suffix). Must cover every vehicle in the test set with no duplicates."
+        },
+        {
+          "name": "Cd_pred",
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "constraints": {
+            "finite": true,
+            "min": 0.05,
+            "max": 1.5
+          },
+          "note": "Predicted aerodynamic drag coefficient Cd. Evaluated against private ground-truth Cd values via mean relative error. Value must be a finite float within the physical range [0.05, 1.5]."
+        }
+      ],
+      "structural_checks": [
+        "All test-set vtu_name values must be present (no missing vehicles)",
+        "No duplicate vtu_name rows",
+        "Cd_pred must be finite (no NaN, no Inf)",
+        "Cd_pred must be within physical range [0.05, 1.5]"
+      ],
+      "derived_from_lines": [
+        26,
+        28,
+        61,
+        71,
+        83,
+        88,
+        92,
+        98
+      ]
+    }
+  ]
+}

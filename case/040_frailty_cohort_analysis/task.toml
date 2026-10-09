@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["队列分析", "轨迹聚类", "健康风险分层"]
+difficulty = "hard"

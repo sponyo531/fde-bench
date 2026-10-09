@@ -1,0 +1,1911 @@
+{
+  "format_version": 1,
+  "repository": "sponyo531/fde-bench",
+  "release_tag": "v0.1.0",
+  "total_case_protocols": 49,
+  "available_case_data": 48,
+  "assets": [
+    {
+      "name": "fde-bench-data-case001.tar.gz",
+      "bytes": 2645224452,
+      "sha256": "897a71087a4dac9fb012b10c76b3825c375537f5017b49c137b24c4d3c01f17a",
+      "parts": [
+        {
+          "name": "fde-bench-data-case001.tar.gz.part01",
+          "bytes": 1610612736,
+          "sha256": "a12957300625657d99cd86b90c0d976bdb63057655f24d9b7342ce6d9e21340f"
+        },
+        {
+          "name": "fde-bench-data-case001.tar.gz.part02",
+          "bytes": 1034611716,
+          "sha256": "583ad09d6aa4bf2ebcc91291d7af93b73a340c6890df9ee35eb7c9e0f27839e5"
+        }
+      ]
+    },
+    {
+      "name": "fde-bench-data-cases002-049.tar.gz",
+      "bytes": 253384892,
+      "sha256": "d193a4d48057c166c9bc4b5cb9c4603025c34b594fbc00d5d832e355c44e1879"
+    }
+  ],
+  "withheld": [
+    {
+      "case": "040_frailty_cohort_analysis",
+      "reason": "Row-level cohort data and reference outputs withheld pending confirmation of redistribution rights.",
+      "paths": [
+        "case/040_frailty_cohort_analysis/data/followup_outcomes_train.csv",
+        "case/040_frailty_cohort_analysis/data/hrs_cohort.csv",
+        "case/040_frailty_cohort_analysis/tests/_private/test_outcomes.csv",
+        "case/040_frailty_cohort_analysis/tests/best_solution/trajectory_groups.csv"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/frontal_areas.json",
+      "bytes": 19883,
+      "sha256": "03ad764ccc84e74af6743b4e451d03d3eeecb23ff5f1c5fbd3902d9c320e70d9",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A@05000.vtu",
+      "bytes": 21440094,
+      "sha256": "df67eeea4f1a84c11a431b9cd0153434c23cd3e78614696c04209721aa9a3357",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_-X15mm@05000.vtu",
+      "bytes": 21489954,
+      "sha256": "65b2da9174b11967d977bc6ebf73f8c2146e9c6aead1bdd2662eda7e9e99ba3f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_-X30mm@05000.vtu",
+      "bytes": 21481450,
+      "sha256": "cb279572a0fda63aa71098062831e9449de9e64b8c123c155d1fc7f744c25e0a",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_-X45mm@05000.vtu",
+      "bytes": 21460950,
+      "sha256": "7a78102ac75451198b8a6dfb500dc87b2c07827f95c25bfd7a70b5586743a3cf",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_-Z15mm@05000.vtu",
+      "bytes": 21197494,
+      "sha256": "f7b85abd74040e463c3d1bc901f63d1283418377ff0e1f2e3c75e58ec38b6a6b",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_-Z30mm@05000.vtu",
+      "bytes": 21465430,
+      "sha256": "5080944a3eaaa3e4684838366b424695782322b2e5adfc6c6a9699df5b2a2f4f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_-Z45mm@05000.vtu",
+      "bytes": 21494598,
+      "sha256": "23baf0775a1b97d3d9ca01b22328bbf340b17219742a71488dd26eb1ccae41ee",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C-X-100mm_Remesh@05000.vtu",
+      "bytes": 36884640,
+      "sha256": "df29e59abdf63661a14485fe8cbbf667494ac27bc287595d06305628e7e5301b",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C_X-125mm_Remesh@05000.vtu",
+      "bytes": 36964476,
+      "sha256": "fcae51729ec9cbcf548b4f2c31977143ceb813ce88c732a85eb90fb0bf1e6b2f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C_X-150mm_Remesh@05000.vtu",
+      "bytes": 21330174,
+      "sha256": "0afaad8f0f9385d07154bc2663699871740efd61b2860c59579e0a7abe928cd3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C_X-175mm_Remesh@05000.vtu",
+      "bytes": 36828280,
+      "sha256": "0d3be6b727472c5354286449934d974e990cb26d96cfc583e24ed2cd929deb9c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C_X-200mm_Remesh@05000.vtu",
+      "bytes": 21331570,
+      "sha256": "22c48ad7b41b8bd2fd759115b8c0fa89275f4eb490b1ca7890454078b762464b",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C_X-50mm_Remesh@05000.vtu",
+      "bytes": 21526378,
+      "sha256": "752e2b0a52024c105272ce3e2c42eda039d1e17083c3d31641a8a6ceeb181e58",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_C_X-75mm_Remesh@05000.vtu",
+      "bytes": 36781288,
+      "sha256": "fefbe9fad72cd531a9775eebfc6b7207a32b7d22ce82112c3658a4e3cf0b649c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-10mm@05000.vtu",
+      "bytes": 22939858,
+      "sha256": "3a7d906f9e5657163a82dba13e018968a2782dc8222df1c8a27cdc5230aea363",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-15mm@05000.vtu",
+      "bytes": 23025858,
+      "sha256": "d6e483323120d52e586ec094acd7438687c36e1d2e2ca8862f4c862abed517c7",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-20mm@05000.vtu",
+      "bytes": 22940794,
+      "sha256": "6361b2f709b1b1f2ca1d09e1fb038cb4a7cbcc7b72760140a37b02f5d1e23504",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-25mm@05000.vtu",
+      "bytes": 22914818,
+      "sha256": "696b909b371e8959eb405c2ddd446611dd3492c2c9f734a57d5021ffbbe3e533",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-30mm@05000.vtu",
+      "bytes": 23426466,
+      "sha256": "3fb4f94fc83d4e891b0abef933466f50f020d4a43c877bb4a7cfcadd1097c3e4",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-35mm@05000.vtu",
+      "bytes": 23423406,
+      "sha256": "d627b393d0c6139803843166d0474ffe1888697c1a3ffd3428b7de3b6d224eaf",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-40mm@05000.vtu",
+      "bytes": 23407182,
+      "sha256": "8983b698cd181f03518939da6438d064a849f7b138a947d64c35b77a678ce78a",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai-5mm@05000.vtu",
+      "bytes": 23008106,
+      "sha256": "7ee91133d8596a93a90cdc11bbc8e4b22fa5a1c7cb189a518a649f573118eb8d",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai10mm@05000.vtu",
+      "bytes": 22944782,
+      "sha256": "db49c25cc7ae55bb4f387655cd2224b5e99e59b24b14e367078f494d8c2f7064",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai15mm@05000.vtu",
+      "bytes": 22976282,
+      "sha256": "87def210858d02027ec77bed1d7786bdfbf5ca60ae2775f6317ef022ec493739",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai20mm@05000.vtu",
+      "bytes": 22967358,
+      "sha256": "bc4a77b1bd17b6485c240839228796ab204614fbc98ed4a18175ae83dc036f99",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai25mm@05000.vtu",
+      "bytes": 22951030,
+      "sha256": "b5f5ef9a083e55fb2f9e8da85d4edf732266c141f5f18792689210cf2a17318f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai30mm@05000.vtu",
+      "bytes": 23481942,
+      "sha256": "7346d396c8f9fe55cf14a62967fd20b203913296d3ab754cda86d439088737fc",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_jigai5mm@05000.vtu",
+      "bytes": 22985106,
+      "sha256": "aa24efba199c15a2d0c9596433f66694357afde0ae99fb148f447359dde20279",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_qianbaocebianL_Y=10@05000.vtu",
+      "bytes": 22539918,
+      "sha256": "62636b94f4c875ad0f70169396720846f162f368c8f68872204fe9f3513f0d04",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_qianbaocebianL_Y=15@05000.vtu",
+      "bytes": 22508150,
+      "sha256": "2d6a74e751c2d41a3114536ef343bc645900d78b28605cb58fd8389d0e24c76e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_qianbaocebianL_Y=20@05000.vtu",
+      "bytes": 22642754,
+      "sha256": "ed165d74dd02cab76ccfa93e7221d856595b6cc75fb95c3259414d21cd76922f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_qianbaocebianL_Y=25@05000.vtu",
+      "bytes": 22493270,
+      "sha256": "dbcfeb3636f8cbb2ae0f2e5694968c985b7a603ee539c79e5d840fdb7bbba787",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_qianbaocebianL_Y=30@05000.vtu",
+      "bytes": 22517718,
+      "sha256": "b519f770ac993928711183406d6eb367c6ee3bae975d17cf957b5ecf08ec63be",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_Remesh_qianbaocebianL_Y=5@05000.vtu",
+      "bytes": 22593474,
+      "sha256": "88c34cee620c4aa8cce29a4b6b9182048dfad22ceb4787ae460c31c5f03ca8f7",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_X15mm@05000.vtu",
+      "bytes": 21476058,
+      "sha256": "66889cf77e09e826a38b6d688ef604695346aac3da1ac59d17a1cafdbf953d72",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_X30mm@05000.vtu",
+      "bytes": 21582934,
+      "sha256": "6c4287cf67728319b6e8c01634d47c21167a57874757a88cdd4fc60e539aa2db",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_X45mm@05000.vtu",
+      "bytes": 21522214,
+      "sha256": "276f077d49a61feab6eca2203067aa1c138f8372ac50e32017be3ec1e08ead7a",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z15mm_-X15mm@05000.vtu",
+      "bytes": 36891792,
+      "sha256": "99a4c5a79522cdd46e71c39a2be8c39d05149e82f254c2772dd7c0b1af7af9c6",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z15mm_-X30mm@05000.vtu",
+      "bytes": 36882668,
+      "sha256": "c2f17876eab5ea8cef72850d234184f21937e340d232c7890fcc3e45ba533066",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z15mm_-X45mm@05000.vtu",
+      "bytes": 36895664,
+      "sha256": "54f83156f7661f3cf558042987a191f43da343b0b448f484340d98a224bf4538",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z15mm_X15mm@05000.vtu",
+      "bytes": 21498958,
+      "sha256": "98d8c3b7873755f823c7678ed93ca46f0b8154f2ccbb8e8209e3922ad5660eb8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z15mm_X30mm@05000.vtu",
+      "bytes": 36980136,
+      "sha256": "fa195cf1f6cf5adea38daa3fd0b35aa06a6fcca0dcafdcf5aed86873be393d07",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z15mm_X45mm@05000.vtu",
+      "bytes": 37004408,
+      "sha256": "890689513eba8dff7f6d03804adb91cf6da4a09ac87d71735f1906b936195ea8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z30mm_-X15mm@05000.vtu",
+      "bytes": 21503122,
+      "sha256": "52c9537e383bc3bd8167e73586578b41c175e020792d8756b5a2d5b16be05a45",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z30mm_-X30mm@05000.vtu",
+      "bytes": 21478862,
+      "sha256": "a0ddf4e3a5fbaf034e3ab07bf1f2e85097d086b03b41b213d8c9b226384a1d56",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z30mm_-X45mm@05000.vtu",
+      "bytes": 21474338,
+      "sha256": "f76b1d39a19dc0f2fa80c1fc9d38a07daeb79eb55d75ab9e0fe515ac86dd9cd1",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z30mm_X15mm@05000.vtu",
+      "bytes": 21503262,
+      "sha256": "549cbe6e06d6a2eda2dd2b7ddfd8792e42f04277b78c63b1993f81183aacc52e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z30mm_X30mm@05000.vtu",
+      "bytes": 21545882,
+      "sha256": "1d96e584bd7b665887635795127d7bb5b27fdc21881fdc5f615a70bde2af0d86",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_A_weiyi_-Z30mm_X45mm@05000.vtu",
+      "bytes": 21454630,
+      "sha256": "a7fd5f714cc665d58643f143bcd67bec92c78048349b06640464970ac5667223",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh@05000.vtu",
+      "bytes": 13538626,
+      "sha256": "184fb7135f1227f4862bc275004ea589a1893ee5a5bca2075c3e3ca24f56c8b5",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z-10mm@05000.vtu",
+      "bytes": 13574398,
+      "sha256": "346c6b65670fa85dc1777708a00b78862aedd583d7bd186514d0f8c3dea263e2",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z-15mm@05000.vtu",
+      "bytes": 13484862,
+      "sha256": "32e4144419bc12cf2d2d79591bf6adbba57cb52b16aac71d98defc1c67836bcf",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z-20mm@05000.vtu",
+      "bytes": 13464010,
+      "sha256": "313de88a9703feee1ff835c64c1c5e90f35ce942d3917fa8743660ddf59a06d0",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z-25mm@05000.vtu",
+      "bytes": 13501302,
+      "sha256": "2cbbc9288ff0e4d6009ec8b1e0e63539a03ee4e7479cbceb5404bf76ea454902",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z-5mm@05000.vtu",
+      "bytes": 13594410,
+      "sha256": "90b649a328c59146435cb60b6be3eb3cf9c63494e583f5a1d70a458976fdf42e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z10mm@05000.vtu",
+      "bytes": 13590670,
+      "sha256": "d1b7e46ac169fc59f0a98a32f5fde62fddb378fe72b97fd0b95562274e03ccc8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z15mm@05000.vtu",
+      "bytes": 13568818,
+      "sha256": "66c9da3fc41e3448d61dc469ca419fc2b84407dac77d83f769505e0ff635bc3a",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z20mm@05000.vtu",
+      "bytes": 13486422,
+      "sha256": "06d4fef241d46263ac5d8050115dcfc34f3ed247e1e295a0f1ee1e5c97241116",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z25mm@05000.vtu",
+      "bytes": 13512686,
+      "sha256": "e1970f388247cf72de8d4cfdcf71d1e25e14b401fe953d2523c2f9ed01c1c4b2",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_Cdian_Z5mm@05000.vtu",
+      "bytes": 13486974,
+      "sha256": "aac01974a3e6f7e031f5f72adc9cd9ace20f93abc7868ffa3ab65b15fc70e202",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z-10mm@05000.vtu",
+      "bytes": 13526114,
+      "sha256": "f4cec9a91186bef7f2c8fd5175450bf956f2f44fa2a675ced84da9d96c0f0550",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z-15mm@05000.vtu",
+      "bytes": 13507426,
+      "sha256": "cd98dd385cbc38407742a28b3121103b2c79abda63d9ee7b3886a1dd6584d2b9",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z-20mm@05000.vtu",
+      "bytes": 13500306,
+      "sha256": "948530b1c8eacb94baf20fb64a2cab3acaba09b743ff25c496e45e6976a18d66",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z-25mm@05000.vtu",
+      "bytes": 13503526,
+      "sha256": "9e36be33ff3b621790e43f93602a07ecf6beed8ff9a1591dbbed769acb46e950",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z-5mm@05000.vtu",
+      "bytes": 13520906,
+      "sha256": "b43b525af13c6c7da3f839144f7e5ef3e4be9ea6eae33d0e62dfb4b770386549",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z10mm@05000.vtu",
+      "bytes": 13554954,
+      "sha256": "3a23c87cee2e721771fcc8e20723d17b85fb2f00b41ef461f100dcb7b2ae0faa",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z15mm@05000.vtu",
+      "bytes": 13541262,
+      "sha256": "5d4a279268bd3b5e74eee066ee89b96be3f66b88f732107855dee2015239812f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z20mm@05000.vtu",
+      "bytes": 13578542,
+      "sha256": "c2e5c9a680eb56c01ec0848ab6cc68b1c74b2ac93e3d9e6dc6564e0121da56ba",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z25mm@05000.vtu",
+      "bytes": 13550682,
+      "sha256": "69054386b97d0675e1b517e38dee2bdd2acf29d1770a90e33cf81dfd271f800f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_jigai_Z5mm@05000.vtu",
+      "bytes": 13542278,
+      "sha256": "22dd723939a24fde43a3a0d0e1841e56502cbcbeada40675dc7aaae9190a202c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z-10mm@05000.vtu",
+      "bytes": 13466490,
+      "sha256": "c90d8762aa784de90737cbc5e878e65dd0cf7192976e356d3aff61d5f8c3d727",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z-15mm@05000.vtu",
+      "bytes": 13504522,
+      "sha256": "892d040077d377e03c9ecf58c9fdf747ff3eb59a50137bda61afd62cf647e5dd",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z-20mm@05000.vtu",
+      "bytes": 13498262,
+      "sha256": "bdc11dd39ef0ee4bc097f8e4adb9a6a70f944b5773aacc4195c0283cab9689fd",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z-5mm@05000.vtu",
+      "bytes": 13496742,
+      "sha256": "4b18340a187ca5439e947501846c08425e6f287b98b24e3d8a1d9b1b4658dc74",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z10mm@05000.vtu",
+      "bytes": 13453246,
+      "sha256": "3e959a079a7fa229d5316ce8dd553dfd8927d562ef09b6ff41e47f2e09a7e199",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z15mm@05000.vtu",
+      "bytes": 13482674,
+      "sha256": "da654787b9b018e65f6a7419c7a5271579bfe619bb5af0312157754aaf5550dc",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z20mm@05000.vtu",
+      "bytes": 13489202,
+      "sha256": "3a4f6f1196372b97f902ab456c6337a60cf6f771681e5efaa4b22cae68810f00",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianchun_Z5mm@05000.vtu",
+      "bytes": 13461222,
+      "sha256": "d7ceddeb665f599cbb559ab9eebf03a3ba5948df4f7b98cabd5e44c1b50d21b0",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z-10mm@05000.vtu",
+      "bytes": 13597170,
+      "sha256": "75845ddd06ea7a9b80aa6b1ed57e38bb568aeab6fbd9b201ed327173dea6676f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z-20mm@05000.vtu",
+      "bytes": 13607538,
+      "sha256": "96becca8c1de22cf1805e451ab1451c86f0a7eecc40bd4caf8d444023d16aeb1",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z-30mm@05000.vtu",
+      "bytes": 13607406,
+      "sha256": "64ca37bcf718954f09b0e7f8923627c34fdc196953741cda5c79bd845088f38e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z-40mm@05000.vtu",
+      "bytes": 13639202,
+      "sha256": "13703cfe5e8934418b24ccbf2e6a6b558db06e8e2e748ad7db9d7d91ea2376a2",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z-50mm@05000.vtu",
+      "bytes": 13598078,
+      "sha256": "0127b9f086180f48f630b47e396c890adb48a66d8d1b7c2ff6377375d86c4b42",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z10mm@05000.vtu",
+      "bytes": 13582758,
+      "sha256": "581486947beb53f4d3b4b543c64d2b37aeddb16c6d3c6a8ffe8738a5c6ef61e8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z20mm@05000.vtu",
+      "bytes": 13580726,
+      "sha256": "ed6b151f9b06fbe183e3c2ca12efbc28a1f0af3d8dea4f9251fc2ca6e7a6c0a6",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z30mm@05000.vtu",
+      "bytes": 13622274,
+      "sha256": "febbea9e0335d78bc17e92d1234c777962b3f48ae6f312ce7386445e0462c3ff",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z40mm@05000.vtu",
+      "bytes": 13596598,
+      "sha256": "e59200434bb07c4824d7130a9cb23e42ceba58e47699fcabf8c733b8594f5c75",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm@05000.vtu",
+      "bytes": 13604762,
+      "sha256": "b9bad6145e19394bbf5be1a3d03944a272660dcd7941560b17bc0bf9a716f1f3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_X10mm@05000.vtu",
+      "bytes": 14195022,
+      "sha256": "c79f125b2aa510cb99fd065018eb5b9314c7c09fe50baf9d8958ea433c4661e3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_X15mm@05000.vtu",
+      "bytes": 14246138,
+      "sha256": "04c2333ab79f274036ac763c606585f180ef44dc98662416911d98d0c624e01c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_X20mm@05000.vtu",
+      "bytes": 14239918,
+      "sha256": "b4a68d31ea8957e45ed55fbd0919cce52775bb615d8c1604cfb5a6e3ee3d9be8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_X25mm@05000.vtu",
+      "bytes": 14267402,
+      "sha256": "c6af145b33e6639c71bfed4e8bf99087d2649622a916e39c027f02a0bbabc396",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_X30mm@05000.vtu",
+      "bytes": 14256446,
+      "sha256": "8032903c1caf3fed6a33b56d9154e3078b68b7a21f8cb92e7bfa0d72fca98cf6",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_X5mm@05000.vtu",
+      "bytes": 14170238,
+      "sha256": "22aa95f9e062da48edd3e61bd34484d11604731fe043e239d94763a0b87a08a8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-10mm@05000.vtu",
+      "bytes": 14219690,
+      "sha256": "0b02b8ded7a75176af65531685bdd1a65ea5a451a4eced58caa2c491d0fcc166",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-15mm@05000.vtu",
+      "bytes": 14204346,
+      "sha256": "d8dbff3ab9b35afb8dbf0313efb8472b395040ba62273c40624547e0008f07d0",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-20mm@05000.vtu",
+      "bytes": 14200726,
+      "sha256": "8acc919961170688e94edd73628d029de3e552996347c013cbd3b17b37278c9d",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-25mm@05000.vtu",
+      "bytes": 14189074,
+      "sha256": "dd71f31ab326f49033181324038cf3fde4d8b2be200ab3c45e8bead9397378aa",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-30mm@05000.vtu",
+      "bytes": 14174606,
+      "sha256": "3db201516665d19631ddafbf83087a91cc68dac6eb35352c4e45afc368a121f0",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_qianfengdang_Z50mm_weiyi_Z-5mm@05000.vtu",
+      "bytes": 14225726,
+      "sha256": "0d45290d233d67df8b7aea83aa0215718b6f0fde9aaa226349f1bd8717831890",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_X10mm@05000.vtu",
+      "bytes": 14144046,
+      "sha256": "2c3cfcb3decc3da3b81a05a94367ec20183604c2d2e6565da2c56272acfc4e1a",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_X15mm@05000.vtu",
+      "bytes": 14120606,
+      "sha256": "b78b585974e512801f4306546ce5707f4e68f72ce628a93cc4321ed1c73d2046",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_X20mm@05000.vtu",
+      "bytes": 14158886,
+      "sha256": "bf669119cd90ea8b726c0a8087767cc448ac96849df5bf34603295fee428a588",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_X25mm@05000.vtu",
+      "bytes": 14141762,
+      "sha256": "862db2c301c8aab329f71b3592a5c52073d87efbf94f448fcb01097f2192fa90",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_X30mm@05000.vtu",
+      "bytes": 14169482,
+      "sha256": "4608d224ae9eb78055577f5725472a58c1bf6843f30b72ec33510aa2e4837b39",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_X5mm@05000.vtu",
+      "bytes": 14125634,
+      "sha256": "d9e4e4db981d3cc4b5034939c67d1f0e86f828924b1f2546a9357b84cd1d392b",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_Z-10mm@05000.vtu",
+      "bytes": 14086542,
+      "sha256": "5cc6589fc9e9239df597462313923732c655b3f024eb3b74e058c5fdb2f84f0e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_Z-15mm@05000.vtu",
+      "bytes": 14097202,
+      "sha256": "2367310c0096841d1557f8634f4f8a758fae3b0e7895f0618782a4f8e6544ff4",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_Z-20mm@05000.vtu",
+      "bytes": 14102910,
+      "sha256": "aca83b290c6450f52f7226f7a9a1d41ffeaf6909e2bc1e485f541d1b9a9758da",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_Z-25mm@05000.vtu",
+      "bytes": 14086114,
+      "sha256": "11f49eab926ff22cb4ae38eae702b3d9951723d4f6e964a82f9f306d244421a4",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_Z-30mm@05000.vtu",
+      "bytes": 14066514,
+      "sha256": "b5c9db8c8ee04dd3a690540e261c4449d29e2d9e58f648ad14f7c31332df1a68",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_B_remesh_weiyi_Z-5mm@05000.vtu",
+      "bytes": 14105138,
+      "sha256": "f8daaa6be04f5f80db5a0a73ff64678979771c2ec8f6eaf7eea64153e7633696",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_W=1705@07000.vtu",
+      "bytes": 21083546,
+      "sha256": "4668da54ec8573377f1d8771bd9be9d894e0687be5916acd2015d7cbdc17d30c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_W=1720@07000.vtu",
+      "bytes": 21102346,
+      "sha256": "c2bcc54aa1461b17c690ba71f3f4a2e742e6c0a0656c14ed66b4c1107fd14ec7",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_W=1735@07000.vtu",
+      "bytes": 19807702,
+      "sha256": "fe3608021f8d235886de85c13544d28eef8666ea4e0a9a624f2a005e2205774e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_W=1750@07000.vtu",
+      "bytes": 21191046,
+      "sha256": "1fcf49b59d7d54de20a4da72d79299c2e43f1c968f8a9f617b36414848b936d3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_W=1765@07000.vtu",
+      "bytes": 21190126,
+      "sha256": "4c7d3f3b02be82ff2fb517c4e52dc18fc2332dc253a4732c5d9e9646874c38e5",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_W=1780@07000.vtu",
+      "bytes": 21227758,
+      "sha256": "a6c984534d15c7d7a37a317deacd7ced8278de9ecad6ab2206fccad616b1cd82",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=696@07000.vtu",
+      "bytes": 20730482,
+      "sha256": "164af5868a96217be52213e72c22a69a2c9aaecd2815ad601b47615a85e3fc78",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=711@07000.vtu",
+      "bytes": 20716410,
+      "sha256": "d9765c0d9423a127da7042660cd1ea7110ea265ab9497a370b99a4c8017fa311",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=726@07000.vtu",
+      "bytes": 20560734,
+      "sha256": "0dc2fc35fc75431c52fb7619043bd663e103b1c238eb713242e4ecb06da1cd67",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=741@07000.vtu",
+      "bytes": 20643370,
+      "sha256": "32bc7ad4d2885afa1e31876af9a26333c19592953e4d274b2456ccc8b00386ed",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=756@07000.vtu",
+      "bytes": 20709822,
+      "sha256": "0d04de658279c2ae600b9a45f84c5beff8c1b5576521b1abbe649bf9c5a24c22",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=771@07000.vtu",
+      "bytes": 20746934,
+      "sha256": "2a2b8c4db79ee819d1902dce7ce2e6f148b41e8d87a22572bdce16cd8d24b925",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=786@07000.vtu",
+      "bytes": 22725510,
+      "sha256": "33cc9610f595fef6ea46687dc34f67dd58616988f692423d4ad93f5d14a438a4",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_front_X=801@07000.vtu",
+      "bytes": 20878894,
+      "sha256": "287339489f0c81fd2816e8f5ec2276f5b3d52df71e0dc29b39e4a8043a181328",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2618@07000.vtu",
+      "bytes": 20557226,
+      "sha256": "2500ecda4756a0159aebcac5423f846a0ad47a64e076c869f1b076bfc7de9c7e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2643@07000.vtu",
+      "bytes": 20981790,
+      "sha256": "2b0c5ed13d43fea472b1e92e2df497338a52016b5e243aaa4013a91b383e11af",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2668@07000.vtu",
+      "bytes": 20649414,
+      "sha256": "0dc8e9f1e61939a7317a9c77b586cb732dfc7a238d21cd98f6ec2bf3890464b3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2693@07000.vtu",
+      "bytes": 20597374,
+      "sha256": "07aada5fd2bb9ad11b4d6a071fac9bb0b510054b5c7053fc825b9cb845c9d0d0",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2718@07000.vtu",
+      "bytes": 20653602,
+      "sha256": "dc0857796a16c1af89fd5534c7ac3452440758d808ad75bac6b808fda526041c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2743@07000.vtu",
+      "bytes": 20726794,
+      "sha256": "d5f22cd7a694079f426022de68f73fc9572207dc6ba0e305528156251fd86c17",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2768@07000.vtu",
+      "bytes": 20738834,
+      "sha256": "df85b95de8c5fe343173b413f609e1613c61cd41c9eaa5d55afed7a6b3a2bf87",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2793@07000.vtu",
+      "bytes": 20775442,
+      "sha256": "0e94c4a6a596c20930d76c117f2db291c6a4c36311f7d676ea6f48fa8a6d7c04",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2818@07000.vtu",
+      "bytes": 20788774,
+      "sha256": "acae47bf5a5cbcc274a2b606669e958e6bbfd80faa26284b52c9013ab7417636",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2843@07000.vtu",
+      "bytes": 20820334,
+      "sha256": "49cdc9b40781ee886e9b38f9268ccba4441903a7f74c12275e18b695d3f3129f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2868@07000.vtu",
+      "bytes": 20850438,
+      "sha256": "0eb2f9fc0d15d2f94ab99baab88df39dc93c94382909a0abb73ce233aad2be58",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2893@07000.vtu",
+      "bytes": 20844470,
+      "sha256": "de09721a44f3af68db903b1bd0e229c1124371f92f3d07e00077139f1fad9ede",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2943@07000.vtu",
+      "bytes": 21392066,
+      "sha256": "ade11a4bfdfec739a50b8acaf9e722d6690b95d33c6b673b15a94748fabbd28e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2968@07000.vtu",
+      "bytes": 20866390,
+      "sha256": "2c41b905a7540c1ed034b6fdfb4c56aa0ec0726fc0a17a79d2f40ce5af770be7",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=2993@07000.vtu",
+      "bytes": 20861582,
+      "sha256": "5d28040894eb76e709316a02c75e1f5e677419e3f6e9cbf934bd6247e009ee96",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=3018@07000.vtu",
+      "bytes": 20903486,
+      "sha256": "6ea6b85f3a8dc7c2b5401e5e808bc8ad0271e0ae6ce9ca48a20fd14f7246af8e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=3043@07000.vtu",
+      "bytes": 20980690,
+      "sha256": "dfc984caf240d80cf8b41c7add84110552a609193bc6698148ac893c84dae331",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=3068@07000.vtu",
+      "bytes": 20943442,
+      "sha256": "977a73613d3d51f1791296fa35b72c4bcf20e021f4d54bbc53b0356b53c63dcb",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=3093@07000.vtu",
+      "bytes": 20976658,
+      "sha256": "fe58f82b5a1ab05e22195f65b245fa59ab9db83a7d638ea5f4fa07d4a6558884",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_middle_X=3118@07000.vtu",
+      "bytes": 20984718,
+      "sha256": "6a6132bb9c510c38dbf1934fdb37007ab036ea8340a6d19346a6c6f7a52799a9",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=1014@07000.vtu",
+      "bytes": 21414798,
+      "sha256": "bfa4331679a949b09522783023b2b918d71366d630d920d447f767dcbfe6592c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=1029@07000.vtu",
+      "bytes": 21421554,
+      "sha256": "7949a9f9b53b7ae62a64f70cbc0d5d13339c2ab357e966eee287e0cc7383f96b",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=789@07000.vtu",
+      "bytes": 20976134,
+      "sha256": "f171bd18b6f330a69f2a0feb3c4545db65b172df46b41816e5abab380e5d6697",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=804@07000.vtu",
+      "bytes": 20939934,
+      "sha256": "127c0b28be6393586b455257d80db30041c98d4b52f4ebed09b0b35168dd5650",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=819@07000.vtu",
+      "bytes": 21015874,
+      "sha256": "9abc89d8ee8a3fb6ad1f8c97b9c90d51fcdf73901dd6171d8e6c16fa5f6ac742",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=834@07000.vtu",
+      "bytes": 21052382,
+      "sha256": "e86ee21ef9c8478053c2ae8aeede24b4f2d0ba659d2e41eff89c54b89d44ab91",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=849@07000.vtu",
+      "bytes": 21052478,
+      "sha256": "bb6e2aee5b3e7e326ea24fd07b90f32a57f904dd2c0849381d3db8e020944f92",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=864@07000.vtu",
+      "bytes": 21092130,
+      "sha256": "6b44a97ec80619788c4a4628bbe090d92764a7efa819e9ed0c340e364b99458c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=879@07000.vtu",
+      "bytes": 21117026,
+      "sha256": "4b6e055caed4a3e81284988e2efa7756e2ecef8196aad4dd8ed16ba3ffa0f84d",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=894@07000.vtu",
+      "bytes": 21147486,
+      "sha256": "4da2ac18597b239ed707ba67df0c9263901f53658c84a665cb6be4375b85b48f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=909@07000.vtu",
+      "bytes": 21199522,
+      "sha256": "46c8e53b36816e4507ca3772257ef17cdba1c6b8979cd3b19929331f9087c361",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=924@07000.vtu",
+      "bytes": 21228726,
+      "sha256": "dd54fbb561af61f4dcf3fa968da2c6fda11807c2fa9f04f5463fa2782a0bd0c8",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=939@07000.vtu",
+      "bytes": 21235146,
+      "sha256": "eaac631f5ff6640d2457c608c78a3a1f9f3009c1124244aeb9b4fd60c10c6da5",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=954@07000.vtu",
+      "bytes": 21319978,
+      "sha256": "062cdefbdaa521636ceca28ad369bbe7de2c775d6fb8fe7c45710de47a9730b9",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/Platform_C_rear_X=999@07000.vtu",
+      "bytes": 21383246,
+      "sha256": "fe7d6830dc553f5102711e3682b2b4ddd223f2ea71aaef292bf09d5b21587068",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z-10mm@05000.vtu",
+      "bytes": 22137202,
+      "sha256": "680c5a02ae805fcec32f015be1a4c0a28844639f8697e5172c462e30ff9bf78a",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z-15mm@05000.vtu",
+      "bytes": 22157138,
+      "sha256": "fb2b293e48f3b2c67cc9452f909bd32247943861e9817cdeeef9d1e3cc29c773",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z-20mm@05000.vtu",
+      "bytes": 22155834,
+      "sha256": "bd463f186ddab8f834c4e90f3fbf325800d8c25bd2a94011169700622a710bf4",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z-5mm@05000.vtu",
+      "bytes": 22149126,
+      "sha256": "8d3c2a555d8221d490c54aebc46340ec88fca164fae30c1092c42d9df169aae3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z10mm@05000.vtu",
+      "bytes": 22092170,
+      "sha256": "6ae620ac95fec0c1769ce52d1eca19d91fd5a44aed0c89d3d3ecfeb080d2ed25",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z15mm@05000.vtu",
+      "bytes": 22098238,
+      "sha256": "c7ecb545f0d4a5a5a4fcda3c0c5b19f4c3cc7d54c1f47f182be1e726c7e4cc40",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z20mm@05000.vtu",
+      "bytes": 22200274,
+      "sha256": "0670aecc6414eb8ea89351664188736540a07bfee8357702658cf3f79bdc2fa4",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z25mm@05000.vtu",
+      "bytes": 22163434,
+      "sha256": "4ecee5c6eb4af8e1eb70561e3b285f1ee4d0f4c5fdcd1bd114af142a12d6b754",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z30mm@05000.vtu",
+      "bytes": 22091178,
+      "sha256": "f3eba2daeb79265f6d25fc78f7005d871c256b8262d0f3888cb9c333c5ba83f9",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/houkuosanqi_Z5mm@05000.vtu",
+      "bytes": 22126962,
+      "sha256": "e467289c7d5dcc934182d59f6b5adf621144fb2312924dca2ee000fb30fe6466",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/qianchun_Z10mm@05000.vtu",
+      "bytes": 22716802,
+      "sha256": "624ed398c43aea9b3e3af673f1cf89d91ae1cdd893b1cd5120011a09b946af65",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/qianchun_Z15mm@05000.vtu",
+      "bytes": 22698570,
+      "sha256": "6b55ecd1b5ee42f785b3cf01c6e92291d0c1450805addd6f6ae739527e36f2af",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/qianchun_Z20mm@05000.vtu",
+      "bytes": 22747854,
+      "sha256": "4f6843fb28262bb17cd62b0d2745f5d70d66535866efc87e9a7a15d507fa555e",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/qianchun_Z25mm@05000.vtu",
+      "bytes": 22773646,
+      "sha256": "d0a6f118a32e4ca7183829d77806eb65a6f671b46cc7db50212d3736b6da06e3",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/qianchun_Z30mm@05000.vtu",
+      "bytes": 22717550,
+      "sha256": "ab854d9d2894ea2177249830adbc58076fea5ed6d79ee9aa2353fa3113e41086",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/qianchun_Z5mm@05000.vtu",
+      "bytes": 21343162,
+      "sha256": "bfca530035329b0cab40d3957bac8f3c9367c402ebd12d60980f5eb41d464616",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z-10mm@05000.vtu",
+      "bytes": 23101314,
+      "sha256": "785912d8ba20af626cd51380fab02d6f1e8c40066716a66c776fb47acef7ce87",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z-15mm@05000.vtu",
+      "bytes": 23021726,
+      "sha256": "50d04ab404dbb726d7774230ddcbbf7df1491eccfc301aa9042ec965a01bab83",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z-20mm@05000.vtu",
+      "bytes": 23090190,
+      "sha256": "d4049362f011a07150d4ba6c2ad658e8b17c9f62556969b13268ca224c383423",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z-5mm@05000.vtu",
+      "bytes": 23066634,
+      "sha256": "6942cc0efbae6a3d8355423ffc68408e579bd13776df573f0cd1b354311b91dc",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z10mm@05000.vtu",
+      "bytes": 23157686,
+      "sha256": "4a3b82c08c1feada90da4fa4ba3045c6e084acee47577d6abdbbe8df35ef4ab2",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z15mm@05000.vtu",
+      "bytes": 23034538,
+      "sha256": "6873766d991546c74c6d324d75f0f2a3d4657223c732fed1f2790a36c3e700f0",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z20mm@05000.vtu",
+      "bytes": 23115682,
+      "sha256": "de2eb96b5f9014d9298e3ab73976381bd28d102676924191f0527c9df95ce15c",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z25mm@05000.vtu",
+      "bytes": 23077114,
+      "sha256": "c115ff6847bc6959f48409da4d15b0e7db67ce17a97c3202e519c03eaed09b6f",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z30mm@05000.vtu",
+      "bytes": 23144502,
+      "sha256": "8b73534e6c3e4d69377a68e357cfb5a5aee24a998b72e506ce89e8c1f7d62593",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/001_car_body_aerodynamic_forecast/data/process_data/weiyi_Z-15mm_houkuosanqi_Z5mm@05000.vtu",
+      "bytes": 23089014,
+      "sha256": "240661c125da63795303df1e1d9df9350e2c70cb5c7416c4f3d0627e4d100317",
+      "asset": "fde-bench-data-case001.tar.gz"
+    },
+    {
+      "path": "case/002_city_delivery_route_planning/data/customers.csv",
+      "bytes": 53646,
+      "sha256": "429015a199567f49996b29e9d42dc003cead768d7f3d35ae81cd4a0744a19da0",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/003_crop_yield_sparse_sampling/data/test.npz",
+      "bytes": 25269848,
+      "sha256": "bcb3517f1559e01059a5d6fb5a7f70907298638330e48072e978554d5dd9e832",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/003_crop_yield_sparse_sampling/data/train.npz",
+      "bytes": 95062036,
+      "sha256": "256dc9d19edba8b5c817aaa974a47650c118855028fdee8eab967ea00995ffc9",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/004_dayahead_power_price_forecast/data/timetable_test.xlsx",
+      "bytes": 379835,
+      "sha256": "248e4bddc66b0a3d9cd2139e997430fbc6a3708b8415a1cc05ea8f6c1fd92711",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/004_dayahead_power_price_forecast/data/timetable_train.xlsx",
+      "bytes": 3201851,
+      "sha256": "b413188f22bc19cd3d7891fcad60a627895c0e3ee2b2e5f545a6a73ecb8a00c6",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/005_flight_seat_booking_forecast/data/test_history.csv",
+      "bytes": 3042933,
+      "sha256": "2304d66d999ee250ed742c80ac065cc46b9dc616b4bce16a93b1e2cf15ed19fd",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/005_flight_seat_booking_forecast/data/test_samples.csv",
+      "bytes": 13011,
+      "sha256": "c157498b74631d4a638ac693b9def52fc37803c782299ff8514e9b70a856b6b3",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/005_flight_seat_booking_forecast/data/train.csv",
+      "bytes": 21063654,
+      "sha256": "7b73f4b137eacc18d2ca1b5484fabd1db2e64ac2d8238d84706030d210eec35d",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/006_ion_beam_uniformity_optimization/data/test.csv",
+      "bytes": 157729,
+      "sha256": "adebdcffe80b94c2176b3c4ff953faf47b87f9ec2392ad5d29194054aa575925",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/006_ion_beam_uniformity_optimization/data/train.csv",
+      "bytes": 1234459,
+      "sha256": "4a9e11ad36d51e504e875b5409b61735b4e475adc3cc7c2845c2ee284c4ba722",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/007_lube_oil_inverse_formulation/data/formula_bom.csv",
+      "bytes": 34669,
+      "sha256": "4b4ae01d0512be2c812860518f0a627f00fbf17635bced2573ca8afc0b3b89eb",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/007_lube_oil_inverse_formulation/data/material_catalog.csv",
+      "bytes": 2237,
+      "sha256": "2affb99becf13de208d6af0f278c11afcf15a7c0d6367cc205f3f3ec59e1b72d",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/007_lube_oil_inverse_formulation/data/material_props.csv",
+      "bytes": 2129225,
+      "sha256": "8c24c7801ff4cf8444a742077600d45dc8d6ae00df35f62fc9d8fdad524815ec",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/008_material_property_forward_prediction/data/test.xlsx",
+      "bytes": 26728,
+      "sha256": "5ffcef4d3305177efc0c089ae6feb5d98bad325d737d57419815d4db99281ee3",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/008_material_property_forward_prediction/data/train.xlsx",
+      "bytes": 89719,
+      "sha256": "1ac72296bf87f3e89e9a065e0c2d92368c0c2dbd805344ce8f564135394e5500",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/009_nuclear_construction_scheduling/data/combined_data.csv",
+      "bytes": 2629960,
+      "sha256": "6d5f94668fb617bc76d3fce4f50c4c725363cad21f06cc3eda5ba3772cc33742",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/009_nuclear_construction_scheduling/data/efficiency_coef.csv",
+      "bytes": 83,
+      "sha256": "6b19f94e99b54daed0391a74321bbd2144cd4f85710c794ec5dd59c63e04cc14",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/009_nuclear_construction_scheduling/data/staffing_rules.txt",
+      "bytes": 1190,
+      "sha256": "67d803e7a7791644388f57c53d51826d1b7b8f309f8de559cefa6cbc474b7cfc",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/010_retail_replenishment_transfer/data/forecast_data.xlsx",
+      "bytes": 73887434,
+      "sha256": "9afe9891180d04d1825643e224e082d539d3c96c00a72d3e578b6d9820a629c0",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/010_retail_replenishment_transfer/data/inventory_data.xlsx",
+      "bytes": 19707817,
+      "sha256": "4836199993861f061d001fc8a2a6d5c73e8c9c07b0dd2804197cb0b392ad4750",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/010_retail_replenishment_transfer/data/master_data.xlsx",
+      "bytes": 13931795,
+      "sha256": "b478cef1f95b90646770467ec12bb9fccab18f2bdc2c31b0885a74b5f38ea6bd",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/010_retail_replenishment_transfer/data/shipping_fee_rules.xlsx",
+      "bytes": 42635,
+      "sha256": "55343a973e62d308967a7c3d447650b9b1df8e35746448de7c0c4e70a20c9989",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/010_retail_replenishment_transfer/data/warehouse_inventory.xlsx",
+      "bytes": 3667557,
+      "sha256": "e37661bf45fa95862070735cd0f4213eb25cadbef9cd1414793bae1c32c10f67",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/011_retail_zone_partition_routing/data/demo_data.xlsx",
+      "bytes": 1656677,
+      "sha256": "5a831854c706e2cac8fcd284976f5c6fef587debd97e27a9a116219fc412f8ce",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/012_silicon_steel_slitting_cutting/data/mother_coil.csv",
+      "bytes": 222,
+      "sha256": "8d5046c877866a867dbc17ae8b7dec47656ad1d5c63c7aceebf99234475d6e08",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/012_silicon_steel_slitting_cutting/data/requirements.csv",
+      "bytes": 447,
+      "sha256": "8943b32cddf45df815fbc71e050ccd5cb6a5d5e0e208e249930045c31faa91ff",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/data/sample_input.json",
+      "bytes": 53459,
+      "sha256": "b41e1ced16534a5d5ebf8581b641e0c7af225dabc7536375502c6b1824c21425",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/tests/data/V1.json",
+      "bytes": 2852345,
+      "sha256": "03e7c8f6e69971e758851325e2e15001bd73a5c90a99373581c30df97da09794",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/tests/data/V2.json",
+      "bytes": 7511212,
+      "sha256": "5b6fda23205e4b66395cfa7ae8780706a24506fb3166d4d801e878f578d22d19",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/tests/data/V3.json",
+      "bytes": 3034516,
+      "sha256": "05db975b74b60b9cbe4b98325ffaac2ac86b0124e6977a2d75ec70e6ef495d49",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/tests/data/V4.json",
+      "bytes": 5830520,
+      "sha256": "c3be1adf219e5a7acfca669e29bc5c09710b2104653077377a9e12c5dc074f8e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/tests/data/V5.json",
+      "bytes": 4749620,
+      "sha256": "2b0ef0d37522f9ec12f6e69a35b6eaacb218f82d58313191a849732de93aeddd",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/013_vessel_stowage_planning/tests/data/V6.json",
+      "bytes": 4936016,
+      "sha256": "f7e6cfe5b847a5ad555216040ca3a279e50a81938bc6d8ad7a4cc40cbd5a6317",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/014_warehouse_multi_shuttle_water_level_policy/data/capacities.json",
+      "bytes": 583,
+      "sha256": "3f25506ff1370266088050b20e37d82c9fa0818e1cd93aaf6997df6dd2d33284",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/014_warehouse_multi_shuttle_water_level_policy/data/ctx_schema.md",
+      "bytes": 1719,
+      "sha256": "cdd2f7cc9587e22db664ebd338af9e7a324f0f4d471145de9123f372c99d81fe",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/015_truck_load_planning/data/外采物料数据2.xlsx",
+      "bytes": 18103,
+      "sha256": "60a2eb5483759fd680ffaff834533130338334a68c1bc80a23c6e73b1ef637e1",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/015_truck_load_planning/data/工厂自产物料数据1.xlsx",
+      "bytes": 26299,
+      "sha256": "c8378c2eb4d92fc6e868faff3473c5682a1fb7910427546d6e531ac475a8432c",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/015_truck_load_planning/data/日常发运车型.xlsx",
+      "bytes": 8533,
+      "sha256": "e3f80d2a7fb45735f4848b9b4abae8ee73dc177d2a6c7f995e295be08b7d3494",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/015_truck_load_planning/data/订单数据_匿名仓库.xlsx",
+      "bytes": 5882,
+      "sha256": "3414a14768ba0c448380817a13f0378b809be1da7666bb5c36132a6747545a06",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/016_aps_multi_table_scheduling/data/aps_data.xlsx",
+      "bytes": 1915875,
+      "sha256": "f6d6cd61ced28b7089662d036911b4e448b365477f1877c27cfe70ba16455f74",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/017_cold_rolling_coil_sequencing/data/grade_catalog.csv",
+      "bytes": 497,
+      "sha256": "97f1b9d8fd6b8b15761c77da6b90ef60924e191c4a73c3c5981f184bfa1d4aea",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/017_cold_rolling_coil_sequencing/data/work_plan.csv",
+      "bytes": 18790,
+      "sha256": "edce2598f5e0e2e7dd6adb09ae5b96ae5b6ab309782520e88bb2f913b084feaa",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/018_multi_batch_mip_scheduling/data/scheduling_data.xlsx",
+      "bytes": 276122,
+      "sha256": "3a03dde99f2deaa6ba04faec13a9dd32b671079127d464a6b61dfc37c61055a6",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/019_multi_line_production_scheduling/data/production_input.xlsx",
+      "bytes": 13695,
+      "sha256": "66e24f174b557c01403688241ac45823e37299cb4e6ba7d3b1ca20cd6dd36c8e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/020_multi_warehouse_shipping_3097/data/config.xlsx",
+      "bytes": 5235,
+      "sha256": "aa4a53942dc3f9ccaf3bccaeb6fbb0d79903b2a74fd89d2f838c9b5af9ddf0dc",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/020_multi_warehouse_shipping_3097/data/inventory.xlsx",
+      "bytes": 15983,
+      "sha256": "21e797c30f6f390bc59f49146ab484096e44f714ee4b844b960d325a55798f42",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/020_multi_warehouse_shipping_3097/data/orders.xlsx",
+      "bytes": 644268,
+      "sha256": "f61be07f03207e986141d396d68364fcee4523f4c136142f89ae79ae9d608c1b",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/020_multi_warehouse_shipping_3097/data/production.xlsx",
+      "bytes": 10083,
+      "sha256": "d197ff06e8e65004874fb20435dbc5f2dff43a69ce1f50ec16ed77115b706055",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/020_multi_warehouse_shipping_3097/data/shipping_dates.xlsx",
+      "bytes": 5175,
+      "sha256": "43ea4c064d1c787326941ab390f1f97068ad244e96a3949baec1c7f2631f536b",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/020_multi_warehouse_shipping_3097/data/warehouses.xlsx",
+      "bytes": 5553,
+      "sha256": "45b16b96d571004d9a0f9409f51e7bd62e1cf2c4a27fbb5bb979d35e40cda1d1",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/021_soybean_meal_rescheduling/data/soybean_meal_input.xlsx",
+      "bytes": 212377,
+      "sha256": "3824bd4004082eab3313f73fe211f0a276ab30986bdb6e08846b6796fe2aea7e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/021_soybean_meal_rescheduling/data/soybean_meal_schedule_template.xlsx",
+      "bytes": 252049,
+      "sha256": "99ddec27e8c374d0a3841598a67899655e67016b00dcdeb0712a99b6ca30cdcb",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/022_wheel_hub_two_stage_scheduling/data/production_data.xlsx",
+      "bytes": 111349,
+      "sha256": "b4d3a643983fcad22554317993693445c1ce5699c8f0623190bda8031635f886",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/023_auction_picking_walk/data/bfs_dist.json",
+      "bytes": 14242034,
+      "sha256": "b8cc3f68c140064476b2c3c621c42c8d64d5d54bbb5a51950e34bcd9d1584306",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/023_auction_picking_walk/data/bfs_nodes.json",
+      "bytes": 155060,
+      "sha256": "098c0e7cde61b8ff2397d860e7db3709b010e489f18a56aaf06bbfca5a2d2042",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/023_auction_picking_walk/data/sorting_records.xlsx",
+      "bytes": 1043567,
+      "sha256": "8208517e45b9dc7155e71e6ad6327b54ce86f010906b1ab14efa4e91dfa57ee4",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/024_quay_crane_60ships/data/tact_times.csv",
+      "bytes": 93,
+      "sha256": "6d762ed68e9bc2847816d752f6442bba757f604062dadf7cbc7149c3dd99c36e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/024_quay_crane_60ships/data/vessel_workload.csv",
+      "bytes": 3957,
+      "sha256": "77d92e5d1d5ce7cfa4243fc44739f190ab69ba629d445879d33f092dd0e6da2c",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/025_container_loading_466/data/cargo_manifest.xlsx",
+      "bytes": 8681,
+      "sha256": "de9f4064344d43b665d7024da2eed585db41a8d89d7477cc98f98e8a46883f76",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/026_container_packing_3sku/data/load_data.xlsx",
+      "bytes": 5792,
+      "sha256": "34c2f9d2b21599b710dfeb6aa6a16036b44bb50a81fd979e0eb2ce359848b01c",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/027_crew_rostering/data/data.xlsx",
+      "bytes": 11761654,
+      "sha256": "fe25b4fb19546e1d307ea27a9da239193a82d88f2ff95cf13f7c992f5f5aa217",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/028_elevator_call_forecast/data/data.csv",
+      "bytes": 70307972,
+      "sha256": "e9a1feb86585db87c1c50b57302d97a9ec471d6774e47e5f20a99ccad9f7988d",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/028_elevator_call_forecast/data/forecast_template.csv",
+      "bytes": 54455,
+      "sha256": "df968f4afc897fcae49d2c4c68228d5b716815367dc35da6e23927f581fbeebc",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/029_hydropower_cascade_dispatch/data/dispatch_data.json",
+      "bytes": 532,
+      "sha256": "32be582d5b7ad10500df8111b5d248c4bee042d4413815249d18fb603abebe48",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/029_hydropower_cascade_dispatch/data/station_params.json",
+      "bytes": 608,
+      "sha256": "9cf11052e1aba1c55cd51e8935ea3d036f33c04f7137868c0ca207596d98c3f0",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/030_biomass_syngas_prediction/data/test_features.csv",
+      "bytes": 16716,
+      "sha256": "e6a6d1a85aea66f20ca81a41c74e8d28da6a52867238f6c749ea7135be1704ba",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/030_biomass_syngas_prediction/data/train.csv",
+      "bytes": 58645,
+      "sha256": "4a2a0194fdf3f49b30df9c6cdc0d1fcab159a3c6c14678eaeee7ea5e24c74bbf",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/031_credit_default_scorecard/data/test_features.csv",
+      "bytes": 6751,
+      "sha256": "94aaedf2da235018305dcd9163a6d0b255f703fd022b82a0e93caf2353417d5d",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/031_credit_default_scorecard/data/train.csv",
+      "bytes": 16089,
+      "sha256": "a0a31ee3c2419bc89d4ca040c5f28dd4c049e4b83695f7e6fb63ea859d6686eb",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/032_grid_load_15min_forecast/data/test_timestamps.csv",
+      "bytes": 46576,
+      "sha256": "9fbe61c49ab1bb735edb0bac9540ef2c5b863c46f4eeb3b0f50a336035338756",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/032_grid_load_15min_forecast/data/train_load.csv",
+      "bytes": 3479917,
+      "sha256": "91d3d0da79dbad87e1ff4480d08cfe81a94b886ef2e55fe26b3805be52b3dca4",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/033_llm_serving_traffic_forecast/data/test_timestamps.csv",
+      "bytes": 3233,
+      "sha256": "ef0dfc6def2c73e98722e4c024104ba26d707b9c6487ce9351a5913722487be7",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/033_llm_serving_traffic_forecast/data/train_traffic.csv",
+      "bytes": 13133,
+      "sha256": "47d14505a929a9eebde18dd21c7eb738d7a0f4f4c1695b46b2b572f5e521a3ba",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/034_luxury_boutique_sku_sales/data/test_features.csv",
+      "bytes": 26812330,
+      "sha256": "25ccab559a375c202c5fdb3eab231dd6fc5c458cfb14a0c45dddd8656f7a5581",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/034_luxury_boutique_sku_sales/data/train.csv",
+      "bytes": 132984354,
+      "sha256": "e93f98d14a5894a18804585116fa6a913cf8122e2907ffc33f8497c97b0412a0",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/035_corn_futures_price_forecast/data/feature_manifest.csv",
+      "bytes": 28980,
+      "sha256": "e531356c2dae5071056504062ebb217be5e45845d0e009aeafd89bf9602f42b2",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/035_corn_futures_price_forecast/data/test_features.csv",
+      "bytes": 1253,
+      "sha256": "0d2b909a0392c2ea803e09393ec1e1af67bd0854bdfc25a800f6fa03d0bb1670",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/035_corn_futures_price_forecast/data/train.csv",
+      "bytes": 14229801,
+      "sha256": "6c69675a1768f1db994b98644a037a578230ff9bb412fad91da152a964c74248",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/036_soy_peptide_fermentation/data/test_batches.csv",
+      "bytes": 8134,
+      "sha256": "2e87d3b14a04b6565df9037e2ab20cc2a4fdd8b641e58c1ccccbe4ec2d6f21a6",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/036_soy_peptide_fermentation/data/train_batches.csv",
+      "bytes": 19701,
+      "sha256": "9a660ebdf86c9e59b84583ec73fc03c17aa87142b3a7bcec93da7f16859f1a02",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/037_microgc_pillar_cfd_design/data/cfd_solver.py",
+      "bytes": 8839,
+      "sha256": "4dd8cbf73681b5403759cf257c34b519657a30f993b1489d86adf6f1f568da7e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/037_microgc_pillar_cfd_design/data/pillar_geometry.py",
+      "bytes": 10447,
+      "sha256": "727966cc371b9034c70ffb4cd61a67bfeace36fa6726a6e468dbef1b997b5d0e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/038_tftlcd_fab_scheduling/data/tftlcd_fab_scheduling_input.xlsx",
+      "bytes": 62150,
+      "sha256": "e5a028ec2b5abaede82aba239a2ec923e7e2a7d3da715132387a1ac60d3f7859",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/039_warehouse_stack_forklift/data/warehouse_snapshot.json",
+      "bytes": 445741,
+      "sha256": "ae1830b1a750a98374e065098334e19e76ad4e8ffacb63c40269a2536aa667b9",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part1/initial_temp.txt",
+      "bytes": 138915,
+      "sha256": "4b6b5a9435a3e3eb37d08e6d390cccb9d25666be6900b4e4f334194a7cb52abe",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part1/t0.8.txt",
+      "bytes": 138941,
+      "sha256": "79741ddc0d044c8237bd8c7e9298436bfa99eea89ec279935fa88247de90b1a3",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part1/t1.6.txt",
+      "bytes": 138957,
+      "sha256": "16e1937a2d81de3304c12a0251e19b00026bdb5e65cc760ba509a60c2eb4ba46",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part1/t2.4.txt",
+      "bytes": 138957,
+      "sha256": "1f8bab6eee8757077f8ef8eebfb87936a0b622b5c6e81b5c49d859223c83c95e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part1/t3.2.txt",
+      "bytes": 138957,
+      "sha256": "bc1b495f3e024ac900ec8a6804e5c6b46d6ea516488dd6acdbe6c8e05d15c1c0",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part1/t4.0.txt",
+      "bytes": 138957,
+      "sha256": "60a96107f1d1a9ef2a09d4135ba8ebd0f0503a8bd05373bc9cbdeb4e644ef0dd",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part2/initial_temp.txt",
+      "bytes": 233694,
+      "sha256": "c53fae5fc2c3efa595d3157565c3c2362eb7f2d54e531b354bdda17e428f6f0a",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part3/initial_temp.txt",
+      "bytes": 331596,
+      "sha256": "4ed9bdd22f0e549bd6e34d503d4557eb3348eefdf3fb97b114ebf581b7f80fba",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part3/t1.5.txt",
+      "bytes": 331596,
+      "sha256": "36c2130422b872db6562dd126c3ad263145f1258f031acca64e63ef251063ee7",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part3/t3.1.txt",
+      "bytes": 331596,
+      "sha256": "67dc63394c7d13794af693fa977951a225fb9e2d31cf6fefc4ea25bb9eb87f57",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part3/t4.7.txt",
+      "bytes": 331598,
+      "sha256": "3d0f6cf9b22adaf60be78c2f2b1725f20937731a9d7bfc34914d0b29a0a00dad",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part3/t6.2.txt",
+      "bytes": 331608,
+      "sha256": "4ca6bd84f7322cff0ccd133609905e4a8a9b3888859a2e28b5a18e0a81fc3d79",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/part3/t7.8.txt",
+      "bytes": 332116,
+      "sha256": "e68508b044597bbd5ca16f28dd8c7cbbc6fd85d05a0a43fc599da5c088e034d7",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/041_casting_thermal_pinn/data/prediction_targets.csv",
+      "bytes": 65,
+      "sha256": "797d1f132cafff1db09a06691138b54b595f04dbec639c9d3761a2e1eb528e89",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/042_superalloy_yield_strength/data/to_predict.csv",
+      "bytes": 5759,
+      "sha256": "324822e79c2af4115e90b8c86a7f7deade046b0c3a04d5c23fce97be19abf65c",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/042_superalloy_yield_strength/data/train.csv",
+      "bytes": 17208,
+      "sha256": "799cac6299011f8445659981b55804133b1509746beb13cd0bd6b4d4283aaa33",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/043_water_coagulant_dosing/data/forecast_windows.csv",
+      "bytes": 1988114,
+      "sha256": "70878af3abb54ecc4da9c6e1c9ddbe169b59ca4b431b5d31a51a152a0546043e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/043_water_coagulant_dosing/data/history.csv",
+      "bytes": 17808555,
+      "sha256": "233f26cb07eff64c82c5cbb05c722c603b7ae5dc08c4506cfc52323d20743e32",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/044_bank_branch_siting_score/data/feature_taxonomy.csv",
+      "bytes": 4725,
+      "sha256": "6936d40f4fddbc4a8b093d3f7b731fec38398a3a30a9fc7a38713d85ec1c1682",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/044_bank_branch_siting_score/data/features_1km.csv",
+      "bytes": 1977820,
+      "sha256": "60e4809d54fe8b5b02fcf7dd368d80faa5531e23d8d37c1051901fb8d2d0192d",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/044_bank_branch_siting_score/data/features_3km.csv",
+      "bytes": 2097330,
+      "sha256": "00bff1054de15408fc2f96ac14bc99eab514bdadcaf6178771372d7ac08b94aa",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/044_bank_branch_siting_score/data/features_500m.csv",
+      "bytes": 1962440,
+      "sha256": "2723f824b9cf34c70fb6dfefd53201eab50348412e3d74602774faa948d82908",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/044_bank_branch_siting_score/data/test_branches.csv",
+      "bytes": 26244,
+      "sha256": "1c01b5dad263177e249409ba9d9537ea61479fb5af8da4a0dbddf01ee9d06b57",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/044_bank_branch_siting_score/data/train_scores.csv",
+      "bytes": 166658,
+      "sha256": "95b222be5de5e3e002ba6ab4d6036b9235132732871c0504446b507366b5d98e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/045_datacenter_rack_allocation/data/nic_attr_mapping.csv",
+      "bytes": 3148,
+      "sha256": "e175e475bc79a2074e06fd8348c7838dcb38d18736f1364f8709ae5966e1efb5",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/045_datacenter_rack_allocation/data/rack.csv",
+      "bytes": 2353799,
+      "sha256": "1fca1e833f8d9ae26f1504b4de1885ee61530b849abb8da0601f4238c6c77359",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/045_datacenter_rack_allocation/data/rack_col.csv",
+      "bytes": 358859,
+      "sha256": "1f3b8dd861c7c7d10ca469bddd95d555ecc995d504ba96598b630fdec490c77e",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/045_datacenter_rack_allocation/data/server.csv",
+      "bytes": 47642,
+      "sha256": "3f64f8123ddc7307cb10d7d9aa5b0455a1f76634bcc0bce6c220f81a704ddae6",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/046_3lcvrp_packing_routing/data/3DVRP_complex_40.json",
+      "bytes": 37790,
+      "sha256": "2e8ae211ece401ecc085b2bbccbcc3c8ffcd054a1c4d21946112a6fbed58fb32",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/047_regional_vehicle_order_dispatch/data/regional_dispatch_data.json",
+      "bytes": 1705748,
+      "sha256": "7e2c4a3d50fd6e1856a7d629dd7ecd0d01f0940ac7a0f356b8639641552457e6",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/fmu_system_parameters.csv",
+      "bytes": 7701745,
+      "sha256": "7f93d9cd400e96f6db1a8f0780a7a58f680c0119c327f161ca7a16699ce6e0f4",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_battery_8760.csv",
+      "bytes": 368914,
+      "sha256": "4fdb2afcf8ec01b91ab9c0fc3cb2f3682dfa84c723e5859066875165ac256727",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_caes_8760.csv",
+      "bytes": 368914,
+      "sha256": "6bd36ef99ed5cc4bc9ca0f74f4329e12215ee43e099129b4101d5a2882ab1413",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_environment_8760.csv",
+      "bytes": 394270,
+      "sha256": "ee393041fbd2bad46a9c11c3e59346c17aea61e38cd0072ad46cd7fad7806cdc",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_load_8760.csv",
+      "bytes": 439002,
+      "sha256": "f324fb3bfbb60949b394476a351f6ba54f4b44de9f2c3ed7eb82a2b219f33c11",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_pv_8760.csv",
+      "bytes": 381035,
+      "sha256": "d8a9a853d4d5cfac0982553bc62d4db2acbdebf2d4c480e8d3682a2e0b54c478",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_thermal_8760.csv",
+      "bytes": 1742,
+      "sha256": "916041826f01b4c351222862e7888689ce0653457af7c50879f1883871569ac3",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/048_energy_dispatch_8760h/data/timeseries_wind_8760.csv",
+      "bytes": 376826,
+      "sha256": "afa857773e21397d613df8ae967babe071526d79349e0c31b582cf0b6bb5f0b0",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    },
+    {
+      "path": "case/049_fuel_tanker_multi_compartment_vrp/data/input_data.json",
+      "bytes": 42607,
+      "sha256": "f8f3bcf8b768b8e452a78c4166073321d54afdabc68b53c93461fed06f511f80",
+      "asset": "fde-bench-data-cases002-049.tar.gz"
+    }
+  ]
+}

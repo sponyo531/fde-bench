@@ -1,0 +1,125 @@
+{
+  "case": "023_auction_picking_walk",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "第 66 行 PLAN_FILE = 'solution.json'，第 271 行 evaluate(submission_dir/PLAN_FILE)",
+      "root_keys": [
+        {
+          "name": "groups",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "role": "structural",
+          "note": "第 162-164 行 sub.get('groups')；不是 list 或为空 → fatal。须恰好 445 个任务段（第 183/192 行双向查多段与漏段）",
+          "items": {
+            "type": "object",
+            "fields": [
+              {
+                "name": "worker_id",
+                "aliases": [
+                  "worker",
+                  "员工代码",
+                  "分货员工代码"
+                ],
+                "role": "identifier",
+                "type": "string",
+                "required": true,
+                "note": "第 171 行 str(g.get('worker_id',''))；int 要转成 str。员工代码为空或字面 'NULL' 的段不得出现，出现即第 183-187 行 extra segment 违规"
+              },
+              {
+                "name": "bell",
+                "aliases": [
+                  "大钟",
+                  "钟号"
+                ],
+                "role": "identifier",
+                "type": "int",
+                "required": true,
+                "note": "第 171 行 int(g.get('bell',0))，取值 1-8；无法转 int 时第 173 行直接 schema 报错返回"
+              },
+              {
+                "name": "cart_order",
+                "aliases": [
+                  "carts",
+                  "台车顺序",
+                  "原始台车"
+                ],
+                "role": "decision",
+                "type": "array of string",
+                "required": true,
+                "note": "第 195 行 [str(c) for c in g.get('cart_order',[])]；该段台车各出现一次（第 200-209 行查重复/漏/多）"
+              },
+              {
+                "name": "slot_sequences",
+                "aliases": [
+                  "slots",
+                  "分货位顺序"
+                ],
+                "role": "decision",
+                "type": "object",
+                "required": true,
+                "note": "第 196、216 行 slot_sequences.get(cart)；键为台车号字符串，值为该车分货位访问顺序",
+                "keys": {
+                  "name": "slot_sequences_cart_key",
+                  "role": "grouping_key",
+                  "type": "string",
+                  "note": "台车号；必须与 cart_order 的元素一一对应（第 212-216 行按 cart 取序列）"
+                },
+                "values": {
+                  "name": "slot_sequence",
+                  "role": "decision",
+                  "type": "array of string",
+                  "note": "分货位编码，已脱去 AA 前缀（AAS0002 → S0002，第 70 行 VALID_SLOT_RE）；第 238-242 行按此顺序累加 bfs 距离"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "total_distance_m",
+          "aliases": [],
+          "type": "float",
+          "required": false,
+          "role": "ignored",
+          "note": "EXTRACTOR_SPEC 示例里有，但 evaluator 全文不读它，第 250 行自行重算 total_dist_mm/1000"
+        },
+        {
+          "name": "n_groups",
+          "aliases": [],
+          "type": "int",
+          "required": false,
+          "role": "ignored",
+          "note": "evaluator 不读；第 257-258 行只报 len(expected_groups) 与 len(groups)"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "groups 必须存在且是非空 list，否则 fatal（第 162-164 行）",
+    "每个 group 的 worker_id/bell 必须能转成 (str, int)，否则整份 schema 报错返回（第 171-174 行）",
+    "不得出现期望之外的任务段——典型是没滤掉员工代码为空或字面 NULL 的无主台车（第 183-187 行）",
+    "445 个 (worker, bell) 任务段一个都不能漏（第 189-192 行）",
+    "cart_order 内不得重复同一台车（第 200-201 行）",
+    "cart_order 必须恰好等于该段的台车集合，不缺不多（第 202-209 行）",
+    "每辆台车的 slot_sequences 必须恰好等于该车去重后的分货位集合，不缺不多（第 218-223 行）",
+    "同一辆台车内不得重复到访同一个分货位（第 224-225 行）"
+  ],
+  "derived_from_lines": [
+    66,
+    162,
+    171,
+    183,
+    192,
+    195,
+    196,
+    200,
+    202,
+    216,
+    218,
+    224,
+    238
+  ]
+}

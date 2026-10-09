@@ -1,0 +1,4 @@
+{"type":"assistant","message":{"id":"msg_first","model":"claude-sonnet-5","content":[{"type":"thinking","thinking":""}],"usage":{"input_tokens":2,"output_tokens":2,"cache_creation_input_tokens":52653,"cache_read_input_tokens":0}}}
+{"type":"assistant","message":{"id":"msg_first","model":"claude-sonnet-5","content":[{"type":"tool_use","name":"Bash","input":{"command":"echo hi"}}],"usage":{"input_tokens":2,"output_tokens":2,"cache_creation_input_tokens":52653,"cache_read_input_tokens":0}}}
+{"type":"assistant","message":{"id":"msg_second","model":"claude-sonnet-5","content":[{"type":"text","text":"DONE-42"}],"usage":{"input_tokens":2,"output_tokens":1,"cache_creation_input_tokens":104,"cache_read_input_tokens":52653}}}
+{"type":"result","subtype":"success","is_error":false,"terminal_reason":"completed","result":"DONE-42","num_turns":2,"usage":{"input_tokens":4,"output_tokens":104,"cache_creation_input_tokens":52757,"cache_read_input_tokens":52653}}

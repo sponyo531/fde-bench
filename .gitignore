@@ -1,6 +1,30 @@
-.DS_Store
-node_modules/
+# 运行产物：每个 run 带 .agent_home（含 models.json + SQLite，数百 MB），
+# 不入库。归档目录同理。
+results/
+results-*/
+_archive/
+
+# 含端点与密钥引用，只提交 config.toml.example
+config.toml
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv-openhands/
+
+# 抽取器的 opencode 运行时依赖，装机时 bun install，不入库
+harness/scoring/extractor_opencode/node_modules/
+
+# Local environments and separately distributed benchmark inputs
+.venv/
+.cache/
+case/*/data/
+case/*/tests/data/
+# Case 040 row-level data are withheld pending redistribution confirmation
+case/040_frailty_cohort_analysis/tests/_private/test_outcomes.csv
+case/040_frailty_cohort_analysis/tests/best_solution/trajectory_groups.csv
+
+# Project-page development artifacts
 _preview/
 playwright-report/
 test-results/
-*.log

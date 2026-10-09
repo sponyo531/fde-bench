@@ -1,0 +1,46 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "chat": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "apiKey": "{env:DELIVER_AGENT_API_KEY}",
+        "baseURL": "{env:DELIVER_AGENT_BASE_URL}"
+      },
+      "models": {
+        "claude-opus-5": {"limit": {"context": 1000000, "output": 131072}},
+        "gemini-3.1-pro-preview": {"limit": {"context": 1000000, "output": 131072}},
+        "deepseek-v4-pro": {"limit": {"context": 1000000, "output": 131072}},
+        "qwen3.8-max": {"limit": {"context": 1000000, "output": 131072}},
+        "qwen3.8-27b": {"limit": {"context": 1000000, "output": 131072}},
+        "deepseek-v4-flash": {"limit": {"context": 1000000, "output": 131072}},
+        "gemini-3.6-flash": {"limit": {"context": 1000000, "output": 131072}},
+        "grok-4.5": {"limit": {"context": 1000000, "output": 131072}}
+      }
+    },
+    "responses": {
+      "npm": "@ai-sdk/openai",
+      "options": {
+        "apiKey": "{env:DELIVER_RESPONSES_API_KEY}",
+        "baseURL": "{env:DELIVER_RESPONSES_BASE_URL}"
+      },
+      "models": {
+        "kimi-k3": {"limit": {"context": 1000000, "output": 131072}},
+        "gpt-6-astra": {"limit": {"context": 1000000, "output": 131072}},
+        "grok-4.6": {"limit": {"context": 1000000, "output": 131072}},
+        "gpt-5.6-sol": {"limit": {"context": 1000000, "output": 131072}}
+      }
+    },
+    "direct": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "apiKey": "{env:DELIVER_DIRECT_API_KEY}",
+        "baseURL": "{env:DELIVER_DIRECT_BASE_URL}"
+      },
+      "models": {
+        "glm-5.2": {"limit": {"context": 1000000, "output": 131072}, "options": {"max_tokens": 131072}},
+        "glm-5.3": {"limit": {"context": 1000000, "output": 131072}, "options": {"max_tokens": 131072}}
+      }
+    }
+  }
+}

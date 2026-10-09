@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["时间序列预测", "电力负荷", "能源调度"]
+difficulty = "hard"

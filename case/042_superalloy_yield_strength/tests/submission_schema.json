@@ -1,0 +1,51 @@
+{
+  "case": "042_superalloy_yield_strength",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "sample_id",
+          "aliases": ["id", "ID", "sample", "Sample_ID", "编号", "样本编号"],
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "第 30 行 ID_COL='sample_id'，第 69-73 行按表头逐字比对、没有模糊匹配。取值必须与 data/to_predict.csv 的 sample_id 完全一致（如 'TEST_0001'），第 47 行按 str().strip() 归一。第 82-84 行为空即 fatal；第 85-87 行重复即 fatal；第 100-105 行与待预测清单必须精确同集合——缺一个或多一个都整份判零。EXTRACTOR_SPEC 明令不要补齐 agent 没给出的编号。"
+        },
+        {
+          "name": "predicted_yield_strength",
+          "aliases": ["pred", "yield_pred", "prediction", "y_pred", "预测强度", "预测屈服强度"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 31 行 PRED_COL，第 69-73 行列名逐字比对。单位 MPa 的单个点估计。第 88-90 行留空即 fatal；第 91-95 行无法 float() 即 fatal；第 96-98 行 nan/inf 即 fatal。EXTRACTOR_SPEC：数值一个都不要改、不要四舍五入；若 agent 给了多组模型预测只取它标为最终的那组；若只给了区间就留空该行，不要自行取中点。"
+        },
+        {
+          "name": "(其它列)",
+          "aliases": [],
+          "role": "ignored",
+          "type": "any",
+          "required": false,
+          "note": "csv.DictReader 会把多余的列一起读进来（第 40-42 行），但第 79-80 行只取 sample_id 与 predicted_yield_strength 两列，其余列既不判死也不参与打分。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "predictions.csv 必须存在于提交目录（第 57-60 行）",
+    "必须至少有一行数据（第 66-68 行）",
+    "表头必须同时含 sample_id 与 predicted_yield_strength，列名逐字匹配（第 69-73 行）",
+    "sample_id 不得为空（第 82-84 行）",
+    "sample_id 不得重复（第 85-87 行）",
+    "每行的预测值不得留空（第 88-90 行）",
+    "每行的预测值必须能解析成数值（第 91-95 行）",
+    "每行的预测值必须是有限数值，nan/inf 都不行（第 96-98 行）",
+    "data/to_predict.csv 里的每个 sample_id 都必须有一行预测，漏一个整份判零（第 47、100、102-103 行）",
+    "不得夹带待预测清单以外的 sample_id，多交同样整份判零（第 101、104-105 行）",
+    "以上任何一条不满足，validity 记 0、不进入质量比较（第 106-108 行）",
+    "真值只从 tests/_private/test_truth.csv 读（第 28、49-50 行），data/ 里没有待预测样本的标签；评估侧按待预测清单的编号顺序独立重算偏差（第 112-113 行）"
+  ],
+  "derived_from_lines": [27, 28, 30, 31, 47, 57, 66, 69, 79, 82, 85, 88, 91, 96, 100, 104, 106, 112]
+}

@@ -1,0 +1,165 @@
+{
+ "scheduled_ops": [
+  {
+   "wop_oid": "WOP_0567",
+   "resource": "RES_0047",
+   "start_dt": "2026-05-27T08:00:00",
+   "end_dt": "2026-05-27T08:25:24",
+   "duration_min": 25.4134
+  },
+  {
+   "wop_oid": "WOP_0320",
+   "resource": "RES_0048",
+   "start_dt": "2026-05-27T08:00:00",
+   "end_dt": "2026-05-27T08:36:00",
+   "duration_min": 36.0
+  },
+  {
+   "wop_oid": "WOP_0549",
+   "resource": "RES_0044",
+   "start_dt": "2026-05-27T08:00:00",
+   "end_dt": "2026-05-27T09:46:00",
+   "duration_min": 106.0
+  },
+  {
+   "wop_oid": "WOP_0008",
+   "resource": "RES_0045",
+   "start_dt": "2026-05-27T08:00:00",
+   "end_dt": "2026-05-27T08:33:00",
+   "duration_min": 33.0
+  },
+  {
+   "wop_oid": "WOP_0543",
+   "resource": "RES_0046",
+   "start_dt": "2026-05-27T08:00:00",
+   "end_dt": "2026-05-27T08:48:00",
+   "duration_min": 48.0
+  },
+  {
+   "wop_oid": "WOP_0562",
+   "resource": "RES_0047",
+   "start_dt": "2026-05-27T08:25:24",
+   "end_dt": "2026-05-27T09:07:45",
+   "duration_min": 42.3556
+  },
+  {
+   "wop_oid": "WOP_0252",
+   "resource": "RES_0045",
+   "start_dt": "2026-05-27T08:33:00",
+   "end_dt": "2026-05-27T14:05:00",
+   "duration_min": 332.0
+  },
+  {
+   "wop_oid": "WOP_0478",
+   "resource": "RES_0048",
+   "start_dt": "2026-05-27T08:36:00",
+   "end_dt": "2026-05-27T09:13:05",
+   "duration_min": 37.0911
+  },
+  {
+   "wop_oid": "WOP_0059",
+   "resource": "RES_0046",
+   "start_dt": "2026-05-27T08:48:00",
+   "end_dt": "2026-05-27T14:48:00",
+   "duration_min": 360.0
+  },
+  {
+   "wop_oid": "WOP_0559",
+   "resource": "RES_0047",
+   "start_dt": "2026-05-27T09:07:45",
+   "end_dt": "2026-05-27T09:53:45",
+   "duration_min": 46.0
+  },
+  {
+   "wop_oid": "WOP_0556",
+   "resource": "RES_0048",
+   "start_dt": "2026-05-27T09:13:05",
+   "end_dt": "2026-05-27T10:05:05",
+   "duration_min": 52.0
+  },
+  {
+   "wop_oid": "WOP_0070",
+   "resource": "RES_0044",
+   "start_dt": "2026-05-27T09:46:00",
+   "end_dt": "2026-05-27T12:14:00",
+   "duration_min": 148.0
+  },
+  {
+   "wop_oid": "WOP_0332",
+   "resource": "RES_0047",
+   "start_dt": "2026-05-27T09:53:45",
+   "end_dt": "2026-05-27T11:49:45",
+   "duration_min": 116.0
+  },
+  {
+   "wop_oid": "WOP_0572",
+   "resource": "RES_0048",
+   "start_dt": "2026-05-27T10:05:05",
+   "end_dt": "2026-05-27T11:06:54",
+   "duration_min": 61.8185
+  },
+  {
+   "wop_oid": "WOP_0544",
+   "resource": "RES_0048",
+   "start_dt": "2026-05-27T11:06:54",
+   "end_dt": "2026-05-27T13:21:54",
+   "duration_min": 135.0
+  },
+  {
+   "wop_oid": "WOP_0473",
+   "resource": "RES_0047",
+   "start_dt": "2026-05-27T11:49:45",
+   "end_dt": "2026-05-27T14:27:52",
+   "duration_min": 158.1278
+  },
+  {
+   "wop_oid": "WOP_0259",
+   "resource": "RES_0044",
+   "start_dt": "2026-05-27T12:14:00",
+   "end_dt": "2026-05-29T12:12:39",
+   "duration_min": 1198.656
+  },
+  {
+   "wop_oid": "WOP_0577",
+   "resource": "RES_0048",
+   "start_dt": "2026-05-27T13:21:54",
+   "end_dt": "2026-05-27T17:12:41",
+   "duration_min": 230.7892
+  },
+  {
+   "wop_oid": "WOP_0272",
+   "resource": "RES_0045",
+   "start_dt": "2026-05-27T14:05:00",
+   "end_dt": "2026-05-29T17:09:00",
+   "duration_min": 1384.0
+  },
+  {
+   "wop_oid": "WOP_0245",
+   "resource": "RES_0047",
+   "start_dt": "2026-05-27T14:27:52",
+   "end_dt": "2026-05-27T17:12:42",
+   "duration_min": 164.8494
+  },
+  {
+   "wop_oid": "WOP_0277",
+   "resource": "RES_0046",
+   "start_dt": "2026-05-27T14:48:00",
+   "end_dt": "2026-05-29T17:52:00",
+   "duration_min": 1384.0
+  },
+  {
+   "wop_oid": "WOP_0047",
+   "resource": "RES_0044",
+   "start_dt": "2026-05-29T12:12:39",
+   "end_dt": "2026-06-03T14:20:39",
+   "duration_min": 2528.0
+  },
+  {
+   "wop_oid": "WOP_0106",
+   "resource": "RES_0045",
+   "start_dt": "2026-05-29T17:09:00",
+   "end_dt": "2026-06-03T12:41:00",
+   "duration_min": 2132.0
+  }
+ ]
+}

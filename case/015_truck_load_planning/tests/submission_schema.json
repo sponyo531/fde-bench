@@ -1,0 +1,177 @@
+{
+"case": "015_truck_load_planning",
+"files": [
+{
+"name": "solution.json",
+"format": "json",
+"required": true,
+"root_type": "object",
+"root_keys": [
+{
+"name": "trucks",
+"aliases": [],
+"type": "array",
+"required": true,
+"note": "non-empty; each element is one dispatched vehicle",
+"item_fields": [
+{
+"name": "truck_id",
+"role": "identifier",
+"type": "string",
+"required": true,
+"note": "non-empty string; must be unique across the trucks list"
+},
+{
+"name": "cab_model",
+"role": "decision",
+"type": "string",
+"required": true,
+"note": "must match a vehicle-type name in data/日常发运车型.xlsx; changing this changes which vehicle was chosen"
+},
+{
+"name": "blocks",
+"role": "container",
+"type": "array",
+"required": true,
+"note": "3-D placement blocks inside this truck; each block is one cargo unit",
+"item_fields": [
+{
+"name": "sku",
+"role": "identifier",
+"type": "string",
+"required": true,
+"note": "SKU/物料代码; names what is placed, not the placement decision itself"
+},
+{
+"name": "qty",
+"role": "decision",
+"type": "integer",
+"required": true,
+"note": "number of boxes in this block; must be > 0"
+},
+{
+"name": "weight_kg",
+"role": "decision",
+"type": "number",
+"required": true,
+"note": "gross weight of this block in kg"
+},
+{
+"name": "x",
+"role": "decision",
+"type": "number",
+"unit": "metres",
+"required": true,
+"note": "origin coordinate along truck length"
+},
+{
+"name": "y",
+"role": "decision",
+"type": "number",
+"unit": "metres",
+"required": true,
+"note": "origin coordinate along truck width"
+},
+{
+"name": "z",
+"role": "decision",
+"type": "number",
+"unit": "metres",
+"required": true,
+"note": "origin coordinate along truck height"
+},
+{
+"name": "dx",
+"role": "decision",
+"type": "number",
+"unit": "metres",
+"required": true,
+"note": "block extent along x; must be > 0"
+},
+{
+"name": "dy",
+"role": "decision",
+"type": "number",
+"unit": "metres",
+"required": true,
+"note": "block extent along y; must be > 0"
+},
+{
+"name": "dz",
+"role": "decision",
+"type": "number",
+"unit": "metres",
+"required": true,
+"note": "block extent along z; must be > 0"
+},
+{
+"name": "seq_load",
+"role": "decision",
+"type": "integer",
+"required": true,
+"note": "loading sequence within this truck; values must form a permutation of 1..N where N = len(blocks)"
+},
+{
+"name": "seq_unload",
+"role": "decision",
+"type": "integer",
+"required": false,
+"note": "unloading sequence; checked only if present; single-stop rule: expected = N+1 - seq_load"
+}
+]
+}
+]
+},
+{
+"name": "unassigned",
+"aliases": [],
+"type": "array",
+"required": false,
+"default": [],
+"note": "SKUs that could not be loaded onto any truck; defaults to [] if key is absent or null",
+"item_fields": [
+{
+"name": "sku",
+"role": "identifier",
+"type": "string",
+"required": true
+},
+{
+"name": "qty",
+"role": "decision",
+"type": "integer",
+"required": true,
+"note": "number of boxes left unloaded"
+}
+]
+}
+]
+}
+],
+"structural_checks": [
+"solution.json top level must be a JSON object (dict), not a list or any other type",
+"trucks must be a non-empty list (missing key or empty list both cause fatal error)",
+"each truck.truck_id must be a non-empty string",
+"truck_id values must be unique across the entire trucks list",
+"each truck.cab_model must match a vehicle-type name present in data/日常发运车型.xlsx",
+"each block must contain all nine required fields: sku, qty, weight_kg, x, y, z, dx, dy, dz, seq_load",
+"block.dx, block.dy, block.dz must each be strictly > 0",
+"block.qty must be strictly > 0",
+"seq_load values within one truck must be a permutation of 1..N (N = number of blocks in that truck)"
+],
+"alias_notes": [
+"trucks has NO aliases — the key must be exactly 'trucks'",
+"unassigned has NO aliases — the key must be exactly 'unassigned' (or the key may be absent)",
+"no .get() or-chains were found on any submission key; every field name is a single fixed string"
+],
+"derived_from_lines": [
+444,
+459,
+469,
+483,
+237,
+247,
+313,
+315
+]
+}

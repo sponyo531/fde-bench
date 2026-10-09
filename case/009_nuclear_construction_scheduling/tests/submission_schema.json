@@ -1,0 +1,206 @@
+{
+  "case": "009_nuclear_construction_scheduling",
+  "files": [
+    {
+      "name": "任务级计划.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "施工对象编码",
+          "role": "identifier",
+          "required": true,
+          "note": "construction-object code; evaluator aligns submission rows to data/combined_data.csv by positional index and then cross-checks this field — row order must exactly match combined_data.csv"
+        },
+        {
+          "name": "图纸编码",
+          "role": "identifier",
+          "required": true
+        },
+        {
+          "name": "房间",
+          "role": "grouping_key",
+          "required": true,
+          "role_rationale": "189/277/313/478 行 unique()+过滤分组做串行/容量/排序约束；房间值必须与 combined_data.csv 对齐。"
+        },
+        {
+          "name": "施工对象",
+          "role": "decision",
+          "required": true,
+          "note": "task-type string (e.g. 'G05电缆敷设'); used to look up staffing tiers and efficiency coefficients — must match the value in combined_data.csv at the same row position",
+          "role_rationale": "194-199/366 行 TASK_ORDER[tt] 做工序先后比较；expected_workers 直接算所需工人数"
+        },
+        {
+          "name": "开始时间",
+          "role": "decision",
+          "type": "datetime",
+          "format": "YYYY-MM-DD HH:MM",
+          "required": true
+        },
+        {
+          "name": "结束时间",
+          "role": "decision",
+          "type": "datetime",
+          "format": "YYYY-MM-DD HH:MM",
+          "required": true
+        },
+        {
+          "name": "分配工人数",
+          "role": "decision",
+          "type": "integer",
+          "required": true,
+          "note": "agent-chosen worker allocation; must be > 0"
+        },
+        {
+          "name": "工期(小时)",
+          "role": "decision",
+          "type": "number",
+          "required": true,
+          "note": "must equal ceil(安装总点数 × efficiency_coef / 分配工人数); tolerance 1e-4"
+        },
+        {
+          "name": "所需工人数",
+          "role": "decision",
+          "type": "integer",
+          "required": true,
+          "note": "must match the staffing-rules tier for this task type, points, and weight (see staffing_rules.txt)"
+        },
+        {
+          "name": "房间容量",
+          "role": "decision",
+          "type": "integer",
+          "required": true,
+          "note": "must be ≤ floor(房间面积 / 2.25)"
+        },
+        {
+          "name": "start_hour",
+          "role": "decision",
+          "type": "integer",
+          "required": true,
+          "note": "integer hour index; project start 2024-01-02 = hour 0, 8 work-hours per calendar day; must be ≥ room handover lower bound"
+        },
+        {
+          "name": "end_hour",
+          "role": "decision",
+          "type": "integer",
+          "required": true,
+          "note": "half-open interval [start_hour, end_hour); end_hour − start_hour must equal 工期(小时) within tolerance 1e-4"
+        },
+        {
+          "name": "actual_work_hours",
+          "role": "decision",
+          "type": "number",
+          "required": true,
+          "note": "= 安装总点数 × efficiency_coef; evaluator does not use this column for scoring (it recomputes from original_data) but the column must be present — absence causes an early-exit error"
+        }
+      ],
+      "structural_checks": [
+        "must not be empty (line 553)",
+        "start_hour, end_hour, actual_work_hours must all be present before any further evaluation (line 557–561)",
+        "row count and row order must exactly match data/combined_data.csv; evaluator aligns by positional index and cross-checks 施工对象编码 + 施工对象 at each row (lines 353–362, 400–404, 434–436)",
+        "all thirteen columns listed above must be present (validate check #9, lines 259–265)"
+      ],
+      "derived_from_lines": [
+        548,
+        553,
+        557,
+        259
+      ]
+    },
+    {
+      "name": "每小时人力使用.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "小时",
+          "role": "identifier",
+          "required": true,
+          "note": "hour index from 0 to max end_hour, one row per hour"
+        },
+        {
+          "name": "忙碌人数",
+          "role": "decision",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "空闲人数",
+          "role": "decision",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "总人数",
+          "role": "decision",
+          "type": "integer",
+          "required": true,
+          "note": "must equal 忙碌人数 + 空闲人数 and must be non-decreasing across all hours"
+        }
+      ],
+      "structural_checks": [
+        "总人数 must be non-decreasing (validate check #1, line 173)",
+        "忙碌人数 ≤ 总人数 (validate check #2, line 178)",
+        "忙碌人数 + 空闲人数 = 总人数 (validate check #3, line 183)"
+      ],
+      "derived_from_lines": [
+        547,
+        171
+      ]
+    },
+    {
+      "name": "图纸级计划.csv",
+      "format": "csv",
+      "required": false,
+      "note": "file is optional; if absent the evaluator skips check #8 entirely (line 550–551)",
+      "columns": [
+        {
+          "name": "图纸编码",
+          "role": "identifier",
+          "required": true
+        },
+        {
+          "name": "房间",
+          "role": "identifier",
+          "required": true
+        },
+        {
+          "name": "开始时间",
+          "role": "decision",
+          "type": "datetime",
+          "format": "YYYY-MM-DD HH:MM",
+          "required": true
+        },
+        {
+          "name": "结束时间",
+          "role": "decision",
+          "type": "datetime",
+          "format": "YYYY-MM-DD HH:MM",
+          "required": true
+        },
+        {
+          "name": "总工期(小时)",
+          "role": "decision",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "平均人力",
+          "role": "decision",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "structural_checks": [
+        "if file is present, all six columns above must exist (validate check #8, lines 252–256)"
+      ],
+      "derived_from_lines": [
+        550,
+        252
+      ]
+    }
+  ],
+  "alias_sets": {
+    "note": "no alias chains found; all column names are exact (no .get(...) or 'or' fallback patterns in the parsing path)"
+  }
+}

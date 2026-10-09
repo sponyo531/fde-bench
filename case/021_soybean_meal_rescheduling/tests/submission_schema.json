@@ -1,0 +1,162 @@
+{
+  "case": "021_soybean_meal_rescheduling",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "Root may be either {\"shifts\": [...]} or a bare JSON array. No other root-key name is tolerated (load_solution checks 'shifts' only, then falls back to bare list; raises ValueError otherwise).",
+      "root_keys": [
+        {
+          "name": "shifts",
+          "aliases": [],
+          "type": "array",
+          "required": true,
+          "note": "Also accepted as the top-level array directly (no wrapping object). Must contain exactly 20 objects covering all (shift_name, factory) pairs in SHIFT_STRUCT, each pair appearing exactly once.",
+          "fields": [
+            {
+              "name": "shift_name",
+              "role": "identifier",
+              "type": "string",
+              "required": true,
+              "accepted_values": [
+                "26白",
+                "26夜",
+                "27白",
+                "27夜",
+                "28白",
+                "28夜",
+                "29白",
+                "29夜",
+                "30白",
+                "30夜"
+              ],
+              "note": "Combined with factory to form the primary key used to look up the entry in SHIFT_STRUCT. str(sh.get('shift_name', '')).strip()"
+            },
+            {
+              "name": "factory",
+              "role": "identifier",
+              "type": "string",
+              "required": true,
+              "normalization": "norm_factory: '一'/'1'/'F1'/'厂一' → '一厂';  '二'/'2'/'F2'/'厂二' → '二厂'",
+              "note": "Combined with shift_name to form the primary key. norm_factory(sh.get('factory', ''))"
+            },
+            {
+              "name": "blocked",
+              "role": "decision",
+              "type": "boolean",
+              "required": true,
+              "normalization": "as_bool: true/1/'是'/'封存'/'yes'/'y' → true; everything else → false",
+              "note": "Must match SHIFT_STRUCT: 27白(一厂) and 27白(二厂) must be true; all other 18 shifts must be false. Mismatch is a hard constraint violation."
+            },
+            {
+              "name": "hours",
+              "role": "decision",
+              "type": "array",
+              "required": false,
+              "note": "Preferred path. Length must equal the shift's valid-hour count: 26白=5, all other non-blocked shifts=12. Each element is an object with xiaobao/tunbao/sanliao integer fields. If absent or empty, the evaluator falls through to the aggregate fallback (xiaobao_total / tunbao_total / sanliao_total).",
+              "items": {
+                "type": "object",
+                "fields": [
+                  {
+                    "name": "xiaobao",
+                    "role": "decision",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0,
+                    "note": "小包 truck count for this hour. h.get('xiaobao', 0)"
+                  },
+                  {
+                    "name": "tunbao",
+                    "role": "decision",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0,
+                    "note": "吨包 truck count for this hour. h.get('tunbao', 0)"
+                  },
+                  {
+                    "name": "sanliao",
+                    "role": "decision",
+                    "type": "integer",
+                    "required": false,
+                    "default": 0,
+                    "note": "散料 truck count for this hour. h.get('sanliao', 0)"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "xiaobao_total",
+              "aliases": [
+                "xiaobao"
+              ],
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "default": 0,
+              "note": "Shift-level aggregate fallback used when 'hours' is absent or empty. Exact chain: sh.get('xiaobao_total', sh.get('xiaobao', 0)). Treated as a single merged hour."
+            },
+            {
+              "name": "tunbao_total",
+              "aliases": [
+                "tunbao"
+              ],
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "default": 0,
+              "note": "Shift-level aggregate fallback. sh.get('tunbao_total', sh.get('tunbao', 0))."
+            },
+            {
+              "name": "sanliao_total",
+              "aliases": [
+                "sanliao"
+              ],
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "default": 0,
+              "note": "Shift-level aggregate fallback. sh.get('sanliao_total', sh.get('sanliao', 0))."
+            },
+            {
+              "name": "train_nodes",
+              "role": "decision",
+              "type": "integer",
+              "required": false,
+              "default": 0,
+              "note": "Number of train nodes dispatched this shift. int(sh.get('train_nodes', 0) or 0). Must be 0 for 二厂 shifts. Sum across all 43% shifts must equal demand['43%']['train']; same for 45%."
+            },
+            {
+              "name": "guluomei_tons",
+              "role": "decision",
+              "type": "number",
+              "required": false,
+              "default": 0,
+              "note": "Tons reserved for 过瘤胃 in this shift (not dispatched, not subtracted from inventory dispatch). float(sh.get('guluomei_tons', 0) or 0). Enforced only for 43% protein shifts: 26白 ≥ GULUOMEI_26BAI_MIN (≈100), all others ≥ GULUOMEI_LATER_MIN (≈200)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ignored_fields": [
+    {
+      "name": "protein",
+      "note": "Defined in norm_protein() and mentioned in EXTRACTOR_SPEC, but never read inside evaluate(). The evaluator takes protein entirely from SHIFT_STRUCT keyed by (shift_name, factory). Any value in the submission is silently ignored."
+    }
+  ],
+  "structural_checks": [
+    "shifts must be a non-empty list (or bare JSON array)",
+    "must contain exactly 20 objects — one per (shift_name, factory) pair in SHIFT_STRUCT; missing or unknown pairs are a hard constraint failure",
+    "each (shift_name, factory) pair must appear exactly once; duplicates are a hard constraint failure",
+    "blocked must match SHIFT_STRUCT: 27白(一厂) and 27白(二厂) must be true; all other 18 shifts must be false",
+    "for non-blocked shifts: len(hours) must equal n_hours (26白=5, others=12); hours elements must be non-negative; sum per hour must not exceed HOURLY_CAP[factory]",
+    "train_nodes must be 0 for 二厂 shifts; aggregate train_nodes across 43% shifts must equal demand, same for 45%",
+    "guluomei_tons for 43% non-blocked shifts: 26白 ≥ GULUOMEI_26BAI_MIN, others ≥ GULUOMEI_LATER_MIN",
+    "inventory must remain non-negative and must not exceed INV_LIMIT at every shift boundary"
+  ],
+  "derived_from_lines": [
+    249,
+    276
+  ]
+}

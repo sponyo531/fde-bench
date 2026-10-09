@@ -1,0 +1,66 @@
+{
+  "case": "032_grid_load_15min_forecast",
+  "files": [
+    {
+      "name": "prediction.csv",
+      "format": "csv",
+      "required": true,
+      "note": "第 27 行 PLAN_FILE='prediction.csv'，第 52-55 行文件名逐字匹配，缺文件即 fatal。第 57 行 pd.read_csv(encoding='utf-8-sig')，允许 BOM。",
+      "columns": [
+        {
+          "name": "数据时间",
+          "role": "identifier",
+          "type": "datetime string",
+          "required": true,
+          "aliases": [
+            "timestamp",
+            "datetime",
+            "ds",
+            "time",
+            "时间",
+            "日期时间"
+          ],
+          "format": "任意 pd.to_datetime 能解析的写法；第 35-38 行会归一到 '%Y-%m-%d %H:%M' 再匹配，补零/不补零、'-' 与 '/' 混用都容忍（原始数据写作 2020/8/2 00:00）",
+          "note": "与私有真值对齐的唯一键。第 58-61 行按列名逐字检查（无别名解析，别名必须由 extractor 归一）；第 65 行任一值解析不出即 fatal；第 78 行 _t 重复即 fatal。EXTRACTOR_SPEC 要求时间值保持选手原样、不要重新格式化。"
+        },
+        {
+          "name": "总有功功率(kW)",
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "aliases": [
+            "load",
+            "power",
+            "yhat",
+            "prediction",
+            "pred",
+            "总有功功率",
+            "负荷"
+          ],
+          "note": "该时间格的负荷预测值，单位 kW（原始数据量级二十几万）。第 64 行 pd.to_numeric，第 68 行含缺失/非数值即 fatal；第 72 行 inf/nan 即 fatal；第 75 行 <=0 即 fatal（低负荷时段也不能报 0）。第 97 行按 |真值-预测|/真值 逐点算相对误差。EXTRACTOR_SPEC 明令不得改动数值、不得重新建模。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "prediction.csv 必须存在于提交目录（第 52-55 行）",
+    "必须同时含「数据时间」「总有功功率(kW)」两列，按列名逐字匹配（第 58-61 行）",
+    "「数据时间」每个值都要能被 pd.to_datetime 解析（第 65-67 行）",
+    "「总有功功率(kW)」不得有缺失或非数值（第 68-70 行）",
+    "预测值不得为 inf/nan（第 72-74 行）",
+    "预测值必须严格为正，报 0 或负数整份判 0（第 75-77 行）",
+    "归一化后的时间不得重复（第 78-80 行）",
+    "私有真值里的 2964 个时间点必须全部被覆盖（第 84-89 行按集合差判定；多交真值以外的行不影响判定，只有真值那些点参与打分）"
+  ],
+  "derived_from_lines": [
+    52,
+    58,
+    65,
+    68,
+    72,
+    75,
+    78,
+    86,
+    97
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "case": "048_energy_dispatch_8760h",
+  "files": [
+    {
+      "name": "solution.json",
+      "format": "json",
+      "required": true,
+      "note": "第 28 行 PLAN_FILE = 'solution.json'；第 241-244 行缺文件即判违规",
+      "root_keys": [
+        {
+          "name": "caes_seq",
+          "aliases": [
+            "caes",
+            "压缩空气储能"
+          ],
+          "type": "array",
+          "required": true,
+          "role": "decision",
+          "note": "第 252 行 plan.get('caes_seq')；长度须 ≥8760（第 257-258 行），逐小时控制系数。第 276-278 行取值只允许 0、[-1,-0.33]、[0.86,1]，越界整份判零",
+          "items": {
+            "name": "caes_u",
+            "role": "decision",
+            "type": "float",
+            "note": "正=膨胀发电、负=压缩储能，相对额定功率 1.5e8 W；第 143-153 行驱动气/热/冷三腔 SOC"
+          }
+        },
+        {
+          "name": "battery_seq",
+          "aliases": [
+            "battery",
+            "锂电池",
+            "bat"
+          ],
+          "type": "array",
+          "required": true,
+          "role": "decision",
+          "note": "第 253 行；长度须 ≥8760（第 259-260 行）。第 279-281 行取值须在 [-1,1] 内",
+          "items": {
+            "name": "battery_u",
+            "role": "decision",
+            "type": "float",
+            "note": "1=满功率放电、-1=满功率充电；第 127-132 行按 0.85 单向效率折算 SOC"
+          }
+        },
+        {
+          "name": "tp_seq",
+          "aliases": [
+            "tp",
+            "thermal",
+            "火电"
+          ],
+          "type": "array",
+          "required": false,
+          "role": "decision",
+          "note": "第 254 行 plan.get('tp_seq', 全 0.33)——不交则整年恒取 0.33；交了则长度须 ≥8760（第 261-262 行），第 282-284 行取值须在 [0.33,1] 内",
+          "items": {
+            "name": "tp_u",
+            "role": "decision",
+            "type": "float",
+            "note": "相对 1.5e8 W 的出力系数，机组不能停机故下限 0.33；第 167 行 P_TP = u_tp × tp_P_max"
+          }
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "缺 solution.json 或 JSON 解析失败即判违规、validity=0（第 241-250 行）",
+    "caes_seq / battery_seq 必须是 list 且长度不少于 8760（第 257-260 行）",
+    "tp_seq 若给出也必须是 list 且长度不少于 8760；不给则按全年 0.33 处理（第 254、261-262 行）",
+    "三条序列的每一项都必须能转成 float（第 267-273 行）",
+    "caes_seq 取值只允许 0 或 [-1,-0.33] 或 [0.86,1]（第 276-278 行）",
+    "battery_seq 取值必须在 [-1,1] 内（第 279-281 行）",
+    "tp_seq 取值必须在 [0.33,1] 内（第 282-284 行）",
+    "仿真中任一小时电池 SOC 越出 [0.1,0.9]、气罐越出 [0.6,1.0]、热/冷罐越出 [0.05,0.95]，整份方案判零（第 134-163、289-291 行）"
+  ],
+  "derived_from_lines": [
+    28,
+    241,
+    252,
+    253,
+    254,
+    257,
+    259,
+    261,
+    267,
+    276,
+    279,
+    282,
+    289
+  ]
+}

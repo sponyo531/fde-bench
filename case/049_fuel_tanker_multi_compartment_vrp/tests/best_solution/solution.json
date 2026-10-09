@@ -1,0 +1,2336 @@
+[
+  {
+    "tripId": 1,
+    "vehicleType": "7.6m",
+    "distance": 131788.48,
+    "duration": 518,
+    "startTime": "202603050630",
+    "endTime": "202603051508",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 60060.93,
+    "customers": [
+      {
+        "locationId": "LOCATION_053",
+        "name": "SITE_053",
+        "address": "SITE_053",
+        "arriveTime": "202603050913",
+        "departTime": "202603051043",
+        "distance": 59755.46,
+        "duration": 72,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "150",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 434.41
+          },
+          {
+            "order_id": "151",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 487.6
+          },
+          {
+            "order_id": "152",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 470.55
+          },
+          {
+            "order_id": "153",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 439.48
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_033",
+        "name": "SITE_033",
+        "address": "SITE_033",
+        "arriveTime": "202603051050",
+        "departTime": "202603051220",
+        "distance": 5599.19,
+        "duration": 7,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "91",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 405.0
+          },
+          {
+            "order_id": "92",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 315.75
+          },
+          {
+            "order_id": "93",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 411.45
+          },
+          {
+            "order_id": "94",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 312.14
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_021",
+        "name": "SITE_021",
+        "address": "SITE_021",
+        "arriveTime": "202603051226",
+        "departTime": "202603051356",
+        "distance": 5424.7,
+        "duration": 7,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "54",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 477.16
+          },
+          {
+            "order_id": "55",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 450.55
+          },
+          {
+            "order_id": "56",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 225.87
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1316.5700000000002,
+        "volumePercent": 26.33
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1253.9,
+        "volumePercent": 25.08
+      },
+      {
+        "wareId": 3,
+        "oilType": 1,
+        "oilCategory": "98#汽油",
+        "volume": 882.0,
+        "volumePercent": 17.64
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 977.49,
+        "volumePercent": 19.55
+      }
+    ]
+  },
+  {
+    "tripId": 2,
+    "vehicleType": "7.6m",
+    "distance": 253230.5,
+    "duration": 844,
+    "startTime": "202603050630",
+    "endTime": "202603052034",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 112552.17,
+    "customers": [
+      {
+        "locationId": "LOCATION_013",
+        "name": "SITE_013",
+        "address": "SITE_013",
+        "arriveTime": "202603051000",
+        "departTime": "202603051130",
+        "distance": 98730.74,
+        "duration": 118,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "29",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 444.68
+          },
+          {
+            "order_id": "30",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 330.94
+          },
+          {
+            "order_id": "31",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 381.83
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_046",
+        "name": "SITE_046",
+        "address": "SITE_046",
+        "arriveTime": "202603051200",
+        "departTime": "202603051330",
+        "distance": 25220.71,
+        "duration": 30,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "129",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 328.42
+          },
+          {
+            "order_id": "130",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 289.07
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_055",
+        "name": "SITE_055",
+        "address": "SITE_055",
+        "arriveTime": "202603051340",
+        "departTime": "202603051510",
+        "distance": 8817.57,
+        "duration": 11,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "156",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 123.45
+          },
+          {
+            "order_id": "157",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 251.59
+          },
+          {
+            "order_id": "158",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 494.12
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_028",
+        "name": "SITE_028",
+        "address": "SITE_028",
+        "arriveTime": "202603051517",
+        "departTime": "202603051647",
+        "distance": 5388.39,
+        "duration": 6,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "75",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 444.31
+          },
+          {
+            "order_id": "76",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 104.59
+          },
+          {
+            "order_id": "77",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 388.29
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_008",
+        "name": "SITE_008",
+        "address": "SITE_008",
+        "arriveTime": "202603051649",
+        "departTime": "202603051819",
+        "distance": 1572.71,
+        "duration": 2,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "16",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 422.33
+          },
+          {
+            "order_id": "17",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 379.26
+          },
+          {
+            "order_id": "18",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 236.1
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1763.19,
+        "volumePercent": 35.26
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1066.38,
+        "volumePercent": 21.33
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1789.4099999999999,
+        "volumePercent": 35.79
+      }
+    ]
+  },
+  {
+    "tripId": 3,
+    "vehicleType": "4.2m",
+    "distance": 372714.31,
+    "duration": 987,
+    "startTime": "202603050630",
+    "endTime": "202603052257",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 128848.17,
+    "customers": [
+      {
+        "locationId": "LOCATION_035",
+        "name": "SITE_035",
+        "address": "SITE_035",
+        "arriveTime": "202603051113",
+        "departTime": "202603051243",
+        "distance": 159962.94,
+        "duration": 192,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "96",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 471.64
+          },
+          {
+            "order_id": "97",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 451.49
+          },
+          {
+            "order_id": "98",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 432.67
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_054",
+        "name": "SITE_054",
+        "address": "SITE_054",
+        "arriveTime": "202603051301",
+        "departTime": "202603051431",
+        "distance": 15072.98,
+        "duration": 18,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "154",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 294.26
+          },
+          {
+            "order_id": "155",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 185.5
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_006",
+        "name": "SITE_006",
+        "address": "SITE_006",
+        "arriveTime": "202603051512",
+        "departTime": "202603051642",
+        "distance": 34273.66,
+        "duration": 41,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "11",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 179.54
+          },
+          {
+            "order_id": "12",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 359.95
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_025",
+        "name": "SITE_025",
+        "address": "SITE_025",
+        "arriveTime": "202603051713",
+        "departTime": "202603051843",
+        "distance": 25463.51,
+        "duration": 31,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "67",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 136.36
+          },
+          {
+            "order_id": "68",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 118.85
+          },
+          {
+            "order_id": "69",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 143.86
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_047",
+        "name": "SITE_047",
+        "address": "SITE_047",
+        "arriveTime": "202603051853",
+        "departTime": "202603052023",
+        "distance": 8144.85,
+        "duration": 10,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "131",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 423.0
+          },
+          {
+            "order_id": "132",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 176.16
+          },
+          {
+            "order_id": "133",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 138.77
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1504.8,
+        "volumePercent": 50.16
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 746.5,
+        "volumePercent": 24.88
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1260.75,
+        "volumePercent": 42.02
+      }
+    ]
+  },
+  {
+    "tripId": 4,
+    "vehicleType": "7.6m",
+    "distance": 194807.1,
+    "duration": 774,
+    "startTime": "202603050630",
+    "endTime": "202603051924",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 75694.74,
+    "customers": [
+      {
+        "locationId": "LOCATION_005",
+        "name": "SITE_005",
+        "address": "SITE_005",
+        "arriveTime": "202603050929",
+        "departTime": "202603051059",
+        "distance": 73095.7,
+        "duration": 88,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "8",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 111.92
+          },
+          {
+            "order_id": "9",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 187.46
+          },
+          {
+            "order_id": "10",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 302.14
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_045",
+        "name": "SITE_045",
+        "address": "SITE_045",
+        "arriveTime": "202603051114",
+        "departTime": "202603051244",
+        "distance": 12844.48,
+        "duration": 15,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "126",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 367.59
+          },
+          {
+            "order_id": "127",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 185.69
+          },
+          {
+            "order_id": "128",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 152.92
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_031",
+        "name": "SITE_031",
+        "address": "SITE_031",
+        "arriveTime": "202603051259",
+        "departTime": "202603051429",
+        "distance": 12120.13,
+        "duration": 15,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "85",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 300.23
+          },
+          {
+            "order_id": "86",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 171.46
+          },
+          {
+            "order_id": "87",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 465.05
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_007",
+        "name": "SITE_007",
+        "address": "SITE_007",
+        "arriveTime": "202603051441",
+        "departTime": "202603051611",
+        "distance": 9952.17,
+        "duration": 12,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "13",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 188.18
+          },
+          {
+            "order_id": "14",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 335.71
+          },
+          {
+            "order_id": "15",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 423.77
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_051",
+        "name": "SITE_051",
+        "address": "SITE_051",
+        "arriveTime": "202603051623",
+        "departTime": "202603051753",
+        "distance": 10151.69,
+        "duration": 12,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "144",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 211.42
+          },
+          {
+            "order_id": "145",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 199.92
+          },
+          {
+            "order_id": "146",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 469.31
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1179.3400000000001,
+        "volumePercent": 23.59
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1080.24,
+        "volumePercent": 21.6
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1813.1899999999998,
+        "volumePercent": 36.26
+      }
+    ]
+  },
+  {
+    "tripId": 5,
+    "vehicleType": "7.6m",
+    "distance": 221777.59,
+    "duration": 806,
+    "startTime": "202603050630",
+    "endTime": "202603051956",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 100992.89,
+    "customers": [
+      {
+        "locationId": "LOCATION_030",
+        "name": "SITE_030",
+        "address": "SITE_030",
+        "arriveTime": "202603050951",
+        "departTime": "202603051121",
+        "distance": 91826.43,
+        "duration": 110,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "82",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 281.49
+          },
+          {
+            "order_id": "83",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 481.53
+          },
+          {
+            "order_id": "84",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 450.34
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_037",
+        "name": "SITE_037",
+        "address": "SITE_037",
+        "arriveTime": "202603051129",
+        "departTime": "202603051259",
+        "distance": 6046.57,
+        "duration": 7,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "102",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 294.4
+          },
+          {
+            "order_id": "103",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 127.69
+          },
+          {
+            "order_id": "104",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 404.24
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_018",
+        "name": "SITE_018",
+        "address": "SITE_018",
+        "arriveTime": "202603051302",
+        "departTime": "202603051432",
+        "distance": 3188.15,
+        "duration": 4,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "45",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 251.78
+          },
+          {
+            "order_id": "46",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 495.81
+          },
+          {
+            "order_id": "47",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 356.0
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_050",
+        "name": "SITE_050",
+        "address": "SITE_050",
+        "arriveTime": "202603051442",
+        "departTime": "202603051612",
+        "distance": 8061.58,
+        "duration": 10,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "141",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 199.46
+          },
+          {
+            "order_id": "142",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 176.08
+          },
+          {
+            "order_id": "143",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 279.45
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_029",
+        "name": "SITE_029",
+        "address": "SITE_029",
+        "arriveTime": "202603051625",
+        "departTime": "202603051755",
+        "distance": 10713.77,
+        "duration": 13,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "78",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 314.79
+          },
+          {
+            "order_id": "79",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 206.73
+          },
+          {
+            "order_id": "80",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 356.38
+          },
+          {
+            "order_id": "81",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 144.62
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1341.9199999999998,
+        "volumePercent": 26.84
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1487.84,
+        "volumePercent": 29.76
+      },
+      {
+        "wareId": 3,
+        "oilType": 1,
+        "oilCategory": "98#汽油",
+        "volume": 356.38,
+        "volumePercent": 7.13
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1634.65,
+        "volumePercent": 32.69
+      }
+    ]
+  },
+  {
+    "tripId": 6,
+    "vehicleType": "7.6m",
+    "distance": 296643.01,
+    "duration": 896,
+    "startTime": "202603050630",
+    "endTime": "202603052126",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 114192.51,
+    "customers": [
+      {
+        "locationId": "LOCATION_032",
+        "name": "SITE_032",
+        "address": "SITE_032",
+        "arriveTime": "202603051048",
+        "departTime": "202603051218",
+        "distance": 138901.83,
+        "duration": 167,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "88",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 219.38
+          },
+          {
+            "order_id": "89",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 355.58
+          },
+          {
+            "order_id": "90",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 343.59
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_044",
+        "name": "SITE_044",
+        "address": "SITE_044",
+        "arriveTime": "202603051225",
+        "departTime": "202603051355",
+        "distance": 6057.39,
+        "duration": 7,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "123",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 462.17
+          },
+          {
+            "order_id": "124",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 443.85
+          },
+          {
+            "order_id": "125",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 128.34
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_011",
+        "name": "SITE_011",
+        "address": "SITE_011",
+        "arriveTime": "202603051407",
+        "departTime": "202603051537",
+        "distance": 10040.21,
+        "duration": 12,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "24",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 391.89
+          },
+          {
+            "order_id": "25",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 314.49
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_022",
+        "name": "SITE_022",
+        "address": "SITE_022",
+        "arriveTime": "202603051541",
+        "departTime": "202603051711",
+        "distance": 3313.35,
+        "duration": 4,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "57",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 258.25
+          },
+          {
+            "order_id": "58",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 465.82
+          },
+          {
+            "order_id": "59",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 283.54
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_039",
+        "name": "SITE_039",
+        "address": "SITE_039",
+        "arriveTime": "202603051739",
+        "departTime": "202603051909",
+        "distance": 23189.51,
+        "duration": 28,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "108",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 448.97
+          },
+          {
+            "order_id": "109",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 269.26
+          },
+          {
+            "order_id": "110",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 184.72
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1780.66,
+        "volumePercent": 35.61
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1534.51,
+        "volumePercent": 30.69
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1254.68,
+        "volumePercent": 25.09
+      }
+    ]
+  },
+  {
+    "tripId": 7,
+    "vehicleType": "7.6m",
+    "distance": 229479.16,
+    "duration": 815,
+    "startTime": "202603050630",
+    "endTime": "202603052005",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 110006.58,
+    "customers": [
+      {
+        "locationId": "LOCATION_040",
+        "name": "SITE_040",
+        "address": "SITE_040",
+        "arriveTime": "202603051008",
+        "departTime": "202603051138",
+        "distance": 105546.75,
+        "duration": 127,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "111",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 391.97
+          },
+          {
+            "order_id": "112",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 180.46
+          },
+          {
+            "order_id": "113",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 224.69
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_017",
+        "name": "SITE_017",
+        "address": "SITE_017",
+        "arriveTime": "202603051147",
+        "departTime": "202603051317",
+        "distance": 7810.08,
+        "duration": 9,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "42",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 343.65
+          },
+          {
+            "order_id": "43",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 168.46
+          },
+          {
+            "order_id": "44",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 391.65
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_019",
+        "name": "SITE_019",
+        "address": "SITE_019",
+        "arriveTime": "202603051318",
+        "departTime": "202603051448",
+        "distance": 1052.7,
+        "duration": 1,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "48",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 373.85
+          },
+          {
+            "order_id": "49",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 437.14
+          },
+          {
+            "order_id": "50",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 410.4
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_023",
+        "name": "SITE_023",
+        "address": "SITE_023",
+        "arriveTime": "202603051453",
+        "departTime": "202603051623",
+        "distance": 3747.8,
+        "duration": 4,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "60",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 198.65
+          },
+          {
+            "order_id": "61",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 324.55
+          },
+          {
+            "order_id": "62",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 205.1
+          },
+          {
+            "order_id": "63",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 333.83
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_024",
+        "name": "SITE_024",
+        "address": "SITE_024",
+        "arriveTime": "202603051623",
+        "departTime": "202603051753",
+        "distance": 367.06,
+        "duration": 0,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "64",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 259.76
+          },
+          {
+            "order_id": "65",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 187.73
+          },
+          {
+            "order_id": "66",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 499.02
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1567.88,
+        "volumePercent": 31.36
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1298.34,
+        "volumePercent": 25.97
+      },
+      {
+        "wareId": 3,
+        "oilType": 1,
+        "oilCategory": "98#汽油",
+        "volume": 205.1,
+        "volumePercent": 4.1
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1859.5899999999997,
+        "volumePercent": 37.19
+      }
+    ]
+  },
+  {
+    "tripId": 8,
+    "vehicleType": "7.6m",
+    "distance": 142361.98,
+    "duration": 711,
+    "startTime": "202603050630",
+    "endTime": "202603051821",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 53908.42,
+    "customers": [
+      {
+        "locationId": "LOCATION_016",
+        "name": "SITE_016",
+        "address": "SITE_016",
+        "arriveTime": "202603050918",
+        "departTime": "202603051048",
+        "distance": 63842.82,
+        "duration": 77,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "39",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 183.8
+          },
+          {
+            "order_id": "40",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 206.79
+          },
+          {
+            "order_id": "41",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 474.66
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_043",
+        "name": "SITE_043",
+        "address": "SITE_043",
+        "arriveTime": "202603051053",
+        "departTime": "202603051223",
+        "distance": 4044.54,
+        "duration": 5,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "120",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 188.09
+          },
+          {
+            "order_id": "121",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 128.4
+          },
+          {
+            "order_id": "122",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 352.44
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_048",
+        "name": "SITE_048",
+        "address": "SITE_048",
+        "arriveTime": "202603051228",
+        "departTime": "202603051358",
+        "distance": 4586.63,
+        "duration": 6,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "134",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 269.43
+          },
+          {
+            "order_id": "135",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 286.81
+          },
+          {
+            "order_id": "136",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 391.63
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_004",
+        "name": "SITE_004",
+        "address": "SITE_004",
+        "arriveTime": "202603051402",
+        "departTime": "202603051532",
+        "distance": 3325.9,
+        "duration": 4,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "4",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 394.59
+          },
+          {
+            "order_id": "5",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 370.68
+          },
+          {
+            "order_id": "6",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 456.87
+          },
+          {
+            "order_id": "7",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 134.78
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_014",
+        "name": "SITE_014",
+        "address": "SITE_014",
+        "arriveTime": "202603051546",
+        "departTime": "202603051716",
+        "distance": 11705.47,
+        "duration": 14,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "32",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 191.16
+          },
+          {
+            "order_id": "33",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 215.76
+          },
+          {
+            "order_id": "34",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 131.92
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1227.07,
+        "volumePercent": 24.54
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1208.44,
+        "volumePercent": 24.17
+      },
+      {
+        "wareId": 3,
+        "oilType": 1,
+        "oilCategory": "98#汽油",
+        "volume": 456.87,
+        "volumePercent": 9.14
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1485.43,
+        "volumePercent": 29.71
+      }
+    ]
+  },
+  {
+    "tripId": 9,
+    "vehicleType": "7.6m",
+    "distance": 313532.73,
+    "duration": 916,
+    "startTime": "202603050630",
+    "endTime": "202603052146",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 151933.77,
+    "customers": [
+      {
+        "locationId": "LOCATION_009",
+        "name": "SITE_009",
+        "address": "SITE_009",
+        "arriveTime": "202603051101",
+        "departTime": "202603051231",
+        "distance": 149918.21,
+        "duration": 180,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "19",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 482.89
+          },
+          {
+            "order_id": "20",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 234.64
+          },
+          {
+            "order_id": "21",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 137.1
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_003",
+        "name": "SITE_003",
+        "address": "SITE_003",
+        "arriveTime": "202603051233",
+        "departTime": "202603051403",
+        "distance": 2011.11,
+        "duration": 2,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "1",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 355.77
+          },
+          {
+            "order_id": "2",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 110.0
+          },
+          {
+            "order_id": "3",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 210.01
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_020",
+        "name": "SITE_020",
+        "address": "SITE_020",
+        "arriveTime": "202603051407",
+        "departTime": "202603051537",
+        "distance": 2764.86,
+        "duration": 3,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "51",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 112.84
+          },
+          {
+            "order_id": "52",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 226.18
+          },
+          {
+            "order_id": "53",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 207.1
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_041",
+        "name": "SITE_041",
+        "address": "SITE_041",
+        "arriveTime": "202603051540",
+        "departTime": "202603051710",
+        "distance": 2706.96,
+        "duration": 3,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "114",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 359.95
+          },
+          {
+            "order_id": "115",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 275.24
+          },
+          {
+            "order_id": "116",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 307.03
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_012",
+        "name": "SITE_012",
+        "address": "SITE_012",
+        "arriveTime": "202603051714",
+        "departTime": "202603051844",
+        "distance": 3249.62,
+        "duration": 4,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "26",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 251.41
+          },
+          {
+            "order_id": "27",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 320.82
+          },
+          {
+            "order_id": "28",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 431.76
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1562.8600000000001,
+        "volumePercent": 31.26
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1166.8799999999999,
+        "volumePercent": 23.34
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1293.0,
+        "volumePercent": 25.86
+      }
+    ]
+  },
+  {
+    "tripId": 10,
+    "vehicleType": "7.6m",
+    "distance": 172321.26,
+    "duration": 747,
+    "startTime": "202603050630",
+    "endTime": "202603051857",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 67683.89,
+    "customers": [
+      {
+        "locationId": "LOCATION_036",
+        "name": "SITE_036",
+        "address": "SITE_036",
+        "arriveTime": "202603050924",
+        "departTime": "202603051054",
+        "distance": 69109.58,
+        "duration": 83,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "99",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 123.17
+          },
+          {
+            "order_id": "100",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 451.2
+          },
+          {
+            "order_id": "101",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 478.78
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_010",
+        "name": "SITE_010",
+        "address": "SITE_010",
+        "arriveTime": "202603051112",
+        "departTime": "202603051242",
+        "distance": 14597.38,
+        "duration": 18,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "22",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 439.0
+          },
+          {
+            "order_id": "23",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 341.49
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_052",
+        "name": "SITE_052",
+        "address": "SITE_052",
+        "arriveTime": "202603051247",
+        "departTime": "202603051417",
+        "distance": 4761.03,
+        "duration": 6,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "147",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 444.54
+          },
+          {
+            "order_id": "148",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 320.13
+          },
+          {
+            "order_id": "149",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 120.24
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_042",
+        "name": "SITE_042",
+        "address": "SITE_042",
+        "arriveTime": "202603051430",
+        "departTime": "202603051600",
+        "distance": 10867.68,
+        "duration": 13,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "117",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 189.88
+          },
+          {
+            "order_id": "118",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 235.23
+          },
+          {
+            "order_id": "119",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 335.32
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_015",
+        "name": "SITE_015",
+        "address": "SITE_015",
+        "arriveTime": "202603051606",
+        "departTime": "202603051736",
+        "distance": 4353.49,
+        "duration": 5,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "35",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 140.4
+          },
+          {
+            "order_id": "36",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 211.19
+          },
+          {
+            "order_id": "37",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 354.27
+          },
+          {
+            "order_id": "38",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 245.93
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1336.9900000000002,
+        "volumePercent": 26.74
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 1217.75,
+        "volumePercent": 24.36
+      },
+      {
+        "wareId": 3,
+        "oilType": 1,
+        "oilCategory": "98#汽油",
+        "volume": 354.27,
+        "volumePercent": 7.09
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1521.76,
+        "volumePercent": 30.44
+      }
+    ]
+  },
+  {
+    "tripId": 11,
+    "vehicleType": "7.6m",
+    "distance": 498563.31,
+    "duration": 1138,
+    "startTime": "202603050630",
+    "endTime": "202603060128",
+    "depot": {
+      "id": "LOCATION_001",
+      "locationId": "LOCATION_001",
+      "name": "SITE_001",
+      "address": "SITE_001",
+      "x": 113.571028,
+      "y": 22.95506
+    },
+    "departPoint": {
+      "id": "LOCATION_002",
+      "locationId": "LOCATION_002",
+      "name": "SITE_002",
+      "address": "SITE_002",
+      "x": 113.566532135,
+      "y": 22.947605034
+    },
+    "backDistance": 63853.44,
+    "customers": [
+      {
+        "locationId": "LOCATION_034",
+        "name": "SITE_034",
+        "address": "SITE_034",
+        "arriveTime": "202603051139",
+        "departTime": "202603051309",
+        "distance": 181249.32,
+        "duration": 217,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "95",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 229.66
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_026",
+        "name": "SITE_026",
+        "address": "SITE_026",
+        "arriveTime": "202603051752",
+        "departTime": "202603051922",
+        "distance": 236400.08,
+        "duration": 284,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "70",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 416.83
+          },
+          {
+            "order_id": "71",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 268.86
+          },
+          {
+            "order_id": "72",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 125.41
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_049",
+        "name": "SITE_049",
+        "address": "SITE_049",
+        "arriveTime": "202603051928",
+        "departTime": "202603052058",
+        "distance": 4536.94,
+        "duration": 5,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "137",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 493.67
+          },
+          {
+            "order_id": "138",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 139.37
+          },
+          {
+            "order_id": "139",
+            "oilType": 1,
+            "oilCategory": "98#汽油",
+            "wareId": 3,
+            "volume": 261.05
+          },
+          {
+            "order_id": "140",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 235.72
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_038",
+        "name": "SITE_038",
+        "address": "SITE_038",
+        "arriveTime": "202603052100",
+        "departTime": "202603052230",
+        "distance": 2207.94,
+        "duration": 3,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "105",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 151.36
+          },
+          {
+            "order_id": "106",
+            "oilType": 1,
+            "oilCategory": "95#汽油",
+            "wareId": 2,
+            "volume": 290.11
+          },
+          {
+            "order_id": "107",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 319.92
+          }
+        ]
+      },
+      {
+        "locationId": "LOCATION_027",
+        "name": "SITE_027",
+        "address": "SITE_027",
+        "arriveTime": "202603052242",
+        "departTime": "202603060012",
+        "distance": 9367.4,
+        "duration": 11,
+        "chargeTime": 90,
+        "orders": [
+          {
+            "order_id": "73",
+            "oilType": 1,
+            "oilCategory": "92#汽油",
+            "wareId": 1,
+            "volume": 498.45
+          },
+          {
+            "order_id": "74",
+            "oilType": 2,
+            "oilCategory": "0#柴油",
+            "wareId": 4,
+            "volume": 311.65
+          }
+        ]
+      }
+    ],
+    "loadInfo": [
+      {
+        "wareId": 1,
+        "oilType": 1,
+        "oilCategory": "92#汽油",
+        "volume": 1560.3100000000002,
+        "volumePercent": 31.21
+      },
+      {
+        "wareId": 2,
+        "oilType": 1,
+        "oilCategory": "95#汽油",
+        "volume": 698.34,
+        "volumePercent": 13.97
+      },
+      {
+        "wareId": 3,
+        "oilType": 1,
+        "oilCategory": "98#汽油",
+        "volume": 261.05,
+        "volumePercent": 5.22
+      },
+      {
+        "wareId": 4,
+        "oilType": 2,
+        "oilCategory": "0#柴油",
+        "volume": 1222.3600000000001,
+        "volumePercent": 24.45
+      }
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "case": "006_ion_beam_uniformity_optimization",
+  "files": [
+    {
+      "name": "prediction.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "sample_id",
+          "role": "identifier",
+          "type": "string",
+          "required": true,
+          "note": "Integer string matching sample_id in data/test.csv; must cover all 22 test rows with no duplicates"
+        },
+        {
+          "name": "uniformity_y",
+          "role": "decision",
+          "type": "string",
+          "required": true,
+          "note": "JSON array of floats serialised as a string (e.g. \"[0.1, 0.2, ...]\"); must have >= 10 elements; do NOT rescale or reshape — a poorly shaped curve is a legitimate low score"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "prediction.csv must exist in submission_dir",
+    "prediction.csv must be non-empty (at least one data row)",
+    "columns 'sample_id' and 'uniformity_y' must both be present (exact names, no aliases tolerated)",
+    "each uniformity_y value must be a JSON-parseable array of floats",
+    "each uniformity_y array must have length >= 10",
+    "no duplicate sample_id values",
+    "submission must contain one row for every sample_id in data/test.csv (22 rows total, no missing)"
+  ],
+  "derived_from_lines": [
+    27,
+    80,
+    85,
+    90,
+    115,
+    129
+  ]
+}

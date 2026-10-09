@@ -1,0 +1,4 @@
+[metadata]
+task_type = "Machine Learning"
+scene_type = ["工艺预测", "回归建模", "发酵工业"]
+difficulty = "hard"

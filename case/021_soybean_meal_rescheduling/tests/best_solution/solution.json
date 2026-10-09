@@ -1,0 +1,1334 @@
+{
+ "shifts": [
+  {
+   "shift_name": "26白",
+   "factory": "一厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 1,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 100.0
+  },
+  {
+   "shift_name": "26白",
+   "factory": "二厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "26夜",
+   "factory": "一厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "26夜",
+   "factory": "二厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 2,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 2,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 2,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 2,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 1,
+     "sanliao": 2
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "27白",
+   "factory": "一厂",
+   "protein": "43%",
+   "blocked": true,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0
+  },
+  {
+   "shift_name": "27白",
+   "factory": "二厂",
+   "protein": "43%",
+   "blocked": true,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0
+  },
+  {
+   "shift_name": "27夜",
+   "factory": "一厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "27夜",
+   "factory": "二厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 4,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "28白",
+   "factory": "一厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    },
+    {
+     "xiaobao": 3,
+     "tunbao": 0,
+     "sanliao": 0
+    }
+   ],
+   "train_nodes": 1,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "28白",
+   "factory": "二厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "28夜",
+   "factory": "一厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 1,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "28夜",
+   "factory": "二厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 2,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 2,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 2,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 2,
+     "tunbao": 0,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 2,
+     "tunbao": 0,
+     "sanliao": 2
+    },
+    {
+     "xiaobao": 2,
+     "tunbao": 0,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 1
+    },
+    {
+     "xiaobao": 1,
+     "tunbao": 1,
+     "sanliao": 1
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "29白",
+   "factory": "一厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 1,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "29白",
+   "factory": "二厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "29夜",
+   "factory": "一厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 1,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "29夜",
+   "factory": "二厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "30白",
+   "factory": "一厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 1,
+   "guluomei_tons": 200.0
+  },
+  {
+   "shift_name": "30白",
+   "factory": "二厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "30夜",
+   "factory": "一厂",
+   "protein": "45%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 0.0
+  },
+  {
+   "shift_name": "30夜",
+   "factory": "二厂",
+   "protein": "43%",
+   "blocked": false,
+   "hours": [
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 4
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    },
+    {
+     "xiaobao": 0,
+     "tunbao": 0,
+     "sanliao": 3
+    }
+   ],
+   "train_nodes": 0,
+   "guluomei_tons": 200.0
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+  "case": "033_llm_serving_traffic_forecast",
+  "files": [
+    {
+      "name": "predictions.csv",
+      "format": "csv",
+      "required": true,
+      "columns": [
+        {
+          "name": "Timestamp",
+          "aliases": ["timestamp", "ts", "time", "ds", "datetime", "date", "hour", "小时", "时间"],
+          "role": "identifier",
+          "type": "datetime string",
+          "required": true,
+          "note": "第 29 行 TIME_COL='Timestamp'，第 60-63 行按列名逐字比对、没有模糊匹配。第 39-41 行 _norm_time 用 pd.to_datetime 解析后统一成 '%Y-%m-%d %H:%M' 再对齐，所以写法可以不同但必须解析得出来（第 67-69 行解析失败即 fatal）。第 80-82 行归一化后的时间不得重复。EXTRACTOR_SPEC 要求时间列保持选手输出的原样、不要重新格式化。"
+        },
+        {
+          "name": "predicted_traffic",
+          "aliases": ["Traffic", "traffic", "yhat", "pred", "prediction", "forecast", "y", "预测调用量", "调用量"],
+          "role": "decision",
+          "type": "float",
+          "required": true,
+          "note": "第 30 行 VAL_COL='predicted_traffic'，第 60-63 行列名逐字比对。第 66 行 pd.to_numeric(errors='coerce')，第 70-72 行有缺失/非数值即 fatal；第 73-76 行必须有限；第 77-79 行必须严格为正，0 或负数即 fatal。EXTRACTOR_SPEC 明令不得改动预测数值、不得重新建模。"
+        },
+        {
+          "name": "(置信区间等其它列)",
+          "aliases": ["lower", "upper", "yhat_lower", "yhat_upper", "conf_int"],
+          "role": "ignored",
+          "type": "any",
+          "required": false,
+          "note": "evaluator 只取 Timestamp 与 predicted_traffic 两列（第 94 行 pred[['_t', VAL_COL]]），其余列一概不读。EXTRACTOR_SPEC 说明选手若额外输出置信区间列，丢弃即可。"
+        }
+      ]
+    }
+  ],
+  "structural_checks": [
+    "predictions.csv 必须存在于提交目录（第 54-57 行）",
+    "Timestamp 与 predicted_traffic 两列都要在，列名逐字匹配（第 60-63 行）",
+    "每个 Timestamp 都要能被 pd.to_datetime 解析，任何一个解析不出整份判死（第 65-69 行）",
+    "predicted_traffic 全列必须是数值，出现缺失或非数值整份判死（第 66、70-72 行）",
+    "predicted_traffic 不得含 inf/nan（第 73-76 行）",
+    "predicted_traffic 必须严格为正，任何一个 ≤0 整份判死（第 77-79 行）",
+    "归一化到分钟粒度后的时间戳不得重复（第 80-82 行）",
+    "待预测清单里的每一个小时都必须有预测行，缺任何一个整份判死（第 84-90 行）",
+    "多交的时间点不影响判定：评估侧以真值时间为准做左连接（第 94 行）"
+  ],
+  "derived_from_lines": [28, 29, 30, 39, 54, 60, 65, 67, 70, 74, 77, 80, 87, 94]
+}

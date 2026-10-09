@@ -1,0 +1,6 @@
+{"type":"init","timestamp":"2026-09-02T15:13:02.242Z","session_id":"351158d1-4eaa-4e65-9d3b-c054a26dc1ca","model":"gemini-3.1-pro-preview"}
+{"type":"message","timestamp":"2026-09-02T15:13:02.243Z","role":"user","content":"Run the shell command 'echo hi' once, then reply with exactly: DONE-42"}
+{"type":"tool_use","timestamp":"2026-09-02T15:13:06.716Z","tool_name":"run_shell_command","tool_id":"call_1682207","parameters":{"command":"echo hi","description":"Running echo hi"}}
+{"type":"tool_result","timestamp":"2026-09-02T15:13:06.938Z","tool_id":"call_1682207","status":"success"}
+{"type":"message","timestamp":"2026-09-02T15:13:10.553Z","role":"assistant","content":"DONE-42","delta":true}
+{"type":"result","timestamp":"2026-09-02T15:13:10.619Z","status":"success","stats":{"total_tokens":20748,"input_tokens":20522,"output_tokens":31,"cached":8058,"input":12464,"duration_ms":8377,"tool_calls":1,"models":{"gemini-3.1-pro-preview":{"total_tokens":20748,"input_tokens":20522,"output_tokens":31,"cached":8058,"input":12464}}}}

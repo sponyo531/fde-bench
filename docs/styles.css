@@ -34,3 +34,7 @@
 .contribute-guide p{border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:11px;line-height:1.8}
 @media(max-width:950px){.contribute-section{gap:40px}}
 @media(max-width:760px){.contribute-section{grid-template-columns:1fr;gap:30px}}
+
+.contribute-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.contribute-actions .text-link{font-size:12px}
+@media(max-width:480px){.contribute-actions{align-items:flex-start;flex-direction:column;gap:15px}}

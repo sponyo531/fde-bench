@@ -60,7 +60,7 @@ Interact 系列的提问记录 ── 比对考点 ──→ 问对了没？
 
 欢迎大家给我们提 PR，为后续版本贡献新的 case，也欢迎改进评测器或接入新的 agent。新的 case 请沿用现有 `case/<case-name>/` 结构，提供去敏后的题面和数据、完整需求、澄清考点、运行环境、输出 schema、确定性的 evaluator 和参考解。
 
-请在 PR 中说明数据来源、去敏方式和分发权限，不要提交密钥或客户私有材料。可以从 [GitHub PR 页面](https://github.com/sponyo531/fde-bench/pulls) 开始。
+请在 PR 中说明数据来源、去敏方式和分发权限，不要提交密钥或客户私有材料。详细目录、检查命令和审核清单见 [CONTRIBUTING.md](CONTRIBUTING.md)，可以从 [GitHub PR 页面](https://github.com/sponyo531/fde-bench/pulls) 开始。
 
 ## 目录
 

@@ -2,7 +2,7 @@
 
 **Evaluating End-to-End Delivery from Underspecified Real-World Business Requests**
 
-[Project page](https://sponyo531.github.io/fde-bench/) · [Paper](https://sponyo531.github.io/fde-bench/assets/FDE-Bench.pdf) · [Case inventory](case/) · [Data download](https://github.com/sponyo531/fde-bench/releases/tag/v0.1.0) · [Quick start](#quick-start) · [中文说明](README.zh-CN.md)
+[Project page](https://sponyo531.github.io/fde-bench/) · [Paper](https://sponyo531.github.io/fde-bench/assets/FDE-Bench.pdf) · [Case inventory](case/) · [Data download](https://github.com/sponyo531/fde-bench/releases/tag/v0.1.0) · [Quick start](#quick-start) · [Contributing](CONTRIBUTING.md) · [中文说明](README.zh-CN.md)
 
 FDE-Bench evaluates whether an agent can turn an incomplete business request into a deliverable that meets the customer's requirements. It separates asking the right clarification questions from producing a valid, useful solution.
 
@@ -171,7 +171,7 @@ python -m harness.scoring.report results/opencode
 
 ## Contribute
 
-Pull requests are welcome. You can propose a new de-identified customer case for a future FDE-Bench release, improve a case evaluator, or add an agent adapter. A case should follow the existing `case/<case-name>/` structure and include its request, visible data, complete requirements, clarification targets, environment, schema, deterministic evaluator, and reference solution.
+Pull requests are welcome. You can propose a new de-identified customer case for a future FDE-Bench release, improve a case evaluator, or add an agent adapter. A case must follow the [case format and review checklist](CONTRIBUTING.md), including its request, visible data, complete requirements, clarification targets, environment, schema, deterministic evaluator, and reference solution.
 
 Please document provenance, de-identification, and data-distribution rights, and keep credentials or private customer material out of pull requests. Open a PR from the [GitHub repository](https://github.com/sponyo531/fde-bench/pulls) and describe what a reviewer can run offline.
 

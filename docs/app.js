@@ -247,6 +247,7 @@
       caseGrid.replaceChildren();
       shown.forEach((item) => {
         const card = element('article', 'case-card');
+        card.dataset.family = item.family;
         const top = element('div', 'case-top');
         top.append(element('span', 'case-number', `CASE ${item.id}`));
         const badge = element('span', 'family-badge', item.family === 'CO' ? 'OPTIMIZATION' : 'MACHINE LEARNING');

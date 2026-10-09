@@ -25,7 +25,7 @@
 <header class="site-header"><div class="container header-inner">
   <a class="brand" href="#main" aria-label="FDE-Bench home"><img src="assets/logo.png" width="32" height="32" alt=""><span>FDE-Bench</span></a>
   <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">☰</span></button>
-  <nav id="site-nav" aria-label="Main navigation"><a href="#results">Leaderboard</a><a href="#protocol">How it works</a><a href="#findings">Findings</a><a href="#cases">Cases</a><a href="#resources">Get started</a><a class="nav-github" href="https://github.com/sponyo531/fde-bench" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></nav>
+  <nav id="site-nav" aria-label="Main navigation"><a href="#results">Leaderboard</a><a href="#protocol">How it works</a><a href="#findings">Findings</a><a href="#cases">Cases</a><a href="#resources">Get started</a><a href="#contribute">Contribute</a><a class="nav-github" href="https://github.com/sponyo531/fde-bench" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></nav>
 </div></header>
 <main id="main">
 <div class="hero-surface"><section class="hero container" aria-labelledby="hero-title">
@@ -109,9 +109,11 @@ python -m harness \
   -a opencode \
   -m YOUR_PROVIDER/YOUR_MODEL \
   -c Interact-Req \
-  -d 002_city_delivery_route_planning \
+-d 002_city_delivery_route_planning \
   -k 1 \
   --dry-run</code></pre><p>Actual model runs require your configured endpoints and credentials. See the repository for installation, data download, isolation, and scoring instructions.</p></div></div></div></section>
+
+<section id="contribute" class="section container contribute-section"><div class="contribute-copy"><p class="eyebrow">07 / Contribute</p><h2>Help us grow the case collection.</h2><p>We welcome pull requests. Contribute a new, de-identified customer case to a future FDE-Bench release, improve an evaluator, or add an agent adapter.</p><a class="button button-primary" href="https://github.com/sponyo531/fde-bench/pulls" target="_blank" rel="noopener">Open a pull request ↗</a></div><div class="contribute-guide"><h3>What a new case should include</h3><ul><li><code>instruction.md</code> with the original level of detail</li><li>visible data plus complete requirements and clarification targets</li><li>a deterministic evaluator, schema, reference solution, and environment</li><li>documentation of provenance, de-identification, and data rights</li></ul><p>Keep credentials and private customer material out of pull requests. Start from the existing case structure and read the repository's release notes before sharing data.</p></div></section>
 
 <section class="section container reliability-section"><div class="reliability-intro"><p class="eyebrow">Evaluation reliability &amp; scope</p><h2>Checked by experts.<br><em>Bounded by the setting.</em></h2><p>Two experts independently audited stratified subsets across all 18 configurations. These checks support reliability on the audited subsets; they do not eliminate extraction-related score risk.</p></div><div class="reliability-content"><div class="audit-row"><strong>1,303</strong><div><h3>Simulated-customer answers</h3><p>Experts marked 95.93% and 90.48% as supported; their support labels agreed on 92.10% of records.</p></div></div><div class="audit-row"><strong>120</strong><div><h3>Artifact extractions</h3><p>93.33% and 91.00% of assessable extractions were judged faithful. The sample was enriched for runs with extraction issues.</p></div></div><div class="audit-row"><strong>120</strong><div><h3>Clarification items</h3><p>The model panel agreed with experts on 94.74% and 93.33%, excluding uncertain labels.</p></div></div><div class="scope-note"><h3>What this benchmark does not yet cover</h3><p>Requirements and business data are fixed. The simulated customer does not revise expectations in response to intermediate solutions. The 49 optimization and ML projects do not cover every FDE setting.</p></div></div></section>
 

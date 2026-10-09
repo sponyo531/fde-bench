@@ -22,3 +22,15 @@
 .resource-actions .text-link{color:#c4d9ec;font-size:12px}
 .resource-actions .text-link:hover{color:#fff}
 @media(max-width:480px){.resource-actions{align-items:flex-start;flex-direction:column;gap:15px}}
+
+.contribute-section{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start;border-top:1px solid var(--line)}
+.contribute-copy h2{font:400 clamp(34px,3.3vw,47px)/1.13 var(--serif);letter-spacing:-.035em;margin-bottom:20px}
+.contribute-copy>p:not(.eyebrow){color:var(--muted);font-size:15px;line-height:1.85;max-width:500px;margin-bottom:24px}
+.contribute-guide{border:1px solid var(--line);border-radius:8px;background:#f7f9fb;padding:26px 29px}
+.contribute-guide h3{font-size:17px;margin-bottom:16px}
+.contribute-guide ul{list-style:none;padding:0;margin:0 0 19px}
+.contribute-guide li{position:relative;padding-left:20px;font-size:13px;line-height:1.7;margin:9px 0;color:#52667a}
+.contribute-guide li::before{content:'+';position:absolute;left:0;color:var(--teal);font-weight:700}
+.contribute-guide p{border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:11px;line-height:1.8}
+@media(max-width:950px){.contribute-section{gap:40px}}
+@media(max-width:760px){.contribute-section{grid-template-columns:1fr;gap:30px}}

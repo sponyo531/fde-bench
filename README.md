@@ -169,6 +169,12 @@ Results default to `results/`. Completed compatible runs are skipped when resumi
 python -m harness.scoring.report results/opencode
 ```
 
+## Contribute
+
+Pull requests are welcome. You can propose a new de-identified customer case for a future FDE-Bench release, improve a case evaluator, or add an agent adapter. A case should follow the existing `case/<case-name>/` structure and include its request, visible data, complete requirements, clarification targets, environment, schema, deterministic evaluator, and reference solution.
+
+Please document provenance, de-identification, and data-distribution rights, and keep credentials or private customer material out of pull requests. Open a PR from the [GitHub repository](https://github.com/sponyo531/fde-bench/pulls) and describe what a reviewer can run offline.
+
 ## Agent adapters
 
 Adapters are discovered from `harness/backends/`. Supported adapters include OpenCode, Codex, Claude Code, Gemini CLI, Kimi CLI, DeepSeek Harness, and OpenHands. Some require separate installations or optional environments; see their adapter modules and the runner Dockerfile. OpenHands uses the legacy API pinned in the supplied environment and should not be silently upgraded.
